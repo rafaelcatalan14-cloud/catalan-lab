@@ -194,10 +194,8 @@
                 <h3 id="modal-title" class="text-2xl font-bold mb-2">Quase lá!</h3>
                 <p id="modal-desc" class="text-zinc-400 mb-8">Para baixar este script e projeto exclusivo, informe o seu melhor e-mail abaixo.</p>
                 
-                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-                
-                <form action="https://docs.google.com/forms/d/e/1FAIpQLSfTT1vVgNzOr00OLyQrdJ2TNf9mVjyOGb6s5c76ECqQqxemLg/formResponse" method="POST" target="hidden_iframe" id="email-form" class="space-y-4">
-                    <input type="email" name="entry.350366695" id="user-email" placeholder="Seu e-mail" required class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-cyan-500 transition-colors">
+                <form id="email-form" class="space-y-4">
+                    <input type="email" id="user-email" placeholder="Seu e-mail" required class="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg text-white placeholder-zinc-500 focus:outline-none focus:border-cyan-500 transition-colors">
                     <button type="submit" id="submit-email-btn" class="w-full bg-cyan-600 hover:bg-cyan-500 text-white font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2">
                         <span id="modal-btn-text">Baixar Agora</span>
                         <i data-lucide="download" class="w-5 h-5"></i>
@@ -211,7 +209,7 @@
                     <i data-lucide="check-circle" class="w-8 h-8"></i>
                 </div>
                 <h3 id="success-title" class="text-2xl font-bold mb-2">Tudo Certo!</h3>
-                <p id="success-desc" class="text-zinc-400 mb-8">O seu e-mail foi registado. Clique no botão abaixo para ir para o Google Drive.</p>
+                <p id="success-desc" class="text-zinc-400 mb-8">O seu e-mail foi registrado. Clique no botão abaixo para ir para o Google Drive.</p>
                 <a href="#" id="final-download-link" target="_blank" onclick="closeDownloadModal()" class="w-full bg-white text-black font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center gap-2 hover:bg-zinc-200">
                     <span id="success-btn">Acessar Arquivos</span>
                     <i data-lucide="external-link" class="w-5 h-5"></i>
@@ -285,7 +283,7 @@
                 descBee: "Trabajo de tipografía cinética y elementos 3D en entorno inmersivo.",
                 descTlou: "Composición cinematográfica y color grading inspirados en el universo del juego.",
                 btnDownload: "Descargar Script",
-                modalTitle: "¡Ya casi!",
+                modalTitle: "¡Ya quase!",
                 modalDesc: "Para descargar este script y proyecto exclusivo, ingresa tu mejor correo electrónico abajo.",
                 modalInput: "Tu mejor correo",
                 modalBtn: "Descargar Ahora",
@@ -298,13 +296,12 @@
         };
 
         // Lógica de Idioma
-        let currentLang = 'pt'; // Idioma padrão
+        let currentLang = 'pt';
 
         function setLang(lang) {
             currentLang = lang;
             const t = translations[lang];
 
-            // Atualiza Textos
             document.getElementById('nav-portfolio').innerText = t.navPortfolio;
             document.getElementById('nav-masterclass').innerText = t.navMasterclass;
             document.getElementById('nav-portfolio-mobile').innerText = t.navPortfolio;
@@ -319,12 +316,10 @@
             document.getElementById('desc-bee').innerText = t.descBee;
             document.getElementById('desc-tlou').innerText = t.descTlou;
             
-            // Atualiza todos os botões de download dos cards
             document.querySelectorAll('.btn-download-text').forEach(el => {
                 el.innerText = t.btnDownload;
             });
 
-            // Atualiza o Modal
             document.getElementById('modal-title').innerText = t.modalTitle;
             document.getElementById('modal-desc').innerText = t.modalDesc;
             document.getElementById('user-email').placeholder = t.modalInput;
@@ -359,12 +354,10 @@
         function openDownloadModal(driveLink) {
             currentDownloadLink = driveLink;
             
-            // Reseta o estado do modal para o form original
             document.getElementById('email-form-step').classList.remove('hidden');
             document.getElementById('email-success-step').classList.add('hidden');
             document.getElementById('user-email').value = '';
             
-            // Restaura o texto do botão usando o idioma atual
             const btnText = document.getElementById('submit-email-btn').querySelector('span');
             btnText.innerText = translations[currentLang].modalBtn;
             document.getElementById('submit-email-btn').classList.remove('opacity-80', 'cursor-not-allowed');
@@ -376,37 +369,54 @@
             modal.classList.add('hidden');
         }
 
-        // --- LÓGICA INFALÍVEL DO GOOGLE FORMS (IFRAME) ---
-        let formSubmitted = false;
+        // --- LÓGICA DO FORMULÁRIO (FORMSUBMIT CONFIGURADO) ---
         const emailForm = document.getElementById('email-form');
-        const hiddenIframe = document.getElementById('hidden_iframe');
 
-        // Quando o usuário clica no botão do formulário
-        emailForm.addEventListener('submit', function() {
-            formSubmitted = true;
+        emailForm.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
             const btn = document.getElementById('submit-email-btn');
             const btnText = btn.querySelector('span');
+            const userEmail = document.getElementById('user-email').value;
             
-            // Mostra que está processando baseado no idioma
             btnText.innerText = translations[currentLang].processing;
             btn.classList.add('opacity-80', 'cursor-not-allowed');
-        });
 
-        // Quando o iframe invisível recebe o OK do Google
-        hiddenIframe.addEventListener('load', function() {
-            if (formSubmitted) {
-                console.log("Lead capturado com sucesso na planilha!");
+            // Envia para o FormSubmit via AJAX apontando para o seu e-mail profissional
+            fetch("https://formsubmit.co/ajax/support.catalanlab@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    _subject: "Novo Lead - Portfólio Catalan Lab",
+                    email: userEmail
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Lead enviado com sucesso!");
                 
-                // Esconde o form e mostra a tela de sucesso
                 document.getElementById('email-form-step').classList.add('hidden');
                 document.getElementById('email-success-step').classList.remove('hidden');
                 
-                // Libera o link correto do Google Drive no botão final
                 document.getElementById('final-download-link').href = currentDownloadLink;
                 
                 lucide.createIcons();
-                formSubmitted = false; // Reseta a trava para as próximas tentativas
-            }
+                
+                btnText.innerText = translations[currentLang].modalBtn;
+                btn.classList.remove('opacity-80', 'cursor-not-allowed');
+                emailForm.reset();
+            })
+            .catch(error => {
+                console.log("Erro ao enviar:", error);
+                // Fallback de segurança: libera o download mesmo em falha de rede
+                document.getElementById('email-form-step').classList.add('hidden');
+                document.getElementById('email-success-step').classList.remove('hidden');
+                document.getElementById('final-download-link').href = currentDownloadLink;
+                lucide.createIcons();
+            });
         });
 
         // INICIALIZA O IDIOMA AO CARREGAR

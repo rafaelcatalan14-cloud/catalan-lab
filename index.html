@@ -298,10 +298,10 @@
 
         // DADOS DO PORTFÓLIO COM YOUTUBE EMBEDS
         const portfolioItems = [
-            { id: 1, title: "Trunks", category: "Script 3D Cam Parallax + Organic Rig + Lab Stack", embedUrl: "https://www.youtube.com/embed/LQCXrfiByMg" },
-            { id: 2, title: "Hero of Chaos", category: "Script 3D Cam Parallax + Organic Rig + Lab Stack", embedUrl: "https://www.youtube.com/embed/Rt0o8e0x3Dw" },
-            { id: 3, title: "Just BEE moving", category: "Script 3D Cam Parallax + Organic Rig + Lab Stack", embedUrl: "https://www.youtube.com/embed/W-lO90l-Vuo" },
-            { id: 4, title: "What If TLOU...", category: "Script 3D Cam Parallax", embedUrl: "https://www.youtube.com/embed/-pVFXWZxnrI" }
+            { id: 1, title: "Trunks", category: "Script 3D Cam Parallax + Organic Rig + Lab Stack", embedUrl: "https://www.youtube.com/embed/LQCXrfiByMg", image: "Trunks.png" },
+            { id: 2, title: "Hero of Chaos", category: "Script 3D Cam Parallax + Organic Rig + Lab Stack", embedUrl: "https://www.youtube.com/embed/Rt0o8e0x3Dw", image: "Anime.png" },
+            { id: 3, title: "Just BEE moving", category: "Script 3D Cam Parallax + Organic Rig + Lab Stack", embedUrl: "https://www.youtube.com/embed/W-lO90l-Vuo", image: "Bee.png" },
+            { id: 4, title: "What If TLOU...", category: "Script 3D Cam Parallax", embedUrl: "https://www.youtube.com/embed/-pVFXWZxnrI", image: "TLOU.png" }
         ];
 
         function renderPortfolio() {
@@ -312,10 +312,9 @@
                     <div class="relative aspect-[9/16] bg-black w-full overflow-hidden">
                         <iframe src="${item.embedUrl}" class="absolute top-0 left-0 w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
-                    <!-- Textos Descritivos -->
-                    <div class="p-5 flex flex-col flex-grow bg-brand-dark">
-                        <span class="text-brand-yellow text-xs font-bold uppercase tracking-wider mb-2 leading-tight">${item.category}</span>
-                        <h3 class="text-white text-lg font-bold leading-tight">${item.title}</h3>
+                    <!-- Textos Descritivos (Apenas Categoria) -->
+                    <div class="p-5 flex flex-col flex-grow justify-center items-center text-center bg-brand-dark">
+                        <span class="text-brand-yellow text-xs font-bold uppercase tracking-wider leading-relaxed">${item.category}</span>
                     </div>
                 </div>
             `).join('');

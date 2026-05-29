@@ -69,13 +69,14 @@
 
                 <div class="flex items-center gap-4 md:gap-0">
                     <!-- Links Desktop -->
-                    <div class="hidden md:flex space-x-8 items-center">
+                    <div class="hidden md:flex space-x-6 lg:space-x-8 items-center">
                         <a href="#motion" data-i18n="nav_motion" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium">Motion Design</a>
                         <a href="#scripts" data-i18n="nav_scripts" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium">Scripts</a>
+                        <a href="#projetos" data-i18n="nav_projects" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium">Projetos AE</a>
                         <a href="#masterclass" data-i18n="nav_masterclass" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium">Masterclass</a>
                         <a href="#contato" data-i18n="nav_contact" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium">Contato</a>
                         
-                        <div class="flex items-center space-x-4 border-l border-white/10 pl-8">
+                        <div class="flex items-center space-x-4 border-l border-white/10 pl-6 lg:pl-8">
                             <a href="https://www.instagram.com/catalan.lab/" target="_blank" class="opacity-80 hover:opacity-100 hover:scale-110 transition-all">
                                 <img src="instagram.png" alt="Instagram" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1E293B/FFD600?text=IG'" class="w-6 h-6 object-contain">
                             </a>
@@ -107,6 +108,7 @@
             <div class="px-6 py-8 flex flex-col space-y-6 text-center">
                 <a href="#motion" onclick="toggleMobileMenu()" data-i18n="nav_motion" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Motion Design</a>
                 <a href="#scripts" onclick="toggleMobileMenu()" data-i18n="nav_scripts" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Scripts</a>
+                <a href="#projetos" onclick="toggleMobileMenu()" data-i18n="nav_projects" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Projetos AE</a>
                 <a href="#masterclass" onclick="toggleMobileMenu()" data-i18n="nav_masterclass" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Masterclass</a>
                 <a href="#contato" onclick="toggleMobileMenu()" data-i18n="nav_contact" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Contato</a>
             </div>
@@ -158,7 +160,20 @@
         </div>
     </section>
 
-    <section id="masterclass" class="py-20 bg-brand-dark relative">
+    <section id="projetos" class="py-20 relative bg-brand-dark border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex items-center gap-4 mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold"><span data-i18n="section_projects1">Projetos</span> <span data-i18n="section_projects2" class="text-brand-yellow">AE</span></h2>
+                <div class="h-px bg-white/10 flex-grow"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                <!-- Gerado via JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="masterclass" class="py-20 bg-[#0a0f1c] relative border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex items-center gap-4 mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold"><span data-i18n="section_masterclass1" class="text-brand-yellow">Master</span><span data-i18n="section_masterclass2">class</span></h2>
@@ -207,42 +222,60 @@
         </div>
     </footer>
 
+    <!-- BOTÃO WHATSAPP FLUTUANTE -->
+    <div class="fixed bottom-6 right-6 z-50 flex items-center justify-center">
+        <!-- Efeito de pulso -->
+        <div class="absolute inset-0 bg-[#25D366] rounded-full animate-ping opacity-20"></div>
+        
+        <a href="https://wa.me/5511917574951" target="_blank" aria-label="Fale conosco no WhatsApp" class="relative bg-[#25D366] text-white p-4 rounded-full shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:scale-110 hover:-translate-y-1 transition-all duration-300 group flex items-center justify-center">
+            <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+            </svg>
+            <span class="absolute right-full mr-4 bg-brand-dark text-white text-sm font-semibold px-4 py-2 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap border border-white/10 shadow-xl hidden md:block">
+                Tirar Dúvidas
+            </span>
+        </a>
+    </div>
+
     <script>
         lucide.createIcons();
 
         const translations = {
             pt: {
-                nav_motion: "Motion Design", nav_scripts: "Scripts", nav_masterclass: "Masterclass", nav_contact: "Contato",
+                nav_motion: "Motion Design", nav_scripts: "Scripts", nav_projects: "Projetos AE", nav_masterclass: "Masterclass", nav_contact: "Contato",
                 hero_title1: "Transformando ideias em", hero_title2: "movimento.",
                 hero_subtitle: "Especialista em motion design desenvolvendo soluções de melhores workflows. Meus scripts são desenvolvidos por quem realmente usa o After Effects todos os dias.",
                 hero_btn_portfolio: "Ver Portfólio", hero_btn_scripts: "Meus Scripts",
                 section_motion1: "Motion", section_motion2: "Design",
                 section_scripts1: "Meus", section_scripts2: "Scripts",
+                section_projects1: "Projetos", section_projects2: "AE",
                 section_masterclass1: "Master", section_masterclass2: "class",
                 footer_talk: "Fale Comigo", footer_rights: "© 2026 Catalan Lab. Todos os direitos reservados.",
-                btn_buy: "Comprar", btn_download: "Baixar", btn_more: "Saber mais", badge_course: "Curso Completo"
+                btn_buy: "Comprar", btn_download: "Baixar", btn_more: "Saber mais", badge_course: "Curso Completo", btn_coming_soon: "Em breve"
             },
             en: {
-                nav_motion: "Motion Design", nav_scripts: "Scripts", nav_masterclass: "Masterclass", nav_contact: "Contact",
+                nav_motion: "Motion Design", nav_scripts: "Scripts", nav_projects: "AE Projects", nav_masterclass: "Masterclass", nav_contact: "Contact",
                 hero_title1: "Transforming ideas into", hero_title2: "motion.",
                 hero_subtitle: "Motion design expert developing solutions for better workflows. My scripts are built by someone who actually uses After Effects every day.",
                 hero_btn_portfolio: "View Portfolio", hero_btn_scripts: "My Scripts",
                 section_motion1: "Motion", section_motion2: "Design",
                 section_scripts1: "My", section_scripts2: "Scripts",
+                section_projects1: "AE", section_projects2: "Projects",
                 section_masterclass1: "Master", section_masterclass2: "class",
                 footer_talk: "Talk to Me", footer_rights: "© 2026 Catalan Lab. All rights reserved.",
-                btn_buy: "Buy", btn_download: "Download", btn_more: "Learn more", badge_course: "Full Course"
+                btn_buy: "Buy", btn_download: "Download", btn_more: "Learn more", badge_course: "Full Course", btn_coming_soon: "Coming soon"
             },
             es: {
-                nav_motion: "Motion Design", nav_scripts: "Scripts", nav_masterclass: "Masterclass", nav_contact: "Contacto",
+                nav_motion: "Motion Design", nav_scripts: "Scripts", nav_projects: "Proyectos AE", nav_masterclass: "Masterclass", nav_contact: "Contacto",
                 hero_title1: "Transformando ideas en", hero_title2: "movimiento.",
                 hero_subtitle: "Experto en motion design desarrollando soluciones para mejores flujos de trabajo. Mis scripts son creados por alguien que realmente usa After Effects todos los días.",
                 hero_btn_portfolio: "Ver Portafolio", hero_btn_scripts: "Mis Scripts",
                 section_motion1: "Motion", section_motion2: "Design",
                 section_scripts1: "Mis", section_scripts2: "Scripts",
+                section_projects1: "Proyectos", section_projects2: "AE",
                 section_masterclass1: "Master", section_masterclass2: "class",
                 footer_talk: "Hablemos", footer_rights: "© 2026 Catalan Lab. Todos los derechos reservados.",
-                btn_buy: "Comprar", btn_download: "Descargar", btn_more: "Saber más", badge_course: "Curso Completo"
+                btn_buy: "Comprar", btn_download: "Descargar", btn_more: "Saber más", badge_course: "Curso Completo", btn_coming_soon: "Pronto"
             }
         };
 
@@ -274,6 +307,7 @@
 
             renderPortfolio();
             renderScripts();
+            renderAEProjects();
             renderMasterclasses();
         }
 
@@ -305,6 +339,53 @@
                 },
                 price: { pt: "FREE", en: "FREE", es: "GRATIS" },
                 icon: "boxes", link: "https://docs.google.com/forms/d/e/1FAIpQLSfTT1vVgNzOr00OLyQrdJ2TNf9mVjyOGb6s5c76ECqQqxemLg/viewform?usp=sharing&ouid=106520077737272301292",
+                btnTextKey: "btn_download"
+            },
+            {
+                id: 3, title: "Organic Rig",
+                description: {
+                    pt: "Script focado em rig e simulação orgânica para cabelos, flags, tecidos e caudas.",
+                    en: "Script focused on organic rigging and simulation for hair, flags, fabrics, and tails.",
+                    es: "Script enfocado en rigging y simulación orgánica para cabello, banderas, telas y colas."
+                },
+                price: { pt: "-", en: "-", es: "-" },
+                icon: "feather", link: "#",
+                isComingSoon: true
+            }
+        ];
+
+        const aeProjects = [
+            {
+                id: 1, title: "Goku Daima",
+                description: {
+                    pt: "Projeto aberto editável completo da animação Goku Daima. Explore o workflow, assets e estruturação na íntegra.",
+                    en: "Complete open editable project of the Goku Daima animation. Explore the workflow, assets, and full structure.",
+                    es: "Proyecto abierto editable completo de la animación Goku Daima. Explora el flujo de trabajo, assets y estructura."
+                },
+                price: { pt: "Premium", en: "Premium", es: "Premium" },
+                icon: "folder-open", link: "https://hotmart.com/pt-br/marketplace/produtos/goku-daima-projeto-editavel/B105634519M",
+                btnTextKey: "btn_buy"
+            },
+            {
+                id: 2, title: "Spotify Everywhere",
+                description: {
+                    pt: "Projeto aberto editável baseado na estética do Spotify Everywhere. Excelente para estudo e referências visuais.",
+                    en: "Open editable project based on the Spotify Everywhere aesthetic. Excellent for study and visual references.",
+                    es: "Proyecto abierto editable basado en la estética de Spotify Everywhere. Excelente para estudio y referencias."
+                },
+                price: { pt: "Premium", en: "Premium", es: "Premium" },
+                icon: "folder-open", link: "https://hotmart.com/pt-br/marketplace/produtos/spotify-everywhere-projeto-editavel/A105636181B",
+                btnTextKey: "btn_buy"
+            },
+            {
+                id: 3, title: "Free Collects",
+                description: {
+                    pt: "Acesso à pasta exclusiva do Drive contendo diversos collects e projetos gratuitos menores para você utilizar nos estudos.",
+                    en: "Access to the exclusive Drive folder containing various collects and smaller free projects to use in your studies.",
+                    es: "Acceso a la carpeta exclusiva de Drive con varios collects y proyectos gratuitos para usar en tus estudios."
+                },
+                price: { pt: "FREE", en: "FREE", es: "GRATIS" },
+                icon: "folder-down", link: "https://drive.google.com/drive/folders/1X0A_7K_w7iotlsWx7nJGDEWOWd_yeg4i?usp=sharing",
                 btnTextKey: "btn_download"
             }
         ];
@@ -353,7 +434,7 @@
         function renderScripts() {
             const grid = document.getElementById('scripts-grid');
             grid.innerHTML = scripts.map(script => {
-                const localizedBtnText = translations[currentLang][script.btnTextKey];
+                const localizedBtnText = script.isComingSoon ? translations[currentLang].btn_coming_soon : translations[currentLang][script.btnTextKey];
                 
                 return `
                 <div class="bg-brand-dark border border-white/5 p-8 rounded-2xl flex flex-col h-full hover:border-brand-yellow/30 transition-colors group relative overflow-hidden">
@@ -364,9 +445,39 @@
                     <h3 class="text-xl font-bold text-white mb-3">${script.title}</h3>
                     <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">${script.description[currentLang]}</p>
                     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-auto pt-6 border-t border-white/5 gap-4 sm:gap-0">
-                        <span class="text-2xl font-bold text-white">${script.price[currentLang]}</span>
-                        <a href="${script.link}" target="_blank" class="flex items-center gap-2 bg-brand-yellow text-brand-dark px-5 py-2.5 rounded-lg font-bold hover:bg-yellow-400 transition-colors w-full sm:w-auto justify-center">
-                            ${localizedBtnText} <i data-lucide="${script.price[currentLang] === 'FREE' || script.price[currentLang] === 'GRATIS' ? 'download' : 'shopping-cart'}" class="w-4 h-4"></i>
+                        <span class="text-2xl font-bold text-white">${script.isComingSoon ? '' : script.price[currentLang]}</span>
+                        ${script.isComingSoon ? 
+                            `<button disabled class="flex items-center gap-2 bg-gray-800 text-gray-400 px-5 py-2.5 rounded-lg font-bold cursor-not-allowed w-full sm:w-auto justify-center border border-white/5">
+                                ${localizedBtnText} <i data-lucide="clock" class="w-4 h-4"></i>
+                            </button>` 
+                            : 
+                            `<a href="${script.link}" target="_blank" class="flex items-center gap-2 bg-brand-yellow text-brand-dark px-5 py-2.5 rounded-lg font-bold hover:bg-yellow-400 transition-colors w-full sm:w-auto justify-center">
+                                ${localizedBtnText} <i data-lucide="${script.price[currentLang] === 'FREE' || script.price[currentLang] === 'GRATIS' ? 'download' : 'shopping-cart'}" class="w-4 h-4"></i>
+                            </a>`
+                        }
+                    </div>
+                </div>`
+            }).join('');
+            lucide.createIcons();
+        }
+
+        function renderAEProjects() {
+            const grid = document.getElementById('projects-grid');
+            grid.innerHTML = aeProjects.map(project => {
+                const localizedBtnText = translations[currentLang][project.btnTextKey];
+                
+                return `
+                <div class="bg-[#0a0f1c] border border-white/5 p-8 rounded-2xl flex flex-col h-full hover:border-brand-yellow/30 transition-colors group relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-brand-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                    <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-brand-yellow mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="${project.icon}" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">${project.title}</h3>
+                    <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">${project.description[currentLang]}</p>
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-auto pt-6 border-t border-white/5 gap-4 sm:gap-0">
+                        <span class="text-2xl font-bold ${project.price[currentLang] === 'Premium' ? 'text-brand-yellow' : 'text-white'}">${project.price[currentLang]}</span>
+                        <a href="${project.link}" target="_blank" class="flex items-center gap-2 bg-brand-yellow text-brand-dark px-5 py-2.5 rounded-lg font-bold hover:bg-yellow-400 transition-colors w-full sm:w-auto justify-center">
+                            ${localizedBtnText} <i data-lucide="${project.price[currentLang] === 'FREE' || project.price[currentLang] === 'GRATIS' ? 'download' : 'shopping-cart'}" class="w-4 h-4"></i>
                         </a>
                     </div>
                 </div>`

@@ -23,14 +23,8 @@
     <meta name="twitter:image" content="https://catalanlab.com.br/Preview.png">
 
     <link rel="icon" type="image/png" href="favicon.png?v=2">
-    
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Ícones (Lucide) -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <script>
@@ -81,7 +75,6 @@
                         <a href="#masterclass" data-i18n="nav_masterclass" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium">Masterclass</a>
                         <a href="#contato" data-i18n="nav_contact" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium">Contato</a>
                         
-                        <!-- Redes Sociais -->
                         <div class="flex items-center space-x-4 border-l border-white/10 pl-8">
                             <a href="https://www.instagram.com/catalan.lab/" target="_blank" class="opacity-80 hover:opacity-100 hover:scale-110 transition-all">
                                 <img src="instagram.png" alt="Instagram" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1E293B/FFD600?text=IG'" class="w-6 h-6 object-contain">
@@ -92,7 +85,6 @@
                         </div>
                     </div>
 
-                    <!-- Seletor de Idiomas -->
                     <div class="flex items-center space-x-2 md:border-l md:border-white/10 md:pl-6 md:ml-6 ml-2">
                         <button onclick="setLang('pt')" id="btn-lang-pt" class="font-bold text-sm transition-colors text-brand-yellow">PT</button>
                         <span class="text-white/20 text-xs">|</span>
@@ -111,7 +103,6 @@
             </div>
         </div>
 
-        <!-- Menu Mobile Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden bg-brand-dark/95 backdrop-blur-lg border-b border-white/10 absolute top-20 left-0 w-full z-40 shadow-2xl">
             <div class="px-6 py-8 flex flex-col space-y-6 text-center">
                 <a href="#motion" onclick="toggleMobileMenu()" data-i18n="nav_motion" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Motion Design</a>
@@ -229,10 +220,7 @@
                 section_scripts1: "Meus", section_scripts2: "Scripts",
                 section_masterclass1: "Master", section_masterclass2: "class",
                 footer_talk: "Fale Comigo", footer_rights: "© 2026 Catalan Lab. Todos os direitos reservados.",
-                modal_email_title: "Baixar Ae Lab Stack", modal_email_desc: "Insira o seu melhor e-mail abaixo para liberar o link de download gratuitamente.",
-                modal_email_placeholder: "seu@email.com", modal_email_btn: "Acessar Download", modal_email_consent: "Ao baixar, você concorda em receber novidades e atualizações.",
-                modal_success_title: "Tudo Certo!", modal_success_desc: "Seu e-mail foi confirmado. Clique no botão abaixo para acessar os arquivos.", modal_success_btn: "Acessar Google Drive",
-                btn_buy: "Comprar", btn_download: "Baixar", btn_more: "Saber mais", badge_course: "Curso Completo", processing: "Processando...", redirecting: "Liberando acesso..."
+                btn_buy: "Comprar", btn_download: "Baixar", btn_more: "Saber mais", badge_course: "Curso Completo"
             },
             en: {
                 nav_motion: "Motion Design", nav_scripts: "Scripts", nav_masterclass: "Masterclass", nav_contact: "Contact",
@@ -243,10 +231,7 @@
                 section_scripts1: "My", section_scripts2: "Scripts",
                 section_masterclass1: "Master", section_masterclass2: "class",
                 footer_talk: "Talk to Me", footer_rights: "© 2026 Catalan Lab. All rights reserved.",
-                modal_email_title: "Download Ae Lab Stack", modal_email_desc: "Enter your best email below to unlock the download link for free.",
-                modal_email_placeholder: "your@email.com", modal_email_btn: "Access Download", modal_email_consent: "By downloading, you agree to receive news and updates.",
-                modal_success_title: "All Set!", modal_success_desc: "Your email has been confirmed. Click the button below to access the files.", modal_success_btn: "Access Google Drive",
-                btn_buy: "Buy", btn_download: "Download", btn_more: "Learn more", badge_course: "Full Course", processing: "Processing...", redirecting: "Granting access..."
+                btn_buy: "Buy", btn_download: "Download", btn_more: "Learn more", badge_course: "Full Course"
             },
             es: {
                 nav_motion: "Motion Design", nav_scripts: "Scripts", nav_masterclass: "Masterclass", nav_contact: "Contacto",
@@ -257,10 +242,7 @@
                 section_scripts1: "Mis", section_scripts2: "Scripts",
                 section_masterclass1: "Master", section_masterclass2: "class",
                 footer_talk: "Hablemos", footer_rights: "© 2026 Catalan Lab. Todos los derechos reservados.",
-                modal_email_title: "Descargar Ae Lab Stack", modal_email_desc: "Ingresa tu mejor correo abajo para desbloquear el enlace de descarga gratis.",
-                modal_email_placeholder: "tu@email.com", modal_email_btn: "Acceder a Descarga", modal_email_consent: "Al descargar, aceptas recibir noticias y actualizaciones.",
-                modal_success_title: "¡Todo Listo!", modal_success_desc: "Tu correo ha sido confirmado. Haz clic en el botón de abajo para acceder a los archivos.", modal_success_btn: "Acceder a Google Drive",
-                btn_buy: "Comprar", btn_download: "Descargar", btn_more: "Saber más", badge_course: "Curso Completo", processing: "Procesando...", redirecting: "Otorgando acceso..."
+                btn_buy: "Comprar", btn_download: "Descargar", btn_more: "Saber más", badge_course: "Curso Completo"
             }
         };
 
@@ -273,8 +255,7 @@
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (translations[currentLang][key]) {
-                    if (el.tagName === 'INPUT') { el.placeholder = translations[currentLang][key]; } 
-                    else { el.innerText = translations[currentLang][key]; }
+                    el.innerText = translations[currentLang][key];
                 }
             });
 
@@ -296,30 +277,12 @@
             renderMasterclasses();
         }
 
-        // DADOS DO PORTFÓLIO COM YOUTUBE EMBEDS
         const portfolioItems = [
-            { id: 1, title: "Trunks", category: "Script 3D Cam Parallax + Organic Rig + Lab Stack", embedUrl: "https://www.youtube.com/embed/LQCXrfiByMg", image: "Trunks.png" },
-            { id: 2, title: "Hero of Chaos", category: "Script 3D Cam Parallax + Organic Rig + Lab Stack", embedUrl: "https://www.youtube.com/embed/Rt0o8e0x3Dw", image: "Anime.png" },
-            { id: 3, title: "Just BEE moving", category: "Script 3D Cam Parallax + Organic Rig + Lab Stack", embedUrl: "https://www.youtube.com/embed/W-lO90l-Vuo", image: "Bee.png" },
-            { id: 4, title: "What If TLOU...", category: "Script 3D Cam Parallax", embedUrl: "https://www.youtube.com/embed/-pVFXWZxnrI", image: "TLOU.png" }
+            { id: 1, category: "Script 3D Cam Parallax + Organic Rig + Lab Stack", embedUrl: "https://www.youtube.com/embed/LQCXrfiByMg", image: "Trunks.png" },
+            { id: 2, category: "Script 3D Cam Parallax + Organic Rig + Lab Stack", embedUrl: "https://www.youtube.com/embed/Rt0o8e0x3Dw", image: "Anime.png" },
+            { id: 3, category: "Script 3D Cam Parallax + Organic Rig + Lab Stack", embedUrl: "https://www.youtube.com/embed/W-lO90l-Vuo", image: "Bee.png" },
+            { id: 4, category: "Script 3D Cam Parallax", embedUrl: "https://www.youtube.com/embed/-pVFXWZxnrI", image: "TLOU.png" }
         ];
-
-        function renderPortfolio() {
-            const grid = document.getElementById('portfolio-grid');
-            grid.innerHTML = portfolioItems.map(item => `
-                <div class="group bg-[#0a0f1c] rounded-2xl border border-white/5 hover:border-brand-yellow/50 transition-all flex flex-col overflow-hidden shadow-lg h-full">
-                    <!-- Vídeo Embed -->
-                    <div class="relative aspect-[9/16] bg-black w-full overflow-hidden">
-                        <iframe src="${item.embedUrl}" class="absolute top-0 left-0 w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <!-- Textos Descritivos (Apenas Categoria) -->
-                    <div class="p-5 flex flex-col flex-grow justify-center items-center text-center bg-brand-dark">
-                        <span class="text-brand-yellow text-xs font-bold uppercase tracking-wider leading-relaxed">${item.category}</span>
-                    </div>
-                </div>
-            `).join('');
-            lucide.createIcons();
-        }
 
         const scripts = [
             {
@@ -331,7 +294,7 @@
                 },
                 price: { pt: "R$ 30,00", en: "$6.00", es: "$6.00" },
                 icon: "layers", link: "https://pay.hotmart.com/D105861956D?bid=1779859149520",
-                btnTextKey: "btn_buy", requiresEmail: false
+                btnTextKey: "btn_buy"
             },
             {
                 id: 2, title: "Ae Lab Manager + Lab Stack",
@@ -342,38 +305,9 @@
                 },
                 price: { pt: "FREE", en: "FREE", es: "GRATIS" },
                 icon: "boxes", link: "https://docs.google.com/forms/d/e/1FAIpQLSfTT1vVgNzOr00OLyQrdJ2TNf9mVjyOGb6s5c76ECqQqxemLg/viewform?usp=sharing&ouid=106520077737272301292",
-                btnTextKey: "btn_download", requiresEmail: false
+                btnTextKey: "btn_download"
             }
         ];
-
-        function renderScripts() {
-            const grid = document.getElementById('scripts-grid');
-            grid.innerHTML = scripts.map(script => {
-                const localizedBtnText = translations[currentLang][script.btnTextKey];
-                const buttonHtml = script.requiresEmail 
-                    ? `<button onclick="openEmailModal('${script.link}')" class="flex items-center gap-2 bg-brand-yellow text-brand-dark px-5 py-2.5 rounded-lg font-bold hover:bg-yellow-400 transition-colors w-full sm:w-auto justify-center">
-                            ${localizedBtnText} <i data-lucide="${script.price[currentLang] === 'FREE' || script.price[currentLang] === 'GRATIS' ? 'download' : 'shopping-cart'}" class="w-4 h-4"></i>
-                       </button>`
-                    : `<a href="${script.link}" target="_blank" class="flex items-center gap-2 bg-brand-yellow text-brand-dark px-5 py-2.5 rounded-lg font-bold hover:bg-yellow-400 transition-colors w-full sm:w-auto justify-center">
-                            ${localizedBtnText} <i data-lucide="${script.price[currentLang] === 'FREE' || script.price[currentLang] === 'GRATIS' ? 'download' : 'shopping-cart'}" class="w-4 h-4"></i>
-                       </a>`;
-
-                return `
-                <div class="bg-brand-dark border border-white/5 p-8 rounded-2xl flex flex-col h-full hover:border-brand-yellow/30 transition-colors group relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-brand-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-                    <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-brand-yellow mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="${script.icon}" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">${script.title}</h3>
-                    <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">${script.description[currentLang]}</p>
-                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-auto pt-6 border-t border-white/5 gap-4 sm:gap-0">
-                        <span class="text-2xl font-bold text-white">${script.price[currentLang]}</span>
-                        ${buttonHtml}
-                    </div>
-                </div>`
-            }).join('');
-            lucide.createIcons();
-        }
 
         const masterclasses = [
             {
@@ -388,6 +322,57 @@
                 btnTextKey: "btn_more", image: "Capa_masterclass.png"
             }
         ];
+
+        function renderPortfolio() {
+            const grid = document.getElementById('portfolio-grid');
+            grid.innerHTML = portfolioItems.map(item => {
+                const iframeHTML = `<iframe src='${item.embedUrl}?autoplay=1' class='absolute top-0 left-0 w-full h-full' frameborder='0' allow='autoplay; encrypted-media; picture-in-picture' allowfullscreen></iframe>`;
+                
+                return `
+                <div class="group bg-[#0a0f1c] rounded-2xl border border-white/5 hover:border-brand-yellow/50 transition-all flex flex-col overflow-hidden shadow-lg h-full">
+                    <!-- Capa Customizada / Clique para trocar pelo YouTube -->
+                    <div class="relative aspect-[9/16] bg-black w-full overflow-hidden cursor-pointer" onclick="this.innerHTML = \`${iframeHTML}\`">
+                        <img src="${item.image}" alt="Capa" onerror="this.onerror=null; this.src='https://placehold.co/400x700/1E293B/FFD600?text=Capa'" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
+                        
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-14 h-14 bg-brand-yellow rounded-full flex items-center justify-center pl-1 text-brand-dark shadow-[0_0_30px_rgba(255,214,0,0.4)]">
+                                <i data-lucide="play" class="w-6 h-6 fill-brand-dark"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Textos Descritivos (Apenas Categoria) -->
+                    <div class="p-5 flex flex-col flex-grow justify-center items-center text-center bg-brand-dark">
+                        <span class="text-brand-yellow text-xs font-bold uppercase tracking-wider leading-relaxed">${item.category}</span>
+                    </div>
+                </div>
+            `}).join('');
+            lucide.createIcons();
+        }
+
+        function renderScripts() {
+            const grid = document.getElementById('scripts-grid');
+            grid.innerHTML = scripts.map(script => {
+                const localizedBtnText = translations[currentLang][script.btnTextKey];
+                
+                return `
+                <div class="bg-brand-dark border border-white/5 p-8 rounded-2xl flex flex-col h-full hover:border-brand-yellow/30 transition-colors group relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-brand-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                    <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-brand-yellow mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="${script.icon}" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">${script.title}</h3>
+                    <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">${script.description[currentLang]}</p>
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-auto pt-6 border-t border-white/5 gap-4 sm:gap-0">
+                        <span class="text-2xl font-bold text-white">${script.price[currentLang]}</span>
+                        <a href="${script.link}" target="_blank" class="flex items-center gap-2 bg-brand-yellow text-brand-dark px-5 py-2.5 rounded-lg font-bold hover:bg-yellow-400 transition-colors w-full sm:w-auto justify-center">
+                            ${localizedBtnText} <i data-lucide="${script.price[currentLang] === 'FREE' || script.price[currentLang] === 'GRATIS' ? 'download' : 'shopping-cart'}" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>`
+            }).join('');
+            lucide.createIcons();
+        }
 
         function renderMasterclasses() {
             const container = document.getElementById('masterclass-container');

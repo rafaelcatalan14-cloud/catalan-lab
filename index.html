@@ -216,49 +216,6 @@
         </div>
     </footer>
 
-    <div id="email-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden px-4">
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm transition-opacity" onclick="closeEmailModal()"></div>
-        <div class="bg-brand-dark border border-white/10 p-8 rounded-2xl w-full max-w-md relative z-10 shadow-2xl transform transition-all duration-300 scale-95 opacity-0" id="email-modal-content">
-            <button onclick="closeEmailModal()" class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
-                <i data-lucide="x" class="w-6 h-6"></i>
-            </button>
-            
-            <div id="email-form-step">
-                <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-brand-yellow mb-6">
-                    <i data-lucide="mail" class="w-6 h-6"></i>
-                </div>
-                <h3 data-i18n="modal_email_title" class="text-2xl font-bold text-white mb-2">Baixar Ae Lab Stack</h3>
-                <p data-i18n="modal_email_desc" class="text-gray-400 mb-6 text-sm">Insira o seu melhor e-mail abaixo para liberar o link de download gratuitamente.</p>
-                
-                <form id="email-form" class="space-y-4">
-                    <div>
-                        <input type="email" id="user-email" data-i18n="modal_email_placeholder" required placeholder="seu@email.com" class="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow transition-all placeholder-gray-600">
-                    </div>
-                    <button type="submit" id="submit-email-btn" class="w-full bg-brand-yellow text-brand-dark font-bold py-3 rounded-lg hover:bg-yellow-400 transition-colors flex justify-center items-center gap-2">
-                        <span data-i18n="modal_email_btn">Acessar Download</span>
-                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </button>
-                </form>
-                <p class="text-xs text-gray-500 mt-5 text-center flex items-center justify-center gap-1">
-                    <i data-lucide="info" class="w-3 h-3"></i> <span data-i18n="modal_email_consent">Ao baixar, você concorda em receber novidades e atualizações.</span>
-                </p>
-            </div>
-
-            <div id="email-success-step" class="hidden text-center py-6">
-                <div class="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center text-green-500 mx-auto mb-6">
-                    <i data-lucide="check-circle" class="w-8 h-8"></i>
-                </div>
-                <h3 data-i18n="modal_success_title" class="text-2xl font-bold text-white mb-2">Tudo Certo!</h3>
-                <p data-i18n="modal_success_desc" class="text-gray-400 mb-8 text-sm">Seu e-mail foi confirmado. Clique no botão abaixo para acessar os arquivos.</p>
-                
-                <a href="#" id="final-download-link" target="_blank" onclick="closeEmailModal()" class="w-full bg-brand-yellow text-brand-dark font-bold py-3 rounded-lg hover:bg-yellow-400 transition-colors flex justify-center items-center gap-2">
-                    <span data-i18n="modal_success_btn">Acessar Google Drive</span>
-                    <i data-lucide="external-link" class="w-4 h-4"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-
     <script>
         lucide.createIcons();
 
@@ -378,15 +335,15 @@
                 btnTextKey: "btn_buy", requiresEmail: false
             },
             {
-                id: 2, title: "Ae Lab Stack",
+                id: 2, title: "Ae Lab Manager + Lab Stack",
                 description: {
                     pt: "Coleção essencial de ferramentas e presets para otimizar o seu fluxo de trabalho diário no After Effects.",
                     en: "Essential collection of tools and presets to optimize your daily workflow in After Effects.",
                     es: "Colección esencial de herramientas y presets para optimizar tu flujo de trabajo diario en After Effects."
                 },
                 price: { pt: "FREE", en: "FREE", es: "GRATIS" },
-                icon: "boxes", link: "https://drive.google.com/drive/u/4/folders/1RY7MElDs4i0D-DN-aoIHV4Rl3EVQuy2V",
-                btnTextKey: "btn_download", requiresEmail: true
+                icon: "boxes", link: "https://docs.google.com/forms/d/e/1FAIpQLSfTT1vVgNzOr00OLyQrdJ2TNf9mVjyOGb6s5c76ECqQqxemLg/viewform?usp=sharing&ouid=106520077737272301292",
+                btnTextKey: "btn_download", requiresEmail: false
             }
         ];
 
@@ -471,74 +428,6 @@
             }
             lucide.createIcons();
         }
-
-        let currentDownloadLink = '';
-        function openEmailModal(link) {
-            currentDownloadLink = link;
-            document.getElementById('email-form-step').classList.remove('hidden');
-            document.getElementById('email-success-step').classList.add('hidden');
-            document.getElementById('user-email').value = '';
-            
-            const btnText = document.getElementById('submit-email-btn').querySelector('span');
-            btnText.innerText = translations[currentLang].modal_email_btn;
-            document.getElementById('submit-email-btn').classList.remove('opacity-80', 'cursor-not-allowed');
-
-            const modal = document.getElementById('email-modal');
-            const content = document.getElementById('email-modal-content');
-            
-            modal.classList.remove('hidden');
-            // Animação corrigida de entrada
-            setTimeout(() => {
-                content.classList.remove('scale-95', 'opacity-0');
-                content.classList.add('scale-100', 'opacity-100');
-            }, 10);
-        }
-
-        function closeEmailModal() {
-            const modal = document.getElementById('email-modal');
-            const content = document.getElementById('email-modal-content');
-            content.classList.remove('scale-100', 'opacity-100');
-            content.classList.add('scale-95', 'opacity-0');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                document.getElementById('email-form').reset();
-            }, 300);
-        }
-
-        const emailForm = document.getElementById('email-form');
-
-        emailForm.addEventListener('submit', function(e) {
-            e.preventDefault(); 
-            const btn = document.getElementById('submit-email-btn');
-            const btnText = btn.querySelector('span');
-            const userEmail = document.getElementById('user-email').value;
-            
-            btnText.innerText = translations[currentLang].processing;
-            btn.classList.add('opacity-80', 'cursor-not-allowed');
-
-            fetch("https://formsubmit.co/ajax/support.catalanlab@gmail.com", {
-                method: "POST",
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify({ _subject: "Novo Lead - Portfólio Catalan Lab", email: userEmail })
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('email-form-step').classList.add('hidden');
-                document.getElementById('email-success-step').classList.remove('hidden');
-                document.getElementById('final-download-link').href = currentDownloadLink;
-                lucide.createIcons();
-                btnText.innerText = translations[currentLang].modal_email_btn;
-                btn.classList.remove('opacity-80', 'cursor-not-allowed');
-                emailForm.reset();
-            })
-            .catch(error => {
-                // Se der erro de rede, o utilizador recebe na mesma o link (não o frustramos)
-                document.getElementById('email-form-step').classList.add('hidden');
-                document.getElementById('email-success-step').classList.remove('hidden');
-                document.getElementById('final-download-link').href = currentDownloadLink;
-                lucide.createIcons();
-            });
-        });
 
         // Inicia o site
         setLang(currentLang);

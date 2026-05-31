@@ -318,7 +318,6 @@
 
                 <!-- ABA 2: O Novo Jogo Flappy Bee -->
                 <div id="play-content-game" class="hidden animate-fade-in flex flex-col items-center justify-center w-full h-full">
-                    
                     <div class="relative w-full max-w-[800px] h-[400px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-[#0a0f1c]">
                         <!-- Canvas do Jogo -->
                         <canvas id="flappyCanvas" width="800" height="400" class="absolute top-0 left-0 w-full h-full cursor-pointer touch-none"></canvas>
@@ -330,7 +329,7 @@
 
                         <!-- Tela Inicial do Jogo -->
                         <div id="game-start-screen" class="absolute inset-0 bg-black/60 flex flex-col items-center justify-center z-20 pointer-events-none transition-opacity">
-                            <div class="text-6xl mb-4 animate-smooth-bounce">🐝</div>
+                            <div class="text-6xl mb-4 animate-smooth-bounce" style="transform: scaleX(-1);">🐝</div>
                             <h3 class="text-3xl font-bold text-white mb-2">Flappy Bee</h3>
                             <p class="text-gray-300 font-mono text-sm uppercase tracking-widest bg-brand-yellow/20 px-4 py-2 rounded text-brand-yellow border border-brand-yellow/30 text-center" data-i18n="game_start">Aperte Espaço ou toque na tela para flutuar<br>Colete os Keyframes (♦)</p>
                         </div>
@@ -345,7 +344,6 @@
                             </button>
                         </div>
                     </div>
-
                 </div>
 
             </div>
@@ -1028,14 +1026,13 @@
             activeBtn.classList.remove('text-gray-400');
             activeBtn.classList.add('bg-brand-yellow', 'text-brand-dark');
 
-            if(tabId === 'game') {
-                initGame();
-            } else {
-                stopGame();
-            }
+            if(tabId === 'game') initGame();
+            else stopGame();
         }
 
-        // --- FLAPPY BEE GAME LOGIC ---
+        /* =========================================
+           LÓGICA DO JOGO FLAPPY BEE
+           ========================================= */
         const fcanvas = document.getElementById('flappyCanvas');
         const fctx = fcanvas.getContext('2d');
         let gameRaf;
@@ -1056,8 +1053,12 @@
             x: 100, y: 150, w: 30, h: 30,
             gravity: 0.25, jump: -6.5, velocity: 0,
             draw() {
+                fctx.save();
                 fctx.font = `${40 * scaleRatio}px sans-serif`;
-                fctx.fillText("🐝", this.x, this.y + (30 * scaleRatio));
+                fctx.translate(this.x + (this.w * scaleRatio)/2, this.y + (this.h * scaleRatio)/2);
+                fctx.scale(-1, 1);
+                fctx.fillText("🐝", -(this.w * scaleRatio)/2, (this.h * scaleRatio)/2);
+                fctx.restore();
             },
             update() {
                 this.velocity += this.gravity;
@@ -1141,11 +1142,10 @@
                 fctx.shadowBlur = 0;
             },
             update() {
-                // Ao nascer no frame 50 (entre os 100 frames dos pilares), garantimos que fica no espaço vazio.
-                if (frames % 100 === 50 && Math.random() > 0.2) { // 80% de chance de aparecer um Keyframe
+                if (frames % 100 === 50 && Math.random() > 0.2) { 
                     this.items.push({
                         x: fcanvas.width + 50,
-                        y: Math.random() * (fcanvas.height - 120) + 60, // Margem segura do teto e do chão
+                        y: Math.random() * (fcanvas.height - 120) + 60,
                         collected: false
                     });
                 }
@@ -1153,10 +1153,8 @@
                 this.items.forEach(kf => {
                     kf.x -= (this.dx * scaleRatio);
                     const rSize = this.size * scaleRatio;
-                    const bx = bee.x;
-                    const by = bee.y;
-                    const bw = bee.w * scaleRatio;
-                    const bh = bee.h * scaleRatio;
+                    const bx = bee.x; const by = bee.y;
+                    const bw = bee.w * scaleRatio; const bh = bee.h * scaleRatio;
 
                     if (!kf.collected && kf.x + rSize > bx && kf.x - rSize < bx + bw && kf.y + rSize > by && kf.y - rSize < by + bh) {
                         kf.collected = true;
@@ -1181,43 +1179,34 @@
         function gameLoop() {
             if (gameState === 'playing') {
                 drawGameBackground();
-                pipes.update();
-                pipes.draw();
-                keyframes.update();
-                keyframes.draw();
-                bee.update();
-                bee.draw();
+                pipes.update(); pipes.draw();
+                keyframes.update(); keyframes.draw();
+                bee.update(); bee.draw();
                 frames++;
                 gameRaf = requestAnimationFrame(gameLoop);
             }
         }
 
         function initGame() {
-            resizeCanvas();
-            drawGameBackground();
+            resizeCanvas(); drawGameBackground();
             document.getElementById('game-start-screen').classList.remove('opacity-0');
             document.getElementById('game-start-screen').classList.add('opacity-100');
         }
 
         function stopGame() {
-            gameState = 'start';
-            cancelAnimationFrame(gameRaf);
+            gameState = 'start'; cancelAnimationFrame(gameRaf);
         }
 
         function startGame() {
             document.getElementById('game-start-screen').classList.remove('opacity-100');
             document.getElementById('game-start-screen').classList.add('opacity-0');
             document.getElementById('game-over-screen').classList.add('hidden');
-            bee.y = fcanvas.height / 2;
-            bee.velocity = 0;
-            pipes.items = [];
-            keyframes.items = [];
-            score = 0;
-            frames = 0;
+            bee.y = fcanvas.height / 2; bee.velocity = 0;
+            pipes.items = []; keyframes.items = [];
+            score = 0; frames = 0;
             document.getElementById('game-score-display').innerText = score;
             gameState = 'playing';
-            bee.flap();
-            gameLoop();
+            bee.flap(); gameLoop();
         }
 
         function showGameOver() {
@@ -1226,9 +1215,7 @@
             document.getElementById('game-over-screen').classList.remove('hidden');
         }
 
-        function resetGame() {
-            startGame();
-        }
+        function resetGame() { startGame(); }
 
         fcanvas.addEventListener('mousedown', () => {
             if (gameState === 'start') startGame();
@@ -1239,43 +1226,29 @@
             if (gameState === 'start') startGame();
             else if (gameState === 'playing') bee.flap();
         });
-        
-        // Listeners para toque em qualquer lugar na tela de Game Over
-        document.getElementById('game-over-screen').addEventListener('mousedown', () => {
-            if (gameState === 'gameover') startGame();
-        });
-        document.getElementById('game-over-screen').addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            if (gameState === 'gameover') startGame();
-        });
+        document.getElementById('game-over-screen').addEventListener('mousedown', () => { if (gameState === 'gameover') startGame(); });
+        document.getElementById('game-over-screen').addEventListener('touchstart', (e) => { e.preventDefault(); if (gameState === 'gameover') startGame(); });
 
-        // Listener para qualquer tecla no Game Over
         window.addEventListener('keydown', (e) => {
-            // CORREÇÃO: Se o usuário estiver digitando em um campo de texto, ignora os atalhos do jogo!
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
-                return; 
-            }
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return; 
 
-            // Verifica se a aba do jogo está aberta
             if (document.getElementById('play-content-game').classList.contains('hidden') === false) {
-                if (gameState === 'gameover') {
-                    e.preventDefault();
-                    startGame(); // Qualquer tecla reinicia
-                } else if (e.code === 'Space') {
+                if (gameState === 'gameover') { e.preventDefault(); startGame(); } 
+                else if (e.code === 'Space') {
                     e.preventDefault();
                     if (gameState === 'start') startGame();
-                    else if (gameState === 'playing') bee.flap(); // Apenas espaço flutua durante o jogo
+                    else if (gameState === 'playing') bee.flap();
                 }
             }
         });
 
         /* =========================================
-           LÓGICA LAB ASSISTANT & GRAPH EDITOR
+           LÓGICA DO GRAPH EDITOR (PLAYGROUND) E PARTILHA
            ========================================= */
         function shareSite() {
             const shareData = { title: 'Catalan Lab | Motion Design & Scripts', text: 'Conheça o portfólio e as ferramentas para otimizar o seu fluxo de trabalho no After Effects!', url: window.location.href };
             if (navigator.share && /Mobi|Android/i.test(navigator.userAgent)) {
-                navigator.share(shareData).catch((err) => console.log('Erro:', err));
+                navigator.share(shareData).catch((err) => console.log('Erro ao partilhar:', err));
             } else {
                 try {
                     const tempInput = document.createElement("input");
@@ -1330,11 +1303,14 @@
             bezierText.innerText = `cubic-bezier(${bezierParams[0].toFixed(2)}, ${bezierParams[1].toFixed(2)}, ${bezierParams[2].toFixed(2)}, ${bezierParams[3].toFixed(2)})`;
         }
 
+        // --- Gestão Global do Visual das Barras (Sliders) ---
         function updateSliderFill(el) {
             const min = parseFloat(el.min) || 0; const max = parseFloat(el.max) || 100; const val = parseFloat(el.value);
             const percentage = ((val - min) / (max - min)) * 100;
             el.style.background = `linear-gradient(to right, #FFD600 ${percentage}%, #1E293B ${percentage}%)`;
         }
+
+        function initSliders() { document.querySelectorAll('input[type=range]').forEach(slider => { updateSliderFill(slider); slider.addEventListener('input', function() { updateSliderFill(this); }); }); }
 
         function updateCustomBezier() {
             bezierParams = [parseFloat(sX1.value), parseFloat(sY1.value), parseFloat(sX2.value), parseFloat(sY2.value)];
@@ -1378,6 +1354,9 @@
             };
         }
 
+        /* =========================================
+           LÓGICA DO LAB ASSISTANT (WIDGETS)
+           ========================================= */
         let currentProperty = 'position';
 
         function switchAssistantTab(tabId) {
@@ -1405,17 +1384,32 @@
         }
 
         let expressionPreviewRaf; const appStartTime = Date.now();
+        
         function startExpressionPreview() {
             cancelAnimationFrame(expressionPreviewRaf);
-            const target = document.getElementById('preview-target'); const type = document.getElementById('expr-type').value;
+            const target = document.getElementById('preview-target');
+            const type = document.getElementById('expr-type').value;
+
             target.innerHTML = '';
-            if (type === 'wiggle') { target.innerHTML = '🐝'; target.className = 'text-4xl absolute drop-shadow-[0_0_15px_rgba(255,214,0,0.6)] transition-none'; } 
-            else if (type === 'loop') { target.className = 'w-8 h-8 bg-brand-yellow rounded-full absolute drop-shadow-[0_0_15px_rgba(255,214,0,0.6)] transition-none'; } 
-            else if (type === 'time') { target.className = 'w-10 h-10 border-4 border-brand-yellow absolute drop-shadow-[0_0_15px_rgba(255,214,0,0.6)] transition-none'; } 
-            else if (type === 'floating') { target.innerHTML = '🛸'; target.className = 'text-4xl absolute drop-shadow-[0_0_15px_rgba(255,214,0,0.6)] transition-none'; } 
-            else if (type === 'bounce') { target.className = 'w-10 h-10 bg-brand-yellow rounded-xl absolute drop-shadow-[0_0_15px_rgba(255,214,0,0.6)] transition-none'; } 
-            else if (type === 'pendulum') { target.innerHTML = '<div class="absolute bottom-0 w-5 h-5 -ml-1.5 bg-brand-yellow rounded-full shadow-[0_0_15px_rgba(255,214,0,0.6)]"></div>'; target.className = 'w-2 h-16 bg-white/20 absolute origin-top drop-shadow-[0_0_15px_rgba(255,214,0,0.6)] transition-none mt-[-40px]'; } 
-            else if (type === 'typewriter') { target.innerHTML = ''; target.className = 'text-xl font-mono text-brand-yellow absolute drop-shadow-[0_0_15px_rgba(255,214,0,0.6)] transition-none text-center whitespace-nowrap'; }
+            if (type === 'wiggle') {
+                target.innerHTML = '<div style="transform: scaleX(-1);">🐝</div>';
+                target.className = 'text-4xl absolute drop-shadow-[0_0_15px_rgba(255,214,0,0.6)] transition-none';
+            } else if (type === 'loop') {
+                target.className = 'w-8 h-8 bg-brand-yellow rounded-full absolute drop-shadow-[0_0_15px_rgba(255,214,0,0.6)] transition-none';
+            } else if (type === 'time') {
+                target.className = 'w-10 h-10 border-4 border-brand-yellow absolute drop-shadow-[0_0_15px_rgba(255,214,0,0.6)] transition-none';
+            } else if (type === 'floating') {
+                target.innerHTML = '🛸';
+                target.className = 'text-4xl absolute drop-shadow-[0_0_15px_rgba(255,214,0,0.6)] transition-none';
+            } else if (type === 'bounce') {
+                target.className = 'w-10 h-10 bg-brand-yellow rounded-xl absolute drop-shadow-[0_0_15px_rgba(255,214,0,0.6)] transition-none';
+            } else if (type === 'pendulum') {
+                target.innerHTML = '<div class="absolute bottom-0 w-5 h-5 -ml-1.5 bg-brand-yellow rounded-full shadow-[0_0_15px_rgba(255,214,0,0.6)]"></div>';
+                target.className = 'w-2 h-16 bg-white/20 absolute origin-top drop-shadow-[0_0_15px_rgba(255,214,0,0.6)] transition-none mt-[-40px]';
+            } else if (type === 'typewriter') {
+                target.innerHTML = '';
+                target.className = 'text-xl font-mono text-brand-yellow absolute drop-shadow-[0_0_15px_rgba(255,214,0,0.6)] transition-none text-center whitespace-nowrap';
+            }
 
             const renderFrame = () => {
                 const now = (Date.now() - appStartTime) / 1000;
@@ -1515,8 +1509,6 @@
                 div.innerHTML = `<span class="opacity-0 group-hover:opacity-100 transition-opacity font-mono font-bold text-sm tracking-widest drop-shadow-md" style="color: ${textColor}">${color}</span>`; container.appendChild(div);
             });
         }
-
-        function initSliders() { document.querySelectorAll('input[type=range]').forEach(slider => { updateSliderFill(slider); slider.addEventListener('input', function() { updateSliderFill(this); }); }); }
 
         drawGraph(); initSliders(); setLang(currentLang);
     </script>

@@ -56,35 +56,20 @@
             -webkit-backdrop-filter: blur(12px);
         }
 
-        /* Estilo para a pista do Playground */
-        .grid-bg {
-            background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-                              linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
-            background-size: 20px 20px;
+        /* Animação suave para o Bouncing Ball (com squash & stretch) */
+        @keyframes smooth-bounce {
+            0%, 100% {
+                transform: translateY(-35px) scale(0.95, 1.05);
+                animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+            }
+            50% {
+                transform: translateY(0) scale(1.1, 0.9);
+                animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+            }
         }
-        
-        /* Sliders customizados para o Playground */
-        input[type=range] {
-            -webkit-appearance: none;
-            width: 100%;
-            background: transparent;
-        }
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            height: 16px;
-            width: 16px;
-            border-radius: 50%;
-            background: #FFD600;
-            cursor: pointer;
-            margin-top: -6px;
-            box-shadow: 0 0 10px rgba(255, 214, 0, 0.5);
-        }
-        input[type=range]::-webkit-slider-runnable-track {
-            width: 100%;
-            height: 4px;
-            cursor: pointer;
-            background: #1E293B;
-            border-radius: 2px;
+        .animate-smooth-bounce {
+            animation: smooth-bounce 2s infinite;
+            transform-origin: bottom;
         }
     </style>
 </head>
@@ -158,9 +143,14 @@
             <p data-i18n="hero_subtitle" class="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 px-2">
                 Especialista em motion design desenvolvendo soluções de melhores workflows. Meus scripts são desenvolvidos por quem realmente usa o After Effects todos os dias.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4 px-4 sm:px-0">
-                <a href="#motion" data-i18n="hero_btn_portfolio" class="px-8 py-4 bg-white text-brand-dark font-bold rounded-full hover:bg-gray-100 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.2)] w-full sm:w-auto">Ver Portfólio</a>
-                <a href="#scripts" data-i18n="hero_btn_scripts" class="px-8 py-4 bg-transparent border-2 border-brand-yellow text-brand-yellow font-bold rounded-full hover:bg-brand-yellow hover:text-brand-dark transition-colors w-full sm:w-auto">Meus Scripts</a>
+            
+            <!-- Separação com Bouncing Ball -->
+            <div class="mt-20 flex flex-col items-center justify-center h-24 relative">
+                <!-- Linha guia sutil ao fundo -->
+                <div class="w-px h-full bg-gradient-to-b from-transparent via-white/10 to-transparent absolute"></div>
+                
+                <!-- Bolinha Amarela Animada -->
+                <div class="w-4 h-4 bg-brand-yellow rounded-full animate-smooth-bounce shadow-[0_0_15px_rgba(255,214,0,0.6)] z-10 relative"></div>
             </div>
         </div>
     </section>

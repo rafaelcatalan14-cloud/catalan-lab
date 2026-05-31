@@ -1251,6 +1251,11 @@
 
         // Listener para qualquer tecla no Game Over
         window.addEventListener('keydown', (e) => {
+            // CORREÇÃO: Se o usuário estiver digitando em um campo de texto, ignora os atalhos do jogo!
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                return; 
+            }
+
             // Verifica se a aba do jogo está aberta
             if (document.getElementById('play-content-game').classList.contains('hidden') === false) {
                 if (gameState === 'gameover') {

@@ -55,6 +55,37 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
         }
+
+        /* Estilo para a pista do Playground */
+        .grid-bg {
+            background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        /* Sliders customizados para o Playground */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            background: #FFD600;
+            cursor: pointer;
+            margin-top: -6px;
+            box-shadow: 0 0 10px rgba(255, 214, 0, 0.5);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #1E293B;
+            border-radius: 2px;
+        }
     </style>
 </head>
 <body class="bg-brand-dark text-white font-sans antialiased selection:bg-brand-yellow selection:text-brand-dark">
@@ -69,8 +100,9 @@
 
                 <div class="flex items-center gap-4 md:gap-0">
                     <!-- Links Desktop -->
-                    <div class="hidden md:flex space-x-6 lg:space-x-8 items-center">
+                    <div class="hidden md:flex space-x-6 lg:space-x-8 items-center whitespace-nowrap">
                         <a href="#motion" data-i18n="nav_motion" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium">Motion Design</a>
+                        <a href="#playground" data-i18n="nav_playground" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium">Playground</a>
                         <a href="#scripts" data-i18n="nav_scripts" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium">Scripts</a>
                         <a href="#projetos" data-i18n="nav_projects" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium">Projetos AE</a>
                         <a href="#masterclass" data-i18n="nav_masterclass" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium">Masterclass</a>
@@ -107,6 +139,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-brand-dark/95 backdrop-blur-lg border-b border-white/10 absolute top-20 left-0 w-full z-40 shadow-2xl">
             <div class="px-6 py-8 flex flex-col space-y-6 text-center">
                 <a href="#motion" onclick="toggleMobileMenu()" data-i18n="nav_motion" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Motion Design</a>
+                <a href="#playground" onclick="toggleMobileMenu()" data-i18n="nav_playground" class="text-brand-yellow hover:text-white font-bold text-lg tracking-wide transition-colors flex items-center justify-center gap-2"><i data-lucide="sparkles" class="w-5 h-5"></i> Playground</a>
                 <a href="#scripts" onclick="toggleMobileMenu()" data-i18n="nav_scripts" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Scripts</a>
                 <a href="#projetos" onclick="toggleMobileMenu()" data-i18n="nav_projects" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Projetos AE</a>
                 <a href="#masterclass" onclick="toggleMobileMenu()" data-i18n="nav_masterclass" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Masterclass</a>
@@ -145,7 +178,92 @@
         </div>
     </section>
 
-    <section id="scripts" class="py-20 relative bg-[#0a0f1c]">
+    <!-- SEÇÃO PLAYGROUND (GRAPH EDITOR) -->
+    <section id="playground" class="py-20 relative bg-[#0a0f1c] overflow-hidden border-t border-white/5">
+        <div class="absolute inset-0 grid-bg opacity-30 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center text-brand-yellow">
+                    <i data-lucide="zap" class="w-6 h-6"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold">Motion <span class="text-brand-yellow">Playground</span></h2>
+            </div>
+            <p data-i18n="play_desc" class="text-center text-gray-400 max-w-2xl mx-auto mb-12">Experimente diferentes curvas de velocidade (Graph Editor) e veja a animação reagir em tempo real.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-[#0d1322] border border-white/5 p-6 md:p-10 rounded-3xl shadow-2xl">
+                
+                <!-- Lado Esquerdo: A Pista de Animação -->
+                <div class="flex flex-col gap-6 justify-center">
+                    <div id="anim-track" class="w-full h-32 bg-black/50 border border-white/5 rounded-2xl relative overflow-hidden flex items-center px-4 grid-bg">
+                        <!-- O "Sujeito" a ser animado -->
+                        <div id="anim-ball" class="w-12 h-12 bg-brand-yellow rounded-full shadow-[0_0_20px_rgba(255,214,0,0.6)] flex items-center justify-center relative z-10">
+                            <div class="w-2 h-2 bg-[#0d1322] rounded-full"></div>
+                        </div>
+                        <!-- Linhas de Início e Fim -->
+                        <div class="absolute left-10 top-0 bottom-0 w-px bg-white/10 border-l border-dashed border-white/20"></div>
+                        <div class="absolute right-10 top-0 bottom-0 w-px bg-white/10 border-l border-dashed border-white/20"></div>
+                    </div>
+
+                    <div class="flex justify-center w-full">
+                        <button onclick="toggleAnimation()" class="w-full sm:w-auto px-12 bg-brand-yellow text-brand-dark py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-yellow-400 hover:scale-105 transition-all shadow-lg">
+                            <span id="play-btn" data-i18n="btn_animate">Animate ME!</span>
+                            <i data-lucide="play" id="play-icon" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Lado Direito: O Graph Editor -->
+                <div class="bg-black/30 border border-white/5 rounded-2xl p-6 flex flex-col md:flex-row gap-8 items-center">
+                    
+                    <!-- Canvas do Gráfico -->
+                    <div class="flex-shrink-0 relative">
+                        <div class="absolute top-2 left-2 text-[10px] text-gray-500 font-mono">Value</div>
+                        <div class="absolute bottom-2 right-2 text-[10px] text-gray-500 font-mono">Time</div>
+                        <canvas id="bezierCanvas" width="200" height="200" class="bg-[#0a0f1c] border border-white/10 rounded-lg shadow-inner"></canvas>
+                    </div>
+
+                    <!-- Controlos -->
+                    <div class="flex-grow w-full space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm font-bold text-gray-300" data-i18n="play_presets">Presets</span>
+                                <span id="current-bezier-text" class="text-xs font-mono text-brand-yellow bg-brand-yellow/10 px-2 py-1 rounded">ease</span>
+                            </div>
+                            <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                                <button onclick="setPreset('linear')" class="text-xs bg-white/5 hover:bg-white/10 border border-white/10 rounded py-2 transition-colors">Linear</button>
+                                <button onclick="setPreset('ease')" class="text-xs bg-brand-yellow text-brand-dark font-bold rounded py-2 transition-colors">Easy Ease</button>
+                                <button onclick="setPreset('overshoot')" class="text-xs bg-white/5 hover:bg-white/10 border border-white/10 rounded py-2 transition-colors">Overshoot</button>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <span class="text-sm font-bold text-gray-300" data-i18n="play_custom">Custom Curve (X1, Y1, X2, Y2)</span>
+                            
+                            <div class="flex gap-3 items-center">
+                                <span class="text-xs font-mono text-gray-500 w-4">X1</span>
+                                <input type="range" id="slider-x1" min="0" max="1" step="0.01" value="0.25" oninput="updateCustomBezier()">
+                            </div>
+                            <div class="flex gap-3 items-center">
+                                <span class="text-xs font-mono text-brand-yellow w-4">Y1</span>
+                                <input type="range" id="slider-y1" min="-0.5" max="1.5" step="0.01" value="0.1" oninput="updateCustomBezier()">
+                            </div>
+                            <div class="flex gap-3 items-center">
+                                <span class="text-xs font-mono text-gray-500 w-4">X2</span>
+                                <input type="range" id="slider-x2" min="0" max="1" step="0.01" value="0.25" oninput="updateCustomBezier()">
+                            </div>
+                            <div class="flex gap-3 items-center">
+                                <span class="text-xs font-mono text-brand-yellow w-4">Y2</span>
+                                <input type="range" id="slider-y2" min="-0.5" max="1.5" step="0.01" value="1.0" oninput="updateCustomBezier()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="scripts" class="py-20 relative bg-brand-dark border-t border-white/5">
         <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -160,7 +278,7 @@
         </div>
     </section>
 
-    <section id="projetos" class="py-20 relative bg-brand-dark border-t border-white/5">
+    <section id="projetos" class="py-20 relative bg-[#0a0f1c] border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex items-center gap-4 mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold"><span data-i18n="section_projects1">Projetos</span> <span data-i18n="section_projects2" class="text-brand-yellow">AE</span></h2>
@@ -173,7 +291,7 @@
         </div>
     </section>
 
-    <section id="masterclass" class="py-20 bg-[#0a0f1c] relative border-t border-white/5">
+    <section id="masterclass" class="py-20 bg-brand-dark relative border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="flex items-center gap-4 mb-12">
                 <h2 class="text-3xl md:text-4xl font-bold"><span data-i18n="section_masterclass1" class="text-brand-yellow">Master</span><span data-i18n="section_masterclass2">class</span></h2>
@@ -242,7 +360,7 @@
 
         const translations = {
             pt: {
-                nav_motion: "Motion Design", nav_scripts: "Scripts", nav_projects: "Projetos AE", nav_masterclass: "Masterclass", nav_contact: "Contato",
+                nav_motion: "Motion Design", nav_playground: "Playground", nav_scripts: "Scripts", nav_projects: "Projetos AE", nav_masterclass: "Masterclass", nav_contact: "Contato",
                 hero_title1: "Transformando ideias em", hero_title2: "movimento.",
                 hero_subtitle: "Especialista em motion design desenvolvendo soluções de melhores workflows. Meus scripts são desenvolvidos por quem realmente usa o After Effects todos os dias.",
                 hero_btn_portfolio: "Ver Portfólio", hero_btn_scripts: "Meus Scripts",
@@ -250,11 +368,14 @@
                 section_scripts1: "Meus", section_scripts2: "Scripts",
                 section_projects1: "Projetos", section_projects2: "AE",
                 section_masterclass1: "Master", section_masterclass2: "class",
+                play_desc: "Experimente diferentes curvas de velocidade (Graph Editor) e veja a animação reagir em tempo real.",
+                play_presets: "Presets", play_custom: "Custom Curve (X1, Y1, X2, Y2)",
+                btn_animate: "Animate ME!", btn_stop: "Parar",
                 footer_talk: "Fale Comigo", footer_rights: "© 2026 Catalan Lab. Todos os direitos reservados.",
                 btn_buy: "Comprar", btn_download: "Baixar", btn_more: "Saber mais", badge_course: "Curso Completo", btn_coming_soon: "Em breve", btn_tutorial: "Tutorial"
             },
             en: {
-                nav_motion: "Motion Design", nav_scripts: "Scripts", nav_projects: "AE Projects", nav_masterclass: "Masterclass", nav_contact: "Contact",
+                nav_motion: "Motion Design", nav_playground: "Playground", nav_scripts: "Scripts", nav_projects: "AE Projects", nav_masterclass: "Masterclass", nav_contact: "Contact",
                 hero_title1: "Transforming ideas into", hero_title2: "motion.",
                 hero_subtitle: "Motion design expert developing solutions for better workflows. My scripts are built by someone who actually uses After Effects every day.",
                 hero_btn_portfolio: "View Portfolio", hero_btn_scripts: "My Scripts",
@@ -262,11 +383,14 @@
                 section_scripts1: "My", section_scripts2: "Scripts",
                 section_projects1: "AE", section_projects2: "Projects",
                 section_masterclass1: "Master", section_masterclass2: "class",
+                play_desc: "Try different velocity curves (Graph Editor) and watch the animation react in real time.",
+                play_presets: "Presets", play_custom: "Custom Curve (X1, Y1, X2, Y2)",
+                btn_animate: "Animate ME!", btn_stop: "Stop",
                 footer_talk: "Talk to Me", footer_rights: "© 2026 Catalan Lab. All rights reserved.",
                 btn_buy: "Buy", btn_download: "Download", btn_more: "Learn more", badge_course: "Full Course", btn_coming_soon: "Coming soon", btn_tutorial: "Tutorial"
             },
             es: {
-                nav_motion: "Motion Design", nav_scripts: "Scripts", nav_projects: "Proyectos AE", nav_masterclass: "Masterclass", nav_contact: "Contacto",
+                nav_motion: "Motion Design", nav_playground: "Playground", nav_scripts: "Scripts", nav_projects: "Proyectos AE", nav_masterclass: "Masterclass", nav_contact: "Contacto",
                 hero_title1: "Transformando ideas en", hero_title2: "movimiento.",
                 hero_subtitle: "Experto en motion design desarrollando soluciones para mejores flujos de trabajo. Mis scripts son creados por alguien que realmente usa After Effects todos los días.",
                 hero_btn_portfolio: "Ver Portafolio", hero_btn_scripts: "Mis Scripts",
@@ -274,6 +398,9 @@
                 section_scripts1: "Mis", section_scripts2: "Scripts",
                 section_projects1: "Proyectos", section_projects2: "AE",
                 section_masterclass1: "Master", section_masterclass2: "class",
+                play_desc: "Prueba diferentes curvas de velocidad (Graph Editor) y mira la animación reaccionar en tiempo real.",
+                play_presets: "Ajustes", play_custom: "Curva Personalizada (X1, Y1, X2, Y2)",
+                btn_animate: "Animate ME!", btn_stop: "Parar",
                 footer_talk: "Hablemos", footer_rights: "© 2026 Catalan Lab. Todos los derechos reservados.",
                 btn_buy: "Comprar", btn_download: "Descargar", btn_more: "Saber más", badge_course: "Curso Completo", btn_coming_soon: "Pronto", btn_tutorial: "Tutorial"
             }
@@ -304,6 +431,11 @@
                     }
                 }
             });
+
+            if(typeof isLooping !== 'undefined') {
+                if(!isLooping) document.getElementById('play-btn').innerText = translations[currentLang].btn_animate;
+                else document.getElementById('play-btn').innerText = translations[currentLang].btn_stop;
+            }
 
             renderPortfolio();
             renderScripts();
@@ -571,6 +703,154 @@
             }
             lucide.createIcons();
         }
+
+        /* =========================================
+           LÓGICA DO GRAPH EDITOR (PLAYGROUND)
+           ========================================= */
+        const canvas = document.getElementById('bezierCanvas');
+        const ctx = canvas.getContext('2d');
+        const W = canvas.width;
+        const H = canvas.height;
+
+        let bezierParams = [0.25, 0.1, 0.25, 1.0]; // Ease padrão
+        const sX1 = document.getElementById('slider-x1');
+        const sY1 = document.getElementById('slider-y1');
+        const sX2 = document.getElementById('slider-x2');
+        const sY2 = document.getElementById('slider-y2');
+        const bezierText = document.getElementById('current-bezier-text');
+
+        function drawGraph() {
+            ctx.clearRect(0, 0, W, H);
+            
+            // Desenha Grid
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            for(let i = 0; i <= W; i += 20) { ctx.moveTo(i, 0); ctx.lineTo(i, H); ctx.moveTo(0, i); ctx.lineTo(W, i); }
+            ctx.stroke();
+
+            // Linha base (0 a 1 em Y)
+            const padY = 40; 
+            const graphH = H - (padY * 2);
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+            ctx.beginPath();
+            ctx.moveTo(0, H - padY); ctx.lineTo(W, H - padY);
+            ctx.moveTo(0, padY); ctx.lineTo(W, padY);
+            ctx.stroke();
+
+            const p0 = { x: 0, y: H - padY };
+            const p3 = { x: W, y: padY };
+            const p1 = { x: bezierParams[0] * W, y: (H - padY) - (bezierParams[1] * graphH) };
+            const p2 = { x: bezierParams[2] * W, y: (H - padY) - (bezierParams[3] * graphH) };
+
+            ctx.strokeStyle = '#1E293B';
+            ctx.lineWidth = 2;
+            ctx.beginPath(); ctx.moveTo(p0.x, p0.y); ctx.lineTo(p1.x, p1.y); ctx.stroke();
+            ctx.beginPath(); ctx.moveTo(p3.x, p3.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
+            
+            ctx.fillStyle = '#FFD600';
+            ctx.beginPath(); ctx.arc(p1.x, p1.y, 4, 0, Math.PI*2); ctx.fill();
+            ctx.beginPath(); ctx.arc(p2.x, p2.y, 4, 0, Math.PI*2); ctx.fill();
+
+            ctx.strokeStyle = '#FFD600';
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.moveTo(p0.x, p0.y);
+            ctx.bezierCurveTo(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
+            ctx.stroke();
+
+            bezierText.innerText = `cubic-bezier(${bezierParams[0].toFixed(2)}, ${bezierParams[1].toFixed(2)}, ${bezierParams[2].toFixed(2)}, ${bezierParams[3].toFixed(2)})`;
+        }
+
+        function updateCustomBezier() {
+            bezierParams = [parseFloat(sX1.value), parseFloat(sY1.value), parseFloat(sX2.value), parseFloat(sY2.value)];
+            drawGraph();
+            document.querySelectorAll('#playground button').forEach(b => {
+                if(b.innerText === "Linear" || b.innerText === "Easy Ease" || b.innerText === "Overshoot") {
+                    b.className = "text-xs bg-white/5 hover:bg-white/10 border border-white/10 rounded py-2 transition-colors";
+                }
+            });
+        }
+
+        function setPreset(type) {
+            if (type === 'linear') bezierParams = [0, 0, 1, 1];
+            if (type === 'ease') bezierParams = [0.25, 0.1, 0.25, 1];
+            if (type === 'overshoot') bezierParams = [0.34, 1.56, 0.64, 1]; 
+            
+            sX1.value = bezierParams[0]; sY1.value = bezierParams[1];
+            sX2.value = bezierParams[2]; sY2.value = bezierParams[3];
+            drawGraph();
+
+            const btns = document.querySelectorAll('#playground button');
+            btns.forEach(b => {
+                if(b.innerText === "Linear" || b.innerText === "Easy Ease" || b.innerText === "Overshoot") {
+                    b.className = "text-xs bg-white/5 hover:bg-white/10 border border-white/10 rounded py-2 transition-colors";
+                    if ((type === 'linear' && b.innerText === "Linear") || 
+                        (type === 'ease' && b.innerText === "Easy Ease") || 
+                        (type === 'overshoot' && b.innerText === "Overshoot")) {
+                        b.className = "text-xs bg-brand-yellow text-brand-dark font-bold rounded py-2 transition-colors";
+                    }
+                }
+            });
+        }
+
+        let isLooping = false;
+        let loopTimeout;
+
+        function toggleAnimation() {
+            const btnText = document.getElementById('play-btn');
+            const icon = document.getElementById('play-icon');
+            
+            if (isLooping) {
+                isLooping = false;
+                clearTimeout(loopTimeout);
+                btnText.innerText = translations[currentLang].btn_animate;
+                icon.setAttribute('data-lucide', 'play');
+                lucide.createIcons();
+                return;
+            }
+            
+            isLooping = true;
+            btnText.innerText = translations[currentLang].btn_stop;
+            icon.setAttribute('data-lucide', 'square');
+            lucide.createIcons();
+            runLoop();
+        }
+
+        function runLoop() {
+            if (!isLooping) return;
+            const ball = document.getElementById('anim-ball');
+            const track = document.getElementById('anim-track');
+            const maxMove = track.offsetWidth - ball.offsetWidth - 32;
+
+            const animation = ball.animate([
+                { transform: 'translateX(0px)' },
+                { transform: `translateX(${maxMove}px)` }
+            ], {
+                duration: 1000,
+                easing: `cubic-bezier(${bezierParams.join(',')})`,
+                fill: 'forwards'
+            });
+
+            animation.onfinish = () => {
+                if (!isLooping) return;
+                loopTimeout = setTimeout(() => {
+                    if (!isLooping) return;
+                    ball.animate([
+                        { transform: `translateX(${maxMove}px)` },
+                        { transform: 'translateX(0px)' }
+                    ], {
+                        duration: 800,
+                        easing: 'ease-in-out',
+                        fill: 'forwards'
+                    }).onfinish = () => {
+                        if (isLooping) loopTimeout = setTimeout(runLoop, 200);
+                    };
+                }, 300);
+            };
+        }
+
+        drawGraph();
 
         // Inicia o site
         setLang(currentLang);

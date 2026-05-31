@@ -251,7 +251,7 @@
                 section_projects1: "Projetos", section_projects2: "AE",
                 section_masterclass1: "Master", section_masterclass2: "class",
                 footer_talk: "Fale Comigo", footer_rights: "© 2026 Catalan Lab. Todos os direitos reservados.",
-                btn_buy: "Comprar", btn_download: "Baixar", btn_more: "Saber mais", badge_course: "Curso Completo", btn_coming_soon: "Em breve"
+                btn_buy: "Comprar", btn_download: "Baixar", btn_more: "Saber mais", badge_course: "Curso Completo", btn_coming_soon: "Em breve", btn_tutorial: "Tutorial"
             },
             en: {
                 nav_motion: "Motion Design", nav_scripts: "Scripts", nav_projects: "AE Projects", nav_masterclass: "Masterclass", nav_contact: "Contact",
@@ -263,7 +263,7 @@
                 section_projects1: "AE", section_projects2: "Projects",
                 section_masterclass1: "Master", section_masterclass2: "class",
                 footer_talk: "Talk to Me", footer_rights: "© 2026 Catalan Lab. All rights reserved.",
-                btn_buy: "Buy", btn_download: "Download", btn_more: "Learn more", badge_course: "Full Course", btn_coming_soon: "Coming soon"
+                btn_buy: "Buy", btn_download: "Download", btn_more: "Learn more", badge_course: "Full Course", btn_coming_soon: "Coming soon", btn_tutorial: "Tutorial"
             },
             es: {
                 nav_motion: "Motion Design", nav_scripts: "Scripts", nav_projects: "Proyectos AE", nav_masterclass: "Masterclass", nav_contact: "Contacto",
@@ -275,7 +275,7 @@
                 section_projects1: "Proyectos", section_projects2: "AE",
                 section_masterclass1: "Master", section_masterclass2: "class",
                 footer_talk: "Hablemos", footer_rights: "© 2026 Catalan Lab. Todos los derechos reservados.",
-                btn_buy: "Comprar", btn_download: "Descargar", btn_more: "Saber más", badge_course: "Curso Completo", btn_coming_soon: "Pronto"
+                btn_buy: "Comprar", btn_download: "Descargar", btn_more: "Saber más", badge_course: "Curso Completo", btn_coming_soon: "Pronto", btn_tutorial: "Tutorial"
             }
         };
 
@@ -339,6 +339,19 @@
                 },
                 price: { pt: "FREE", en: "FREE", es: "GRATIS" },
                 icon: "boxes", link: "https://docs.google.com/forms/d/e/1FAIpQLSfTT1vVgNzOr00OLyQrdJ2TNf9mVjyOGb6s5c76ECqQqxemLg/viewform?usp=sharing&ouid=106520077737272301292",
+                tutorialLink: "https://www.youtube.com/watch?v=aoBHI7g0U9g",
+                btnTextKey: "btn_download"
+            },
+            {
+                id: 6, title: "Group Null",
+                description: {
+                    pt: "Sistema avançado para criar Nulos 2D/3D centralizados, agrupar camadas com a função Shy e gerar órbitas complexas matematicamente.",
+                    en: "Advanced system to create centered 2D/3D Nulls, group layers using the Shy function, and generate complex mathematical orbits.",
+                    es: "Sistema avanzado para crear Nulos 2D/3D centrados, agrupar capas con la función Shy y generar órbitas complejas matemáticamente."
+                },
+                price: { pt: "FREE", en: "FREE", es: "GRATIS" },
+                icon: "focus", link: "https://forms.gle/6vU4GQgMhnpd9gLT8",
+                tutorialLink: "https://youtu.be/6v1qQR-judw",
                 btnTextKey: "btn_download"
             },
             {
@@ -350,6 +363,28 @@
                 },
                 price: { pt: "-", en: "-", es: "-" },
                 icon: "feather", link: "#",
+                isComingSoon: true
+            },
+            {
+                id: 4, title: "LoopDeck",
+                description: {
+                    pt: "Script focado em criar carrosséis 2D e 3D de forma rápida e automatizada.",
+                    en: "Script focused on creating 2D and 3D carousels quickly and automatically.",
+                    es: "Script enfocado en crear carruseles 2D y 3D de forma rápida y automatizada."
+                },
+                price: { pt: "-", en: "-", es: "-" },
+                icon: "refresh-cw", link: "#",
+                isComingSoon: true
+            },
+            {
+                id: 5, title: "Lab Stack PRO",
+                description: {
+                    pt: "Atualização do Lab Stack Lite, com novas funções avançadas e mais painéis.",
+                    en: "Update to Lab Stack Lite, with new advanced functions and more panels.",
+                    es: "Actualización de Lab Stack Lite, con nuevas funciones avanzadas y más paneles."
+                },
+                price: { pt: "-", en: "-", es: "-" },
+                icon: "zap", link: "#",
                 isComingSoon: true
             }
         ];
@@ -436,6 +471,27 @@
             grid.innerHTML = scripts.map(script => {
                 const localizedBtnText = script.isComingSoon ? translations[currentLang].btn_coming_soon : translations[currentLang][script.btnTextKey];
                 
+                // Lógica para gerar 1 ou 2 botões dependendo se existe "tutorialLink"
+                let actionButtons = '';
+                if (script.isComingSoon) {
+                    actionButtons = `<button disabled class="flex items-center gap-2 bg-gray-800 text-gray-400 px-5 py-2.5 rounded-lg font-bold cursor-not-allowed w-full sm:w-auto justify-center border border-white/5">
+                        ${localizedBtnText} <i data-lucide="clock" class="w-4 h-4"></i>
+                    </button>`;
+                } else {
+                    let mainBtn = `<a href="${script.link}" target="_blank" class="flex items-center gap-2 bg-brand-yellow text-brand-dark px-5 py-2.5 rounded-lg font-bold hover:bg-yellow-400 transition-colors w-full sm:w-auto justify-center">
+                        ${localizedBtnText} <i data-lucide="${script.price[currentLang] === 'FREE' || script.price[currentLang] === 'GRATIS' ? 'download' : 'shopping-cart'}" class="w-4 h-4"></i>
+                    </a>`;
+                    
+                    if (script.tutorialLink) {
+                        let tutBtn = `<a href="${script.tutorialLink}" target="_blank" class="flex items-center gap-2 bg-transparent border border-white/20 text-white hover:border-brand-yellow hover:text-brand-yellow px-5 py-2.5 rounded-lg font-bold transition-colors w-full sm:w-auto justify-center">
+                            ${translations[currentLang].btn_tutorial} <i data-lucide="play-circle" class="w-4 h-4"></i>
+                        </a>`;
+                        actionButtons = `<div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">${tutBtn}${mainBtn}</div>`;
+                    } else {
+                        actionButtons = mainBtn;
+                    }
+                }
+
                 return `
                 <div class="bg-brand-dark border border-white/5 p-8 rounded-2xl flex flex-col h-full hover:border-brand-yellow/30 transition-colors group relative overflow-hidden">
                     <div class="absolute inset-0 bg-gradient-to-br from-brand-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
@@ -444,17 +500,9 @@
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">${script.title}</h3>
                     <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">${script.description[currentLang]}</p>
-                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-auto pt-6 border-t border-white/5 gap-4 sm:gap-0">
+                    <div class="flex flex-wrap items-center justify-between mt-auto pt-6 border-t border-white/5 gap-4">
                         <span class="text-2xl font-bold text-white">${script.isComingSoon ? '' : script.price[currentLang]}</span>
-                        ${script.isComingSoon ? 
-                            `<button disabled class="flex items-center gap-2 bg-gray-800 text-gray-400 px-5 py-2.5 rounded-lg font-bold cursor-not-allowed w-full sm:w-auto justify-center border border-white/5">
-                                ${localizedBtnText} <i data-lucide="clock" class="w-4 h-4"></i>
-                            </button>` 
-                            : 
-                            `<a href="${script.link}" target="_blank" class="flex items-center gap-2 bg-brand-yellow text-brand-dark px-5 py-2.5 rounded-lg font-bold hover:bg-yellow-400 transition-colors w-full sm:w-auto justify-center">
-                                ${localizedBtnText} <i data-lucide="${script.price[currentLang] === 'FREE' || script.price[currentLang] === 'GRATIS' ? 'download' : 'shopping-cart'}" class="w-4 h-4"></i>
-                            </a>`
-                        }
+                        ${actionButtons}
                     </div>
                 </div>`
             }).join('');

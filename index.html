@@ -1568,7 +1568,14 @@
         }
 
         function startGame(e) {
-            if (e) e.stopPropagation();
+            if (e) {
+                e.stopPropagation();
+                // No mobile, o touchstart faz o trabalho sem atraso, prevemos o click falso a seguir
+                if (e.type === 'touchstart') e.preventDefault(); 
+            }
+            // Impede cliques duplos que bugar as animações
+            if (isGameRunning) return;
+
             document.getElementById('game-start-screen').classList.add('hidden');
             document.getElementById('game-over-screen').classList.add('hidden');
             gameCanvas.classList.remove('hidden');
@@ -1595,7 +1602,10 @@
             document.getElementById('game-over-screen').classList.remove('hidden');
         }
 
-        function jump() {
+        function jump(e) {
+            if (e) {
+                if (e.type === 'touchstart') e.preventDefault();
+            }
             if (isGameRunning) bee.velocity = bee.jump;
         }
 

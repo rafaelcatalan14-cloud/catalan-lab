@@ -694,7 +694,6 @@
                 section_scripts1: "Meus", section_scripts2: "Scripts",
                 section_projects1: "Projetos", section_projects2: "AE",
                 section_masterclass1: "Master", section_masterclass2: "class",
-                
                 play_desc: "Divirta-se e teste conceitos essenciais de Motion Design direto no navegador.",
                 play_val: "Value", play_time: "Time", play_presets: "Presets", play_custom: "Custom Curve",
                 btn_animate: "Animate ME!", btn_stop: "Parar",
@@ -717,7 +716,8 @@
 
                 footer_talk: "Fale Comigo", footer_rights: "© 2026 Catalan Lab. Todos os direitos reservados.", footer_bug: "Relatar um Bug",
                 btn_buy: "Comprar", btn_download: "Baixar", btn_more: "Saber mais", badge_course: "Curso Completo", btn_coming_soon: "Em breve", btn_tutorial: "Tutorial",
-                btn_share_site: "Compartilhar", toast_copied: "Copiado para a área de transferência!", toast_hex: "Cor HEX copiada!"
+                btn_share_site: "Compartilhar", toast_copied: "Link copiado para a área de transferência!", toast_hex: "Cor HEX copiada!",
+                btn_early_access: "Acesso antecipado"
             },
             en: {
                 nav_motion: "Motion Design", nav_playground: "Playground", nav_assistant: "Assistant", nav_scripts: "Scripts", nav_projects: "AE Projects", nav_masterclass: "Masterclass", nav_contact: "Contact",
@@ -751,7 +751,8 @@
 
                 footer_talk: "Talk to Me", footer_rights: "© 2026 Catalan Lab. All rights reserved.", footer_bug: "Report a Bug",
                 btn_buy: "Buy", btn_download: "Download", btn_more: "Learn more", badge_course: "Full Course", btn_coming_soon: "Coming soon", btn_tutorial: "Tutorial",
-                btn_share_site: "Share", toast_copied: "Copied to clipboard!", toast_hex: "HEX Color copied!"
+                btn_share_site: "Share", toast_copied: "Link copied to clipboard!", toast_hex: "HEX Color copied!",
+                btn_early_access: "Early Access"
             },
             es: {
                 nav_motion: "Motion Design", nav_playground: "Playground", nav_assistant: "Assistant", nav_scripts: "Scripts", nav_projects: "Proyectos AE", nav_masterclass: "Masterclass", nav_contact: "Contacto",
@@ -785,7 +786,8 @@
 
                 footer_talk: "Hablemos", footer_rights: "© 2026 Catalan Lab. Todos los derechos reservados.", footer_bug: "Reportar un Error",
                 btn_buy: "Comprar", btn_download: "Descargar", btn_more: "Saber más", badge_course: "Curso Completo", btn_coming_soon: "Pronto", btn_tutorial: "Tutorial",
-                btn_share_site: "Compartir", toast_copied: "¡Copiado al portapapeles!", toast_hex: "¡Color HEX copiado!"
+                btn_share_site: "Compartir", toast_copied: "¡Copiado al portapapeles!", toast_hex: "¡Color HEX copiado!",
+                btn_early_access: "Acceso Anticipado"
             }
         };
 
@@ -1002,9 +1004,14 @@
                 
                 let actionButtons = '';
                 if (script.isComingSoon) {
-                    actionButtons = `<button disabled class="flex items-center gap-2 bg-gray-800 text-gray-400 px-5 py-2.5 rounded-lg font-bold cursor-not-allowed w-full sm:w-auto justify-center border border-white/5">
+                    let earlyAccessBtn = `<a href="https://chat.whatsapp.com/LG6y5yAyBDr9i1rG11OPz6" target="_blank" class="flex items-center gap-2 bg-brand-yellow/10 border border-brand-yellow/30 text-brand-yellow px-5 py-2.5 rounded-lg font-bold hover:bg-brand-yellow hover:text-brand-dark transition-all duration-300 w-full sm:w-auto justify-center">
+                        ${translations[currentLang].btn_early_access} <i data-lucide="key" class="w-4 h-4"></i>
+                    </a>`;
+                    let comingSoonBtn = `<button disabled class="flex items-center gap-2 bg-gray-800/50 text-gray-500 px-5 py-2.5 rounded-lg font-bold cursor-not-allowed w-full sm:w-auto justify-center border border-white/5">
                         ${localizedBtnText} <i data-lucide="clock" class="w-4 h-4"></i>
                     </button>`;
+                    
+                    actionButtons = `<div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">${earlyAccessBtn}${comingSoonBtn}</div>`;
                 } else {
                     let mainBtn = `<a href="${script.link}" target="_blank" class="flex items-center gap-2 bg-brand-yellow text-brand-dark px-5 py-2.5 rounded-lg font-bold hover:bg-yellow-400 transition-colors w-full sm:w-auto justify-center">
                         ${localizedBtnText} <i data-lucide="${script.price[currentLang] === 'FREE' || script.price[currentLang] === 'GRATIS' ? 'download' : 'shopping-cart'}" class="w-4 h-4"></i>
@@ -1028,7 +1035,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">${script.title}</h3>
                     <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">${script.description[currentLang]}</p>
-                    <div class="flex flex-wrap items-center justify-between mt-auto pt-6 border-t border-white/5 gap-4">
+                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-auto pt-6 border-t border-white/5 gap-4 sm:gap-0">
                         <span class="text-2xl font-bold text-white">${script.isComingSoon ? '' : script.price[currentLang]}</span>
                         ${actionButtons}
                     </div>

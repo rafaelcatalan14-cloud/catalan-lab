@@ -757,7 +757,8 @@
             { id: 1, category: "Script 3D Cam Parallax + Organic Rig + Lab Stack", embedUrl: "https://www.youtube.com/embed/LQCXrfiByMg", image: "Trunks.png" },
             { id: 2, category: "Script 3D Cam Parallax + Organic Rig + Lab Stack", embedUrl: "https://www.youtube.com/embed/Rt0o8e0x3Dw", image: "Anime.png" },
             { id: 3, category: "Script 3D Cam Parallax + Organic Rig + Lab Stack", embedUrl: "https://www.youtube.com/embed/W-lO90l-Vuo", image: "Bee.png" },
-            { id: 4, category: "Script 3D Cam Parallax", embedUrl: "https://www.youtube.com/embed/-pVFXWZxnrI", image: "TLOU.png" }
+            { id: 4, category: "Script 3D Cam Parallax", embedUrl: "https://www.youtube.com/embed/-pVFXWZxnrI", image: "TLOU.png" },
+            { id: 5, category: "Script LoopDeck + 3D Cam Parallax", embedUrl: "https://www.youtube.com/embed/mAkdFoUNSf4", image: "capa_yugi.png", isHorizontal: true }
         ];
 
         const scripts = [
@@ -886,9 +887,13 @@
             grid.innerHTML = portfolioItems.map(item => {
                 const iframeHTML = `<iframe src='${item.embedUrl}?autoplay=1' class='absolute top-0 left-0 w-full h-full' frameborder='0' allow='autoplay; encrypted-media; picture-in-picture' allowfullscreen></iframe>`;
                 
+                // Classes dinâmicas para vídeos horizontais (16:9)
+                const aspectClass = item.isHorizontal ? 'aspect-video' : 'aspect-[9/16]';
+                const spanClass = item.isHorizontal ? 'sm:col-span-2 lg:col-span-2' : '';
+                
                 return `
-                <div class="group bg-[#0a0f1c] rounded-2xl border border-white/5 hover:border-brand-yellow/50 transition-all flex flex-col overflow-hidden shadow-lg h-full">
-                    <div class="relative aspect-[9/16] bg-black w-full overflow-hidden cursor-pointer" onclick="this.innerHTML = \`${iframeHTML}\`">
+                <div class="group bg-[#0a0f1c] rounded-2xl border border-white/5 hover:border-brand-yellow/50 transition-all flex flex-col overflow-hidden shadow-lg h-full ${spanClass}">
+                    <div class="relative ${aspectClass} bg-black w-full overflow-hidden cursor-pointer" onclick="this.innerHTML = \`${iframeHTML}\`">
                         <img src="${item.image}" alt="Capa" onerror="this.onerror=null; this.src='https://placehold.co/400x700/1E293B/FFD600?text=Capa'" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
                         
                         <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>

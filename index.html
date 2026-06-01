@@ -118,6 +118,7 @@
 </head>
 <body class="bg-brand-dark text-white font-sans antialiased selection:bg-brand-yellow selection:text-brand-dark">
 
+    <!-- Navegação -->
     <nav class="fixed w-full z-50 glass-nav border-b border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
@@ -201,6 +202,7 @@
         </div>
     </nav>
 
+    <!-- HERO SECTION -->
     <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-yellow/10 via-brand-dark to-brand-dark -z-10"></div>
         <div class="max-w-7xl mx-auto px-4 text-center">
@@ -220,6 +222,7 @@
         </div>
     </section>
 
+    <!-- MOTION DESIGN PORTFOLIO -->
     <section id="motion" class="py-20 bg-brand-dark relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center gap-4 mb-12">
@@ -339,7 +342,7 @@
                         </button>
                     </div>
 
-                    <div id="game-over-screen" class="absolute inset-0 hidden flex flex-col items-center justify-center bg-red-900/90 backdrop-blur-sm z-10 p-6 text-center" onclick="startGame()">
+                    <div id="game-over-screen" class="absolute inset-0 hidden flex flex-col items-center justify-center bg-red-900/90 backdrop-blur-sm z-10 p-6 text-center" onclick="startGame(event)">
                         <h3 class="text-4xl font-bold text-white mb-2">Game Over</h3>
                         <p class="text-xl text-gray-200 mb-6">Pontos: <span id="game-final-score" class="font-bold text-brand-yellow">0</span></p>
                         <button onclick="startGame(event)" class="bg-white text-red-900 px-8 py-3 rounded-xl font-bold hover:scale-105 transition-transform flex items-center gap-2">
@@ -605,60 +608,117 @@
         </div>
     </section>
 
-    <footer id="contato" class="py-16 border-t border-white/5 bg-brand-dark mt-10 relative z-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Grid de 3 Colunas -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
-                
-                <!-- Coluna 1: Marca -->
-                <div class="flex flex-col items-center md:items-start text-center md:text-left">
-                    <img src="LOGO-ALPHA-SITE.gif" alt="Catalan Lab" onerror="this.onerror=null; this.src='https://placehold.co/400x100/0d1322/FFD600?text=Catalan+Lab'" class="h-16 w-auto object-contain mb-6">
-                    <p class="text-gray-400 text-sm max-w-xs leading-relaxed">
-                        Elevando o padrão visual do Motion Design. Workflows e ferramentas desenvolvidas para otimizar o seu dia a dia.
-                    </p>
-                </div>
+    <!-- NOVA SEÇÃO: FAQ (SEO) -->
+    <section id="faq" class="py-20 bg-brand-dark relative border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-i18n="faq_title">Perguntas Frequentes</h2>
+                <p class="text-gray-400" data-i18n="faq_subtitle">Tire suas dúvidas sobre instalação, licenças e suporte.</p>
+            </div>
 
-                <!-- Coluna 2: Contatos -->
-                <div class="flex flex-col items-center md:items-start text-center md:text-left">
-                    <span data-i18n="footer_talk" class="text-white font-bold text-lg mb-6">Fale Comigo</span>
-                    <div class="flex flex-col space-y-4">
-                        <a href="https://wa.me/5511917574951" target="_blank" class="flex items-center justify-center md:justify-start gap-3 text-gray-400 hover:text-brand-yellow transition-colors text-sm">
-                            <i data-lucide="message-circle" class="w-5 h-5"></i>
-                            +55 11 91757-4951
-                        </a>
-                        <a href="mailto:support.catalanlab@gmail.com" class="flex items-center justify-center md:justify-start gap-3 text-gray-400 hover:text-brand-yellow transition-colors text-sm">
-                            <i data-lucide="mail" class="w-5 h-5"></i>
-                            support.catalanlab@gmail.com
-                        </a>
-                        <div class="flex gap-4 pt-2 justify-center md:justify-start">
-                            <a href="https://www.instagram.com/catalan.lab/" target="_blank" class="opacity-70 hover:opacity-100 hover:scale-110 transition-all">
-                                <img src="instagram.png" alt="Instagram" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1E293B/FFD600?text=IG'" class="w-6 h-6 object-contain">
-                            </a>
-                            <a href="https://www.youtube.com/@catalanlab" target="_blank" class="opacity-70 hover:opacity-100 hover:scale-110 transition-all">
-                                <img src="youtube.png" alt="YouTube" onerror="this.onerror=null; this.src='https://placehold.co/24x24/1E293B/FFD600?text=YT'" class="w-6 h-6 object-contain">
-                            </a>
-                        </div>
+            <div class="space-y-4">
+                <!-- FAQ 1 -->
+                <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(1)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none hover:bg-white/5 transition-colors">
+                        <span class="font-bold text-brand-yellow" data-i18n="q1">Onde encontro o plugin dentro do After Effects e como instalo?</span>
+                        <i data-lucide="chevron-down" id="faq-icon-1" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-content-1" class="px-6 pb-5 hidden">
+                        <p class="text-gray-400 text-sm leading-relaxed" data-i18n="a1">Após baixar o arquivo (.jsxbin), cole-o na pasta oficial do sistema. <br><br><b class='text-brand-yellow'>Windows:</b><br><code class='bg-[#0d1322] px-3 py-2 rounded-lg mt-1 block border border-white/10 font-mono text-xs text-gray-300'>C:\Arquivos de Programas\Adobe\Adobe After Effects\Support Files\Scripts\ScriptUI Panels</code><br><b class='text-brand-yellow'>Mac:</b><br><code class='bg-[#0d1322] px-3 py-2 rounded-lg mt-1 block border border-white/10 font-mono text-xs text-gray-300'>/Applications/Adobe After Effects/Scripts/ScriptUI Panels</code><br><br>Todos os meus scripts ficam localizados no menu superior <b>Window</b> (Janela) por padrão. O Lab Manager é um gerenciador que roda à parte, mas primeiramente ele também precisa ser aberto via Window.</p>
                     </div>
                 </div>
 
-                <!-- Coluna 3: Suporte (Bug Report) -->
-                <div class="flex flex-col items-center md:items-start text-center md:text-left">
-                    <span class="text-white font-bold text-lg mb-6">Suporte</span>
-                    <p class="text-gray-400 text-sm mb-6 max-w-xs leading-relaxed">
-                        Encontrou algum problema nos scripts ou no site? Ajude-nos a melhorar a experiência.
-                    </p>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIv8cP9Y7AgYzDlaoM4iY8XG2I4Oo8FZNn3-bH66x4L16rwA/viewform?usp=publish-editor" target="_blank" class="group flex items-center justify-center md:justify-start gap-2 bg-red-500/10 border border-red-500/20 text-red-400 px-6 py-3 rounded-xl font-bold hover:bg-red-500 hover:text-white transition-all duration-300 w-full md:w-auto">
-                        <i data-lucide="bug" class="w-5 h-5 group-hover:animate-bounce"></i>
-                        <span data-i18n="footer_bug">Relatar um Bug</span>
-                    </a>
+                <!-- FAQ 2 -->
+                <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(2)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none hover:bg-white/5 transition-colors">
+                        <span class="font-bold text-brand-yellow" data-i18n="q2">Posso usar os plugins em projetos comerciais? E a licença?</span>
+                        <i data-lucide="chevron-down" id="faq-icon-2" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-content-2" class="px-6 pb-5 hidden">
+                        <p class="text-gray-400 text-sm leading-relaxed" data-i18n="a2">Sim! Os plugins podem ser usados tanto em projetos pessoais quanto comerciais, salvo indicação contrária na página do produto. No entanto, o arquivo (.jsxbin) é criptografado e de uso individual. A distribuição, revenda ou realização de cópias não autorizadas é proibida e resulta no bloqueio do acesso e medidas legais.</p>
+                    </div>
                 </div>
 
+                <!-- FAQ 3 -->
+                <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(3)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none hover:bg-white/5 transition-colors">
+                        <span class="font-bold text-brand-yellow" data-i18n="q3">O plugin não apareceu no After Effects. O que fazer?</span>
+                        <i data-lucide="chevron-down" id="faq-icon-3" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-content-3" class="px-6 pb-5 hidden">
+                        <p class="text-gray-400 text-sm leading-relaxed" data-i18n="a3">Verifique rigorosamente se o arquivo foi colocado na pasta exata de <b>ScriptUI Panels</b> (não apenas na pasta Scripts), certifique-se de que o After Effects foi completamente reiniciado após colar o arquivo e confira se a versão do seu software é compatível com o plugin.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(4)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none hover:bg-white/5 transition-colors">
+                        <span class="font-bold text-brand-yellow" data-i18n="q4">Como funcionam as atualizações, garantias e estornos?</span>
+                        <i data-lucide="chevron-down" id="faq-icon-4" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-content-4" class="px-6 pb-5 hidden">
+                        <p class="text-gray-400 text-sm leading-relaxed" data-i18n="a4">Sim, os plugins recebem melhorias constantes, correções e novas funções. Se comprou via Hotmart, o sistema dispara a atualização automaticamente para o seu e-mail. Para plugins grátis, o e-mail cadastrado entra na nossa base de avisos. As compras na Hotmart possuem 7 dias de garantia incondicional (o processo de aprovação de estorno pela plataforma pode levar até 5 dias úteis).</p>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden">
+                    <button onclick="toggleFaq(5)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none hover:bg-white/5 transition-colors">
+                        <span class="font-bold text-brand-yellow" data-i18n="q5">Preciso de conhecimento avançado? Há suporte pós-compra?</span>
+                        <i data-lucide="chevron-down" id="faq-icon-5" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div id="faq-content-5" class="px-6 pb-5 hidden">
+                        <p class="text-gray-400 text-sm leading-relaxed" data-i18n="a5">Não necessariamente. Algumas ferramentas são simples e diretas, mas é recomendado ter noções básicas do After Effects para aproveitar melhor os recursos. E sim, existe suporte completo! Caso tenha problemas de instalação ou bugs, utilize o botão "Relatar um Bug" no rodapé do site enviando prints, versão do AE e detalhes do erro para agilizarmos a correção.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato" class="py-12 border-t border-white/5 bg-brand-dark mt-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center md:items-start gap-8 text-center md:text-left">
+            
+            <!-- Logo e Direitos -->
+            <div class="flex-shrink-0 flex flex-col items-center md:items-start">
+                <img src="LOGO-VERTICAL.png" alt="Catalan Lab" onerror="this.onerror=null; this.src='https://placehold.co/400x100/0d1322/FFD600?text=Catalan+Lab'" class="h-16 w-auto object-contain mb-4">
+                <p data-i18n="footer_rights" class="text-gray-500 text-xs">© 2026 Catalan Lab. Todos os direitos reservados.</p>
+            </div>
+            
+            <!-- Contatos e Redes -->
+            <div class="flex flex-col items-center md:items-start space-y-3">
+                <span data-i18n="footer_talk" class="text-white font-bold mb-1">Fale Comigo</span>
+                
+                <a href="https://wa.me/5511917574951" target="_blank" class="flex items-center gap-2 text-gray-400 hover:text-brand-yellow transition-colors text-sm">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                    +55 11 91757-4951
+                </a>
+                
+                <a href="mailto:support.catalanlab@gmail.com" class="flex items-center gap-2 text-gray-400 hover:text-brand-yellow transition-colors text-sm">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                    support.catalanlab@gmail.com
+                </a>
+                
+                <a href="https://www.instagram.com/catalan.lab/" target="_blank" class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm group">
+                    <img src="instagram.png" alt="Instagram" onerror="this.onerror=null; this.src='https://placehold.co/20x20/1E293B/FFD600?text=IG'" class="w-5 h-5 object-contain opacity-70 group-hover:opacity-100 transition-opacity">
+                    @catalan.lab
+                </a>
+                
+                <a href="https://www.youtube.com/@catalanlab" target="_blank" class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm group">
+                    <img src="youtube.png" alt="YouTube" onerror="this.onerror=null; this.src='https://placehold.co/20x20/1E293B/FFD600?text=YT'" class="w-5 h-5 object-contain opacity-70 group-hover:opacity-100 transition-opacity">
+                    Catalan Lab
+                </a>
             </div>
 
-            <!-- Divisor e Copyright -->
-            <div class="border-t border-white/5 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p data-i18n="footer_rights" class="text-gray-500 text-sm text-center md:text-left w-full">© 2026 Catalan Lab. Todos os direitos reservados.</p>
+            <!-- Suporte e Bugs -->
+            <div class="flex flex-col items-center md:items-start space-y-3">
+                <span data-i18n="footer_support" class="text-white font-bold mb-1">Suporte</span>
+                <p data-i18n="footer_support_desc" class="text-gray-400 text-sm max-w-xs text-center md:text-left mb-2">Encontrou algum erro num dos scripts ou no site?</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeIv8cP9Y7AgYzDlaoM4iY8XG2I4Oo8FZNn3-bH66x4L16rwA/viewform?usp=publish-editor" target="_blank" class="flex items-center gap-2 text-red-400/80 hover:text-red-400 transition-colors text-sm group border border-red-400/20 bg-red-400/5 px-4 py-2 rounded-lg hover:border-red-400/50 hover:bg-red-400/10">
+                    <i data-lucide="bug" class="w-4 h-4"></i>
+                    <span data-i18n="footer_bug">Relatar um Bug</span>
+                </a>
             </div>
+
         </div>
     </footer>
 
@@ -670,7 +730,9 @@
 
     <!-- BOTÃO WHATSAPP FLUTUANTE -->
     <div class="fixed bottom-6 right-6 z-50 flex items-center justify-center">
+        <!-- Efeito de pulso -->
         <div class="absolute inset-0 bg-[#25D366] rounded-full animate-ping opacity-20"></div>
+        
         <a href="https://wa.me/5511917574951" target="_blank" aria-label="Fale conosco no WhatsApp" class="relative bg-[#25D366] text-white p-4 rounded-full shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:scale-110 hover:-translate-y-1 transition-all duration-300 group flex items-center justify-center">
             <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
@@ -694,6 +756,7 @@
                 section_scripts1: "Meus", section_scripts2: "Scripts",
                 section_projects1: "Projetos", section_projects2: "AE",
                 section_masterclass1: "Master", section_masterclass2: "class",
+                
                 play_desc: "Divirta-se e teste conceitos essenciais de Motion Design direto no navegador.",
                 play_val: "Value", play_time: "Time", play_presets: "Presets", play_custom: "Custom Curve",
                 btn_animate: "Animate ME!", btn_stop: "Parar",
@@ -714,10 +777,22 @@
                 opt_comp: "Complementar (Opostos)", opt_analog: "Análoga (Vizinhas)", opt_triad: "Tríade (Triângulo)", opt_mono: "Monocromática (Tons)",
                 lbl_click_hex: "Clique na cor para copiar o HEX",
 
-                footer_talk: "Fale Comigo", footer_rights: "© 2026 Catalan Lab. Todos os direitos reservados.", footer_bug: "Relatar um Bug",
-                btn_buy: "Comprar", btn_download: "Baixar", btn_more: "Saber mais", badge_course: "Curso Completo", btn_coming_soon: "Em breve", btn_tutorial: "Tutorial",
-                btn_share_site: "Compartilhar", toast_copied: "Link copiado para a área de transferência!", toast_hex: "Cor HEX copiada!",
-                btn_early_access: "Acesso antecipado"
+                footer_talk: "Fale Comigo", footer_support: "Suporte", footer_support_desc: "Encontrou algum erro num dos scripts ou no site?", footer_rights: "© 2026 Catalan Lab. Todos os direitos reservados.", footer_bug: "Relatar um Bug",
+                btn_buy: "Comprar", btn_download: "Baixar", btn_more: "Saber mais", badge_course: "Curso Completo", btn_coming_soon: "Em breve", btn_early_access: "Acesso Antecipado", btn_tutorial: "Tutorial",
+                btn_share_site: "Compartilhar", toast_copied: "Copiado para a área de transferência!", toast_hex: "Cor HEX copiada!",
+
+                // FAQ PT
+                faq_title: "Perguntas Frequentes", faq_subtitle: "Tire suas dúvidas sobre instalação, licenças e atualizações.",
+                q1: "Onde encontro o plugin dentro do After Effects e como instalo?",
+                a1: "Após baixar o arquivo (.jsxbin), cole-o na pasta oficial do sistema.<br><br><b class='text-brand-yellow'>Windows:</b><br><code class='bg-[#0d1322] px-3 py-2 rounded-lg mt-1 block border border-white/10 font-mono text-xs text-gray-300'>C:\\Arquivos de Programas\\Adobe\\Adobe After Effects\\Support Files\\Scripts\\ScriptUI Panels</code><br><b class='text-brand-yellow'>Mac:</b><br><code class='bg-[#0d1322] px-3 py-2 rounded-lg mt-1 block border border-white/10 font-mono text-xs text-gray-300'>/Applications/Adobe After Effects/Scripts/ScriptUI Panels</code><br><br>Todos os meus scripts ficam localizados no menu superior <b>Window</b> (Janela) por padrão. O Lab Manager é um gerenciador que roda à parte, mas primeiramente ele também precisa ser aberto via Window.",
+                q2: "Posso usar os plugins em projetos comerciais? E a licença?",
+                a2: "Sim! Os plugins podem ser usados tanto em projetos pessoais quanto comerciais, salvo indicação contrária na página do produto. No entanto, o arquivo (.jsxbin) é criptografado e de uso individual. A distribuição, revenda ou realização de cópias não autorizadas é proibida e resulta no bloqueio do acesso e medidas legais.",
+                q3: "O plugin não apareceu no After Effects. O que fazer?",
+                a3: "Verifique rigorosamente se o arquivo foi colocado na pasta exata de <b>ScriptUI Panels</b> (não apenas na pasta Scripts), certifique-se de que o After Effects foi completamente reiniciado após colar o arquivo e confira se a versão do seu software é compatível com o plugin.",
+                q4: "Como funcionam as atualizações, garantias e estornos?",
+                a4: "Sim, os plugins recebem melhorias constantes, correções e novas funções. Se comprou via Hotmart, o sistema dispara a atualização automaticamente para o seu e-mail. Para plugins grátis, o e-mail cadastrado entra na nossa base de avisos. As compras na Hotmart possuem 7 dias de garantia incondicional (o processo de aprovação de estorno pela plataforma pode levar até 5 dias úteis).",
+                q5: "Preciso de conhecimento avançado? Há suporte pós-compra?",
+                a5: "Não necessariamente. Algumas ferramentas são simples e diretas, mas é recomendado ter noções básicas do After Effects para aproveitar melhor os recursos. E sim, existe suporte completo! Caso tenha problemas de instalação ou bugs, utilize o botão 'Relatar um Bug' no rodapé do site enviando prints, versão do AE e detalhes do erro para agilizarmos a correção."
             },
             en: {
                 nav_motion: "Motion Design", nav_playground: "Playground", nav_assistant: "Assistant", nav_scripts: "Scripts", nav_projects: "AE Projects", nav_masterclass: "Masterclass", nav_contact: "Contact",
@@ -749,10 +824,22 @@
                 opt_comp: "Complementary (Opposites)", opt_analog: "Analogous (Neighbors)", opt_triad: "Triadic (Triangle)", opt_mono: "Monochromatic (Shades)",
                 lbl_click_hex: "Click on color to copy HEX",
 
-                footer_talk: "Talk to Me", footer_rights: "© 2026 Catalan Lab. All rights reserved.", footer_bug: "Report a Bug",
-                btn_buy: "Buy", btn_download: "Download", btn_more: "Learn more", badge_course: "Full Course", btn_coming_soon: "Coming soon", btn_tutorial: "Tutorial",
-                btn_share_site: "Share", toast_copied: "Link copied to clipboard!", toast_hex: "HEX Color copied!",
-                btn_early_access: "Early Access"
+                footer_talk: "Talk to Me", footer_support: "Support", footer_support_desc: "Found an error in a script or on the site?", footer_rights: "© 2026 Catalan Lab. All rights reserved.", footer_bug: "Report a Bug",
+                btn_buy: "Buy", btn_download: "Download", btn_more: "Learn more", badge_course: "Full Course", btn_coming_soon: "Coming soon", btn_early_access: "Early Access", btn_tutorial: "Tutorial",
+                btn_share_site: "Share", toast_copied: "Copied to clipboard!", toast_hex: "HEX Color copied!",
+
+                // FAQ EN
+                faq_title: "Frequently Asked Questions", faq_subtitle: "Clear your doubts about installation, licenses, and updates.",
+                q1: "Where do I find the plugin in After Effects and how to install?",
+                a1: "After downloading the file (.jsxbin), paste it into the official system folder.<br><br><b class='text-brand-yellow'>Windows:</b><br><code class='bg-[#0d1322] px-3 py-2 rounded-lg mt-1 block border border-white/10 font-mono text-xs text-gray-300'>C:\\Program Files\\Adobe\\Adobe After Effects\\Support Files\\Scripts\\ScriptUI Panels</code><br><b class='text-brand-yellow'>Mac:</b><br><code class='bg-[#0d1322] px-3 py-2 rounded-lg mt-1 block border border-white/10 font-mono text-xs text-gray-300'>/Applications/Adobe After Effects/Scripts/ScriptUI Panels</code><br><br>All my scripts are located in the top <b>Window</b> menu by default. The Lab Manager runs separately, but it also needs to be opened via Window first.",
+                q2: "Can I use plugins in commercial projects? And the license?",
+                a2: "Yes! Plugins can be used in both personal and commercial projects unless stated otherwise. However, the (.jsxbin) file is encrypted and for individual use. Unauthorized distribution, resale, or copying is prohibited and results in access blocking and legal measures.",
+                q3: "The plugin didn't appear in After Effects. What to do?",
+                a3: "Double-check if the file was placed in the exact <b>ScriptUI Panels</b> folder (not just the Scripts folder), make sure After Effects was completely restarted, and check if your software version is compatible.",
+                q4: "How do updates, guarantees, and refunds work?",
+                a4: "Yes, plugins receive constant improvements and new features. If bought via Hotmart, the system emails the update automatically. For free plugins, your email enters our VIP list. Hotmart purchases have a 7-day unconditional guarantee (refund approval takes up to 5 business days).",
+                q5: "Do I need advanced knowledge? Is there post-purchase support?",
+                a5: "Not necessarily. Some tools are simple, but basic AE knowledge is recommended. And yes, there is full support! If you have installation issues or bugs, use the 'Report a Bug' button in the footer, sending prints, AE version, and error details."
             },
             es: {
                 nav_motion: "Motion Design", nav_playground: "Playground", nav_assistant: "Assistant", nav_scripts: "Scripts", nav_projects: "Proyectos AE", nav_masterclass: "Masterclass", nav_contact: "Contacto",
@@ -771,7 +858,7 @@
                 game_btn_start: "Comenzar", game_btn_restart: "Intentar de nuevo",
                 asst_subtitle: "Inicia tu proyecto con nuestras herramientas inteligentes y gratuitas.",
                 tab_expr: "Generador de Expresiones", tab_colors: "Color Lab",
-
+                
                 lbl_target_prop: "Propiedad Objetivo", prop_pos: "Posición", prop_scale: "Escala", prop_rot: "Rotación", prop_opac: "Opacidad", prop_text: "Texto",
                 lbl_select_fx: "Seleccionar Efecto",
                 fx_wiggle: "Wiggle (Agitación Aleatoria)", fx_loop: "LoopOut (Repetición Keyframes)", fx_time: "Time (Movimiento Continuo)", fx_float: "Floating (Flotación Suave)", fx_bounce: "Bounce Scale (Salto con Decaimiento)", fx_pendulum: "Pendulum (Balanceo Rítmico)", fx_typewriter: "Typewriter (Máquina de Escribir)",
@@ -784,10 +871,22 @@
                 opt_comp: "Complementaria (Opuestos)", opt_analog: "Análoga (Vecinos)", opt_triad: "Tríada (Triángulo)", opt_mono: "Monocromática (Tonos)",
                 lbl_click_hex: "Haz clic en el color para copiar el HEX",
 
-                footer_talk: "Hablemos", footer_rights: "© 2026 Catalan Lab. Todos los derechos reservados.", footer_bug: "Reportar un Error",
-                btn_buy: "Comprar", btn_download: "Descargar", btn_more: "Saber más", badge_course: "Curso Completo", btn_coming_soon: "Pronto", btn_tutorial: "Tutorial",
+                footer_talk: "Hablemos", footer_support: "Soporte", footer_support_desc: "¿Encontraste un error en un script o en el sitio?", footer_rights: "© 2026 Catalan Lab. Todos los derechos reservados.", footer_bug: "Reportar un Error",
+                btn_buy: "Comprar", btn_download: "Descargar", btn_more: "Saber más", badge_course: "Curso Completo", btn_coming_soon: "Pronto", btn_early_access: "Acceso Anticipado", btn_tutorial: "Tutorial",
                 btn_share_site: "Compartir", toast_copied: "¡Copiado al portapapeles!", toast_hex: "¡Color HEX copiado!",
-                btn_early_access: "Acceso Anticipado"
+
+                // FAQ ES
+                faq_title: "Preguntas Frecuentes", faq_subtitle: "Despeja tus dudas sobre instalación, licencias y actualizaciones.",
+                q1: "¿Dónde encuentro el plugin en After Effects y cómo lo instalo?",
+                a1: "Tras descargar el archivo (.jsxbin), pégalo en la carpeta oficial del sistema.<br><br><b class='text-brand-yellow'>Windows:</b><br><code class='bg-[#0d1322] px-3 py-2 rounded-lg mt-1 block border border-white/10 font-mono text-xs text-gray-300'>C:\\Archivos de Programa\\Adobe\\Adobe After Effects\\Support Files\\Scripts\\ScriptUI Panels</code><br><b class='text-brand-yellow'>Mac:</b><br><code class='bg-[#0d1322] px-3 py-2 rounded-lg mt-1 block border border-white/10 font-mono text-xs text-gray-300'>/Applications/Adobe After Effects/Scripts/ScriptUI Panels</code><br><br>Todos mis scripts están en el menú superior <b>Window</b> (Ventana) por defecto. El Lab Manager se ejecuta aparte, pero también debe abrirse primero desde Window.",
+                q2: "¿Puedo usar los plugins en proyectos comerciales? ¿Y la licencia?",
+                a2: "¡Sí! Los plugins pueden usarse en proyectos personales y comerciales, salvo indicación contraria. Sin embargo, el archivo (.jsxbin) está encriptado y es de uso individual. La distribución, reventa o copia no autorizada está prohibida y resultará en bloqueo y medidas legales.",
+                q3: "El plugin no apareció en After Effects. ¿Qué hacer?",
+                a3: "Verifica si el archivo fue colocado en la carpeta exacta <b>ScriptUI Panels</b> (no solo en Scripts), asegúrate de reiniciar completamente After Effects y revisa si tu versión de software es compatible.",
+                q4: "¿Cómo funcionan las actualizaciones, garantías y reembolsos?",
+                a4: "Sí, los plugins reciben mejoras constantes y nuevas funciones. Si compraste por Hotmart, el sistema envía la actualización a tu correo. Para plugins gratis, tu correo entra a la lista VIP. Las compras en Hotmart tienen 7 días de garantía incondicional (el reembolso tarda hasta 5 días hábiles en aprobarse).",
+                q5: "¿Necesito conocimiento avanzado? ¿Hay soporte posventa?",
+                a5: "No necesariamente. Algunas herramientas son simples, pero se recomienda tener nociones básicas de AE. Y sí, ¡hay soporte completo! Si tienes problemas de instalación o bugs, usa el botón 'Reportar un Error' en el pie de página enviando prints, versión de AE y detalles del error."
             }
         };
 
@@ -797,19 +896,15 @@
             currentLang = lang;
             localStorage.setItem('catalan_lang', lang);
             
-            // Textos Normais
+            // Textos Normais usando innerHTML para suportar as formatações em negrito do FAQ
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (translations[currentLang][key]) {
-                    el.innerText = translations[currentLang][key];
-                }
-            });
-
-            // Placeholders de Inputs
-            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-                const key = el.getAttribute('data-i18n-placeholder');
-                if (translations[currentLang][key]) {
-                    el.placeholder = translations[currentLang][key];
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = translations[currentLang][key];
+                    } else {
+                        el.innerHTML = translations[currentLang][key];
+                    }
                 }
             });
 
@@ -1005,7 +1100,7 @@
                 let actionButtons = '';
                 if (script.isComingSoon) {
                     let earlyAccessBtn = `<a href="https://chat.whatsapp.com/LG6y5yAyBDr9i1rG11OPz6" target="_blank" class="flex items-center gap-2 bg-brand-yellow/10 border border-brand-yellow/30 text-brand-yellow px-5 py-2.5 rounded-lg font-bold hover:bg-brand-yellow hover:text-brand-dark transition-all duration-300 w-full sm:w-auto justify-center">
-                        ${translations[currentLang].btn_early_access} <i data-lucide="key" class="w-4 h-4"></i>
+                        Acesso Antecipado <i data-lucide="key" class="w-4 h-4"></i>
                     </a>`;
                     let comingSoonBtn = `<button disabled class="flex items-center gap-2 bg-gray-800/50 text-gray-500 px-5 py-2.5 rounded-lg font-bold cursor-not-allowed w-full sm:w-auto justify-center border border-white/5">
                         ${localizedBtnText} <i data-lucide="clock" class="w-4 h-4"></i>
@@ -1227,6 +1322,7 @@
             bezierText.innerText = `cubic-bezier(${bezierParams[0].toFixed(2)}, ${bezierParams[1].toFixed(2)}, ${bezierParams[2].toFixed(2)}, ${bezierParams[3].toFixed(2)})`;
         }
 
+        // Gestão Global do Visual das Barras (Sliders)
         function updateSliderFill(el) {
             const min = parseFloat(el.min) || 0;
             const max = parseFloat(el.max) || 100;
@@ -1341,6 +1437,7 @@
             draw() {
                 gCtx.save();
                 gCtx.translate(this.x, this.y);
+                // Flip na abelha do Canvas para olhar para a direita
                 gCtx.scale(-1, 1);
                 gCtx.font = '36px Arial';
                 gCtx.textAlign = 'center';
@@ -1422,6 +1519,7 @@
             update() {
                 this.pulseAngle += 0.1;
                 
+                // Keyframes (moedas) nascem no frame 50 (exatamente entre as pilastras do frame 100)
                 if (frames % 100 === 50) {
                     if (Math.random() > 0.3) {
                         let yPos = Math.random() * (gameCanvas.height - 200) + 100;
@@ -1521,6 +1619,18 @@
             }
         });
 
+        // LÓGICA DO ACCORDION FAQ
+        function toggleFaq(index) {
+            const content = document.getElementById('faq-content-' + index);
+            const icon = document.getElementById('faq-icon-' + index);
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
 
         /* =========================================
            LÓGICA DO LAB ASSISTANT (WIDGETS)
@@ -1563,6 +1673,7 @@
             });
         }
 
+        // --- 1. Gerador de Expressões com Preview Nativo Universal ---
         let expressionPreviewRaf;
         const appStartTime = Date.now();
 

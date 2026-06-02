@@ -116,34 +116,33 @@
         .color-pop { animation: pop-in 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
     </style>
 </head>
-<body class="bg-brand-dark text-white font-sans antialiased selection:bg-brand-yellow selection:text-brand-dark">
+<body class="bg-brand-dark text-white font-sans antialiased selection:bg-brand-yellow selection:text-brand-dark flex flex-col min-h-screen">
 
     <nav class="fixed w-full z-50 glass-nav border-b border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-3">
+                <!-- Logo: Clicar volta para a Home -->
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="navigate('home')">
                     <img src="LOGO-ALPHA-SITE.gif" alt="Catalan Lab" onerror="this.onerror=null; this.src='https://placehold.co/400x100/0d1322/FFD600?text=Catalan+Lab'" class="h-10 w-auto object-contain">
                 </div>
 
                 <div class="flex items-center gap-4 md:gap-0">
                     <!-- Links Desktop -->
-                    <div class="hidden md:flex space-x-4 lg:space-x-6 items-center">
-                        <a href="#motion" data-i18n="nav_motion" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium whitespace-nowrap text-sm lg:text-base">Motion Design</a>
+                    <div class="hidden md:flex space-x-4 lg:space-x-5 items-center">
+                        <a href="javascript:void(0)" onclick="navigate('home', 'motion')" data-i18n="nav_motion" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium whitespace-nowrap text-sm lg:text-base">Motion Design</a>
+                        <a href="javascript:void(0)" onclick="navigate('home', 'scripts')" data-i18n="nav_scripts" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium whitespace-nowrap text-sm lg:text-base">Scripts</a>
+                        <a href="javascript:void(0)" onclick="navigate('home', 'projetos')" data-i18n="nav_projects" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium whitespace-nowrap text-sm lg:text-base">Projetos AE</a>
+                        <a href="javascript:void(0)" onclick="navigate('home', 'masterclass')" data-i18n="nav_masterclass" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium whitespace-nowrap text-sm lg:text-base">Masterclass</a>
                         
-                        <a href="#playground" class="group text-gray-300 hover:text-brand-yellow transition-colors font-medium flex items-center gap-1.5 whitespace-nowrap text-sm lg:text-base">
+                        <a href="javascript:void(0)" onclick="navigate('hub')" class="group text-gray-300 hover:text-brand-yellow transition-colors font-medium flex items-center gap-1.5 whitespace-nowrap text-sm lg:text-base">
+                            <i data-lucide="boxes" class="w-4 h-4 text-white group-hover:text-brand-yellow transition-colors"></i>
+                            <span data-i18n="nav_hub">Lab Hub</span>
+                        </a>
+                        
+                        <a href="javascript:void(0)" onclick="navigate('playground')" class="group text-gray-300 hover:text-brand-yellow transition-colors font-medium flex items-center gap-1.5 whitespace-nowrap text-sm lg:text-base">
                             <i data-lucide="gamepad-2" class="w-4 h-4 text-white group-hover:text-brand-yellow transition-colors"></i>
                             <span data-i18n="nav_playground">Playground</span>
                         </a>
-
-                        <a href="#assistant" class="group text-gray-300 hover:text-brand-yellow transition-colors font-medium flex items-center gap-1.5 whitespace-nowrap text-sm lg:text-base">
-                            <i data-lucide="bot" class="w-4 h-4 text-white group-hover:text-brand-yellow transition-colors"></i>
-                            <span data-i18n="nav_assistant">Assistant</span>
-                        </a>
-                        
-                        <a href="#scripts" data-i18n="nav_scripts" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium whitespace-nowrap text-sm lg:text-base">Scripts</a>
-                        <a href="#projetos" data-i18n="nav_projects" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium whitespace-nowrap text-sm lg:text-base">Projetos AE</a>
-                        <a href="#masterclass" data-i18n="nav_masterclass" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium whitespace-nowrap text-sm lg:text-base">Masterclass</a>
                         
                         <div class="flex items-center pl-4 lg:pl-6 border-l border-white/10">
                             <!-- Botão de Compartilhar Site Animado -->
@@ -173,25 +172,24 @@
         </div>
 
         <div id="mobile-menu" class="hidden md:hidden bg-brand-dark/95 backdrop-blur-lg border-b border-white/10 absolute top-20 left-0 w-full z-40 shadow-2xl">
-            <div class="px-6 py-8 flex flex-col space-y-6 text-center">
-                <a href="#motion" onclick="toggleMobileMenu()" data-i18n="nav_motion" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Motion Design</a>
+            <div class="px-6 py-8 flex flex-col space-y-6 text-center h-[calc(100vh-80px)] overflow-y-auto pb-24">
+                <a href="javascript:void(0)" onclick="navigate('home', 'motion')" data-i18n="nav_motion" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Motion Design</a>
+                <a href="javascript:void(0)" onclick="navigate('home', 'scripts')" data-i18n="nav_scripts" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Scripts</a>
+                <a href="javascript:void(0)" onclick="navigate('home', 'projetos')" data-i18n="nav_projects" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Projetos AE</a>
+                <a href="javascript:void(0)" onclick="navigate('home', 'masterclass')" data-i18n="nav_masterclass" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Masterclass</a>
                 
-                <a href="#playground" onclick="toggleMobileMenu()" class="group text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors flex items-center justify-center gap-2">
+                <a href="javascript:void(0)" onclick="navigate('hub')" class="group text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors flex items-center justify-center gap-2">
+                    <i data-lucide="boxes" class="w-5 h-5 text-white group-hover:text-brand-yellow transition-colors"></i> 
+                    <span data-i18n="nav_hub">Lab Hub</span>
+                </a>
+
+                <a href="javascript:void(0)" onclick="navigate('playground')" class="group text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors flex items-center justify-center gap-2">
                     <i data-lucide="gamepad-2" class="w-5 h-5 text-white group-hover:text-brand-yellow transition-colors"></i> 
                     <span data-i18n="nav_playground">Playground</span>
                 </a>
-
-                <a href="#assistant" onclick="toggleMobileMenu()" class="group text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors flex items-center justify-center gap-2">
-                    <i data-lucide="bot" class="w-5 h-5 text-white group-hover:text-brand-yellow transition-colors"></i> 
-                    <span data-i18n="nav_assistant">Assistant</span>
-                </a>
-                
-                <a href="#scripts" onclick="toggleMobileMenu()" data-i18n="nav_scripts" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Scripts</a>
-                <a href="#projetos" onclick="toggleMobileMenu()" data-i18n="nav_projects" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Projetos AE</a>
-                <a href="#masterclass" onclick="toggleMobileMenu()" data-i18n="nav_masterclass" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Masterclass</a>
                 
                 <!-- Botão Compartilhar no Menu Mobile -->
-                <div class="border-t border-white/10 pt-6">
+                <div class="border-t border-white/10 pt-6 mt-4">
                     <button onclick="shareSite(); toggleMobileMenu();" class="mx-auto flex items-center gap-2 bg-brand-yellow/10 border border-brand-yellow/30 text-brand-yellow px-6 py-3 rounded-full font-bold hover:bg-brand-yellow hover:text-brand-dark transition-colors">
                         <i data-lucide="share-2" class="w-5 h-5"></i>
                         <span data-i18n="btn_share_site">Compartilhar</span>
@@ -201,512 +199,757 @@
         </div>
     </nav>
 
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-yellow/10 via-brand-dark to-brand-dark -z-10"></div>
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight px-2 sm:px-0">
-                <span data-i18n="hero_title1">Ideias em</span> <br class="hidden sm:block">
-                <span data-i18n="hero_title2" class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-yellow-200">movimento.</span>
-            </h1>
-            <p data-i18n="hero_subtitle" class="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 px-2">
-                Workflows otimizados e desenvolvido por quem realmente respira o After Effects todos os dias.
-            </p>
-            
-            <!-- Separação com Bouncing Ball -->
-            <div class="mt-20 flex flex-col items-center justify-center h-24 relative">
-                <div class="w-px h-full bg-gradient-to-b from-transparent via-white/10 to-transparent absolute"></div>
-                <div class="w-4 h-4 bg-brand-yellow rounded-full animate-smooth-bounce shadow-[0_0_15px_rgba(255,214,0,0.6)] z-10 relative"></div>
-            </div>
-        </div>
-    </section>
+    <!-- CONTENT WRAPPER PARA O SPA -->
+    <main class="w-full flex-grow">
 
-    <section id="motion" class="py-20 bg-brand-dark relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center gap-4 mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold"><span data-i18n="section_motion1">Motion</span> <span data-i18n="section_motion2" class="text-brand-yellow">Design</span></h2>
-                <div class="h-px bg-white/10 flex-grow"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="portfolio-grid">
-                <!-- Gerado via JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- SEÇÃO PLAYGROUND -->
-    <section id="playground" class="py-20 relative bg-[#0a0f1c] overflow-hidden border-t border-white/5">
-        <div class="absolute inset-0 grid-bg opacity-30 pointer-events-none"></div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            
-            <div class="flex items-center justify-center gap-3 mb-4">
-                <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center text-brand-yellow">
-                    <i data-lucide="gamepad-2" class="w-6 h-6"></i>
-                </div>
-                <h2 class="text-3xl md:text-4xl font-bold">Motion <span class="text-brand-yellow">Playground</span></h2>
-            </div>
-            <p data-i18n="play_desc" class="text-center text-gray-400 max-w-2xl mx-auto mb-10">Divirta-se e teste conceitos essenciais de Motion Design direto no navegador.</p>
-
-            <!-- Playground Header (Tabs) -->
-            <div class="flex justify-center mb-8">
-                <div class="bg-[#1E293B] border border-white/10 rounded-xl inline-flex overflow-hidden p-1 shadow-lg">
-                    <button onclick="switchPlaygroundTab('graph')" id="tab-btn-graph" class="py-2 px-6 text-sm font-bold bg-brand-dark text-brand-yellow rounded-lg transition-colors whitespace-nowrap flex items-center gap-2">
-                        <i data-lucide="activity" class="w-4 h-4"></i> Graph Editor
-                    </button>
-                    <button onclick="switchPlaygroundTab('game')" id="tab-btn-game" class="py-2 px-6 text-sm font-bold text-gray-400 hover:text-white rounded-lg transition-colors whitespace-nowrap flex items-center gap-2">
-                        <i data-lucide="swords" class="w-4 h-4"></i> Flappy Bee
-                    </button>
-                </div>
-            </div>
-
-            <!-- TAB: GRAPH EDITOR -->
-            <div id="tab-content-graph" class="block animate-fade-in">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-[#0d1322] border border-white/5 p-6 md:p-10 rounded-3xl shadow-2xl">
+        <!-- ============================================== -->
+        <!-- PÁGINA 1: HOME (PORTFÓLIO, SCRIPTS, MASTERCLASS) -->
+        <!-- ============================================== -->
+        <div id="page-home" data-page="home" class="page-content block">
+            <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+                <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-yellow/10 via-brand-dark to-brand-dark -z-10"></div>
+                <div class="max-w-7xl mx-auto px-4 text-center">
+                    <h1 class="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 leading-tight px-2 sm:px-0">
+                        <span data-i18n="hero_title1">Ideias em</span> <br class="hidden sm:block">
+                        <span data-i18n="hero_title2" class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-yellow-200">movimento.</span>
+                    </h1>
+                    <p data-i18n="hero_subtitle" class="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-10 px-2">
+                        Workflows otimizados e desenvolvido por quem realmente respira o After Effects todos os dias.
+                    </p>
                     
-                    <div class="flex flex-col gap-6 justify-center">
-                        <div id="anim-track" class="w-full h-32 bg-black/50 border border-white/5 rounded-2xl relative overflow-hidden flex items-center px-4 grid-bg">
-                            <div id="anim-ball" class="w-12 h-12 bg-brand-yellow rounded-full shadow-[0_0_20px_rgba(255,214,0,0.6)] flex items-center justify-center relative z-10">
-                                <div class="w-2 h-2 bg-[#0d1322] rounded-full"></div>
+                    <!-- Separação com Bouncing Ball -->
+                    <div class="mt-20 flex flex-col items-center justify-center h-24 relative">
+                        <div class="w-px h-full bg-gradient-to-b from-transparent via-white/10 to-transparent absolute"></div>
+                        <div class="w-4 h-4 bg-brand-yellow rounded-full animate-smooth-bounce shadow-[0_0_15px_rgba(255,214,0,0.6)] z-10 relative"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="motion" class="py-20 bg-brand-dark relative">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex items-center gap-4 mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold"><span data-i18n="section_motion1">Motion</span> <span data-i18n="section_motion2" class="text-brand-yellow">Design</span></h2>
+                        <div class="h-px bg-white/10 flex-grow"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="portfolio-grid">
+                        <!-- Gerado via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <section id="scripts" class="py-20 relative bg-[#0a0f1c] border-t border-white/5">
+                <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="flex items-center gap-4 mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold"><span data-i18n="section_scripts1">Meus</span> <span data-i18n="section_scripts2" class="text-brand-yellow">Scripts</span></h2>
+                        <div class="h-px bg-white/10 flex-grow"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="scripts-grid">
+                        <!-- Gerado via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <section id="projetos" class="py-20 relative bg-brand-dark border-t border-white/5">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="flex items-center gap-4 mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold"><span data-i18n="section_projects1">Projetos</span> <span data-i18n="section_projects2" class="text-brand-yellow">AE</span></h2>
+                        <div class="h-px bg-white/10 flex-grow"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                        <!-- Gerado via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <section id="masterclass" class="py-20 bg-[#0a0f1c] relative border-t border-white/5">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="flex items-center gap-4 mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold"><span data-i18n="section_masterclass1" class="text-brand-yellow">Master</span><span data-i18n="section_masterclass2">class</span></h2>
+                        <div class="h-px bg-white/10 flex-grow"></div>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 gap-8" id="masterclass-container">
+                        <!-- Gerado via JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ (SEO) -->
+            <section id="faq" class="py-20 bg-brand-dark relative border-t border-white/5">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-i18n="faq_title">Perguntas Frequentes</h2>
+                        <p class="text-gray-400" data-i18n="faq_subtitle">Tire suas dúvidas sobre instalação, licenças e suporte.</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden">
+                            <button onclick="toggleFaq(1)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none hover:bg-white/5 transition-colors">
+                                <span class="font-bold text-brand-yellow" data-i18n="q1">Onde encontro o plugin dentro do After Effects e como instalo?</span>
+                                <i data-lucide="chevron-down" id="faq-icon-1" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
+                            </button>
+                            <div id="faq-content-1" class="px-6 pb-5 hidden">
+                                <p class="text-gray-400 text-sm leading-relaxed" data-i18n="a1">Após baixar o arquivo (.jsxbin), cole-o na pasta oficial do sistema. <br><br><b class='text-brand-yellow'>Windows:</b><br><code class='bg-[#0d1322] px-3 py-2 rounded-lg mt-1 block border border-white/10 font-mono text-xs text-gray-300'>C:\Arquivos de Programas\Adobe\Adobe After Effects\Support Files\Scripts\ScriptUI Panels</code><br><b class='text-brand-yellow'>Mac:</b><br><code class='bg-[#0d1322] px-3 py-2 rounded-lg mt-1 block border border-white/10 font-mono text-xs text-gray-300'>/Applications/Adobe After Effects/Scripts/ScriptUI Panels</code><br><br>Todos os meus scripts ficam localizados no menu superior <b>Window</b> (Janela) por padrão. O Lab Manager é um gerenciador que roda à parte, mas primeiramente ele também precisa ser aberto via Window.</p>
                             </div>
-                            <div class="absolute left-10 top-0 bottom-0 w-px bg-white/10 border-l border-dashed border-white/20"></div>
-                            <div class="absolute right-10 top-0 bottom-0 w-px bg-white/10 border-l border-dashed border-white/20"></div>
                         </div>
 
-                        <div class="flex justify-center w-full">
-                            <button onclick="toggleAnimation()" class="w-full sm:w-auto px-12 bg-brand-yellow text-brand-dark py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-yellow-400 hover:scale-105 transition-all shadow-lg">
-                                <span id="play-btn" data-i18n="btn_animate">Animate ME!</span>
-                                <i data-lucide="play" id="play-icon" class="w-5 h-5"></i>
+                        <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden">
+                            <button onclick="toggleFaq(2)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none hover:bg-white/5 transition-colors">
+                                <span class="font-bold text-brand-yellow" data-i18n="q2">Posso usar os plugins em projetos comerciais? E a licença?</span>
+                                <i data-lucide="chevron-down" id="faq-icon-2" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
+                            </button>
+                            <div id="faq-content-2" class="px-6 pb-5 hidden">
+                                <p class="text-gray-400 text-sm leading-relaxed" data-i18n="a2">Sim! Os plugins podem ser usados tanto em projetos pessoais quanto comerciais, salvo indicação contrária na página do produto. No entanto, o arquivo (.jsxbin) é criptografado e de uso individual. A distribuição, revenda ou realização de cópias não autorizadas é proibida e resulta no bloqueio do acesso e medidas legais.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden">
+                            <button onclick="toggleFaq(3)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none hover:bg-white/5 transition-colors">
+                                <span class="font-bold text-brand-yellow" data-i18n="q3">O plugin não apareceu no After Effects. O que fazer?</span>
+                                <i data-lucide="chevron-down" id="faq-icon-3" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
+                            </button>
+                            <div id="faq-content-3" class="px-6 pb-5 hidden">
+                                <p class="text-gray-400 text-sm leading-relaxed" data-i18n="a3">Verifique rigorosamente se o arquivo foi colocado na pasta exata de <b>ScriptUI Panels</b> (não apenas na pasta Scripts), certifique-se de que o After Effects foi completamente reiniciado após colar o arquivo e confira se a versão do seu software é compatível com o plugin.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden">
+                            <button onclick="toggleFaq(4)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none hover:bg-white/5 transition-colors">
+                                <span class="font-bold text-brand-yellow" data-i18n="q4">Como funcionam as atualizações, garantias e estornos?</span>
+                                <i data-lucide="chevron-down" id="faq-icon-4" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
+                            </button>
+                            <div id="faq-content-4" class="px-6 pb-5 hidden">
+                                <p class="text-gray-400 text-sm leading-relaxed" data-i18n="a4">Sim, os plugins recebem melhorias constantes, correções e novas funções. Se comprou via Hotmart, o sistema dispara a atualização automaticamente para o seu e-mail. Para plugins grátis, o e-mail cadastrado entra na nossa base de avisos. As compras na Hotmart possuem 7 dias de garantia incondicional (o processo de aprovação de estorno pela plataforma pode levar até 5 dias úteis).</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden">
+                            <button onclick="toggleFaq(5)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none hover:bg-white/5 transition-colors">
+                                <span class="font-bold text-brand-yellow" data-i18n="q5">Preciso de conhecimento avançado? Há suporte pós-compra?</span>
+                                <i data-lucide="chevron-down" id="faq-icon-5" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
+                            </button>
+                            <div id="faq-content-5" class="px-6 pb-5 hidden">
+                                <p class="text-gray-400 text-sm leading-relaxed" data-i18n="a5">Não necessariamente. Algumas ferramentas são simples e diretas, mas é recomendado ter noções básicas do After Effects para aproveitar melhor os recursos. E sim, existe suporte completo! Caso tenha problemas de instalação ou bugs, utilize o botão "Relatar um Bug" no rodapé do site enviando prints, versão do AE e detalhes do erro para agilizarmos a correção.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ============================================== -->
+        <!-- PÁGINA 2: PLAYGROUND -->
+        <!-- ============================================== -->
+        <div id="page-playground" data-page="playground" class="page-content hidden pt-24 min-h-screen bg-[#0a0f1c] relative overflow-hidden">
+            <div class="absolute inset-0 grid-bg opacity-30 pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                
+                <div class="flex items-center justify-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-brand-yellow/10 rounded-xl flex items-center justify-center text-brand-yellow">
+                        <i data-lucide="gamepad-2" class="w-6 h-6"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold">Motion <span class="text-brand-yellow">Playground</span></h2>
+                </div>
+                <p data-i18n="play_desc" class="text-center text-gray-400 max-w-2xl mx-auto mb-10">Divirta-se e teste conceitos essenciais de Motion Design direto no navegador.</p>
+
+                <!-- TAB: FLAPPY BEE (AGORA ISOLADO E CENTRADO) -->
+                <div id="tab-content-game" class="block animate-fade-in pb-20">
+                    <div class="bg-[#0d1322] border border-white/5 rounded-3xl shadow-2xl overflow-hidden relative flex flex-col items-center justify-center mx-auto aspect-video touch-none w-full max-w-[800px]">
+                        <canvas id="flappyCanvas" width="800" height="450" class="w-full h-full object-cover bg-[#0a0f1c] cursor-pointer hidden" onclick="jump(event)" ontouchstart="jump(event)"></canvas>
+
+                        <div id="game-start-screen" class="absolute inset-0 flex flex-col items-center justify-center bg-brand-dark/90 backdrop-blur-sm z-10 p-6 text-center cursor-pointer" onclick="startGame(event)" ontouchstart="startGame(event)">
+                            <div class="text-6xl animate-bounce transform -scale-x-100">🐝</div>
+                            <h3 class="text-3xl font-bold text-white mt-4 mb-2">Flappy Bee</h3>
+                            <p class="text-gray-400 mb-2 max-w-sm text-sm" data-i18n="game_instruction">Aperte Espaço ou toque na tela para flutuar.</p>
+                            <p class="text-brand-yellow font-bold text-sm mb-8" data-i18n="game_instruction2">Colete os Keyframes (♦) para ganhar bónus!</p>
+                            <button onclick="startGame(event)" ontouchstart="startGame(event)" class="bg-brand-yellow text-brand-dark px-8 py-3 rounded-xl font-bold hover:bg-yellow-400 hover:scale-105 transition-transform flex items-center gap-2 shadow-[0_0_20px_rgba(255,214,0,0.4)]">
+                                <i data-lucide="play" class="w-5 h-5"></i> <span data-i18n="game_btn_start">Começar</span>
                             </button>
                         </div>
-                    </div>
 
-                    <div class="bg-black/30 border border-white/5 rounded-2xl p-6 flex flex-col md:flex-row gap-8 items-center">
-                        <div class="flex-shrink-0 relative">
-                            <div class="absolute top-2 left-2 text-[10px] text-gray-500 font-mono" data-i18n="play_val">Value</div>
-                            <div class="absolute bottom-2 right-2 text-[10px] text-gray-500 font-mono" data-i18n="play_time">Time</div>
-                            <canvas id="bezierCanvas" width="200" height="200" class="bg-[#0a0f1c] border border-white/10 rounded-lg shadow-inner"></canvas>
+                        <div id="game-over-screen" class="absolute inset-0 hidden flex flex-col items-center justify-center bg-red-900/90 backdrop-blur-sm z-10 p-6 text-center cursor-pointer" onclick="startGame(event)" ontouchstart="startGame(event)">
+                            <h3 class="text-4xl font-bold text-white mb-2">Game Over</h3>
+                            <p class="text-xl text-gray-200 mb-6">Pontos: <span id="game-final-score" class="font-bold text-brand-yellow">0</span></p>
+                            <button onclick="startGame(event)" ontouchstart="startGame(event)" class="bg-white text-red-900 px-8 py-3 rounded-xl font-bold hover:scale-105 transition-transform flex items-center gap-2">
+                                <i data-lucide="refresh-cw" class="w-5 h-5"></i> <span data-i18n="game_btn_restart">Tentar Novamente</span>
+                            </button>
                         </div>
 
-                        <div class="flex-grow w-full space-y-6">
-                            <div>
-                                <div class="flex justify-between mb-2">
-                                    <span class="text-sm font-bold text-gray-300" data-i18n="play_presets">Presets</span>
-                                    <span id="current-bezier-text" class="text-xs font-mono text-brand-yellow bg-brand-yellow/10 px-2 py-1 rounded">ease</span>
-                                </div>
-                                <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
-                                    <button onclick="setPreset('linear')" class="text-xs bg-white/5 hover:bg-white/10 border border-white/10 rounded py-2 transition-colors">Linear</button>
-                                    <button onclick="setPreset('ease')" class="text-xs bg-brand-yellow text-brand-dark font-bold rounded py-2 transition-colors">Easy Ease</button>
-                                    <button onclick="setPreset('overshoot')" class="text-xs bg-white/5 hover:bg-white/10 border border-white/10 rounded py-2 transition-colors">Overshoot</button>
-                                </div>
-                            </div>
-
-                            <div class="space-y-3">
-                                <span class="text-sm font-bold text-gray-300" data-i18n="play_custom">Custom Curve</span>
-                                <div class="flex gap-3 items-center">
-                                    <span class="text-xs font-mono text-gray-500 w-4">X1</span>
-                                    <input type="range" id="slider-x1" min="0" max="1" step="0.01" value="0.25" oninput="updateCustomBezier()">
-                                </div>
-                                <div class="flex gap-3 items-center">
-                                    <span class="text-xs font-mono text-brand-yellow w-4">Y1</span>
-                                    <input type="range" id="slider-y1" min="-0.5" max="1.5" step="0.01" value="0.1" oninput="updateCustomBezier()">
-                                </div>
-                                <div class="flex gap-3 items-center">
-                                    <span class="text-xs font-mono text-gray-500 w-4">X2</span>
-                                    <input type="range" id="slider-x2" min="0" max="1" step="0.01" value="0.25" oninput="updateCustomBezier()">
-                                </div>
-                                <div class="flex gap-3 items-center">
-                                    <span class="text-xs font-mono text-brand-yellow w-4">Y2</span>
-                                    <input type="range" id="slider-y2" min="-0.5" max="1.5" step="0.01" value="1.0" oninput="updateCustomBezier()">
-                                </div>
-                            </div>
+                        <div id="game-score-hud" class="absolute top-4 right-6 text-3xl font-bold text-white drop-shadow-lg hidden pointer-events-none z-0 font-mono">
+                            0
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- TAB: MINI GAME (FLAPPY BEE) - AJUSTADO PARA MOBILE -->
-            <div id="tab-content-game" class="hidden animate-fade-in">
-                <div class="bg-[#0d1322] border border-white/5 rounded-3xl shadow-2xl overflow-hidden relative flex flex-col items-center justify-center mx-auto aspect-video touch-none w-full max-w-[800px]">
-                    
-                    <canvas id="flappyCanvas" width="800" height="450" class="w-full h-full object-cover bg-[#0a0f1c] cursor-pointer hidden" onclick="jump(event)" ontouchstart="jump(event)"></canvas>
-
-                    <div id="game-start-screen" class="absolute inset-0 flex flex-col items-center justify-center bg-brand-dark/90 backdrop-blur-sm z-10 p-6 text-center cursor-pointer" onclick="startGame(event)" ontouchstart="startGame(event)">
-                        <div class="text-6xl animate-bounce transform -scale-x-100">🐝</div>
-                        <h3 class="text-3xl font-bold text-white mt-4 mb-2">Flappy Bee</h3>
-                        <p class="text-gray-400 mb-2 max-w-sm text-sm" data-i18n="game_instruction">Aperte Espaço ou toque na tela para flutuar.</p>
-                        <p class="text-brand-yellow font-bold text-sm mb-8" data-i18n="game_instruction2">Colete os Keyframes (♦) para ganhar bónus!</p>
-                        <button onclick="startGame(event)" ontouchstart="startGame(event)" class="bg-brand-yellow text-brand-dark px-8 py-3 rounded-xl font-bold hover:bg-yellow-400 hover:scale-105 transition-transform flex items-center gap-2 shadow-[0_0_20px_rgba(255,214,0,0.4)]">
-                            <i data-lucide="play" class="w-5 h-5"></i> <span data-i18n="game_btn_start">Começar</span>
-                        </button>
-                    </div>
-
-                    <div id="game-over-screen" class="absolute inset-0 hidden flex flex-col items-center justify-center bg-red-900/90 backdrop-blur-sm z-10 p-6 text-center cursor-pointer" onclick="startGame(event)" ontouchstart="startGame(event)">
-                        <h3 class="text-4xl font-bold text-white mb-2">Game Over</h3>
-                        <p class="text-xl text-gray-200 mb-6">Pontos: <span id="game-final-score" class="font-bold text-brand-yellow">0</span></p>
-                        <button onclick="startGame(event)" ontouchstart="startGame(event)" class="bg-white text-red-900 px-8 py-3 rounded-xl font-bold hover:scale-105 transition-transform flex items-center gap-2">
-                            <i data-lucide="refresh-cw" class="w-5 h-5"></i> <span data-i18n="game_btn_restart">Tentar Novamente</span>
-                        </button>
-                    </div>
-
-                    <div id="game-score-hud" class="absolute top-4 right-6 text-3xl font-bold text-white drop-shadow-lg hidden pointer-events-none z-0 font-mono">
-                        0
-                    </div>
-                </div>
             </div>
         </div>
-    </section>
 
-    <!-- NOVA SEÇÃO: LAB ASSISTANT -->
-    <section id="assistant" class="py-20 bg-brand-dark relative border-t border-white/5">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            
-            <div class="flex flex-col items-center justify-center gap-3 mb-10">
-                <div class="flex items-center justify-center gap-3">
-                    <h2 class="text-3xl md:text-4xl font-bold">Lab <span class="text-brand-yellow">Assistant</span></h2>
-                    <i data-lucide="bot" class="w-8 h-8 text-brand-yellow animate-pulse"></i>
-                </div>
-                <p data-i18n="asst_subtitle" class="text-gray-400 text-center text-sm md:text-base">Inicie o seu projeto com as nossas ferramentas inteligentes e gratuitas.</p>
-            </div>
-
-            <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
-                
-                <div class="bg-[#1E293B] border-b border-white/10 flex overflow-x-auto hide-scrollbar">
-                    <button onclick="switchAssistantTab('expr')" id="tab-btn-expr" class="flex-1 py-4 px-6 text-sm font-bold text-brand-yellow border-b-2 border-brand-yellow transition-colors whitespace-nowrap flex items-center justify-center gap-2">
-                        <i data-lucide="code" class="w-4 h-4"></i> <span data-i18n="tab_expr">Gerador de Expressões</span>
-                    </button>
-                    <button onclick="switchAssistantTab('colors')" id="tab-btn-colors" class="flex-1 py-4 px-6 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-white transition-colors whitespace-nowrap flex items-center justify-center gap-2">
-                        <i data-lucide="palette" class="w-4 h-4"></i> <span data-i18n="tab_colors">Color Lab</span>
-                    </button>
+        <!-- ============================================== -->
+        <!-- PÁGINA 3: LAB HUB (Unificado) -->
+        <!-- ============================================== -->
+        <div id="page-hub" data-page="hub" class="page-content hidden pt-24 min-h-screen bg-brand-dark">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+                <div class="flex flex-col items-center justify-center gap-3 mb-10">
+                    <div class="w-16 h-16 bg-brand-yellow/10 rounded-2xl flex items-center justify-center text-brand-yellow mb-2 shadow-[0_0_20px_rgba(255,214,0,0.2)]">
+                        <i data-lucide="boxes" class="w-8 h-8"></i>
+                    </div>
+                    <div class="flex items-center justify-center gap-3">
+                        <h2 class="text-3xl md:text-4xl font-bold">Lab <span class="text-brand-yellow">Hub</span></h2>
+                    </div>
+                    <p data-i18n="hub_desc" class="text-gray-400 text-center text-sm md:text-base max-w-2xl">O Lab Hub é a central criativa do Catalan Lab: uma biblioteca de ferramentas, expressões, receitas, scripts e recursos para acelerar seu workflow no After Effects.</p>
                 </div>
 
-                <div class="p-6 md:p-8 min-h-[450px]">
-                    
-                    <!-- TAB 1: EXPRESSIONS -->
-                    <div id="tab-content-expr" class="block animate-fade-in">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div class="space-y-6">
-                                
-                                <div>
-                                    <label class="block text-sm font-bold text-gray-400 mb-2" data-i18n="lbl_target_prop">Propriedade Alvo</label>
-                                    <div class="flex flex-wrap gap-2">
-                                        <button onclick="selectProperty('position')" id="prop-position" class="flex-1 min-w-[70px] py-2 rounded-lg border border-brand-yellow text-brand-yellow bg-brand-yellow/10 text-xs font-bold transition-all" data-i18n="prop_pos">Posição</button>
-                                        <button onclick="selectProperty('scale')" id="prop-scale" class="flex-1 min-w-[70px] py-2 rounded-lg border border-white/10 text-gray-400 hover:text-white hover:bg-white/5 text-xs font-bold transition-all" data-i18n="prop_scale">Escala</button>
-                                        <button onclick="selectProperty('rotation')" id="prop-rotation" class="flex-1 min-w-[70px] py-2 rounded-lg border border-white/10 text-gray-400 hover:text-white hover:bg-white/5 text-xs font-bold transition-all" data-i18n="prop_rot">Rotação</button>
-                                        <button onclick="selectProperty('opacity')" id="prop-opacity" class="flex-1 min-w-[70px] py-2 rounded-lg border border-white/10 text-gray-400 hover:text-white hover:bg-white/5 text-xs font-bold transition-all" data-i18n="prop_opac">Opacidade</button>
-                                        <button onclick="selectProperty('text')" id="prop-text" class="flex-1 min-w-[70px] py-2 rounded-lg border border-white/10 text-gray-400 hover:text-white hover:bg-white/5 text-xs font-bold transition-all" data-i18n="prop_text">Texto</button>
-                                    </div>
-                                </div>
+                <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+                    <div class="bg-[#1E293B] border-b border-white/10 flex overflow-x-auto hide-scrollbar">
+                        <button onclick="switchHubTab('expr')" id="tab-btn-expr" class="flex-1 py-4 px-6 text-sm font-bold text-brand-yellow border-b-2 border-brand-yellow transition-colors whitespace-nowrap flex items-center justify-center gap-2">
+                            <i data-lucide="code" class="w-4 h-4"></i> <span data-i18n="tab_expr">Gerador de Expressões</span>
+                        </button>
+                        <button onclick="switchHubTab('graph')" id="tab-btn-graph" class="flex-1 py-4 px-6 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-white transition-colors whitespace-nowrap flex items-center justify-center gap-2">
+                            <i data-lucide="activity" class="w-4 h-4"></i> <span data-i18n="tab_graph">Graph Editor</span>
+                        </button>
+                        <button onclick="switchHubTab('colors')" id="tab-btn-colors" class="flex-1 py-4 px-6 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-white transition-colors whitespace-nowrap flex items-center justify-center gap-2">
+                            <i data-lucide="palette" class="w-4 h-4"></i> <span data-i18n="tab_colors">Color Lab</span>
+                        </button>
+                        <button onclick="switchHubTab('recipes')" id="tab-btn-recipes" class="flex-1 py-4 px-6 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-white transition-colors whitespace-nowrap flex items-center justify-center gap-2">
+                            <i data-lucide="book-open" class="w-4 h-4"></i> <span data-i18n="tab_recipes">Motion Recipes</span>
+                        </button>
+                        <button onclick="switchHubTab('bpm')" id="tab-btn-bpm" class="flex-1 py-4 px-6 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-white transition-colors whitespace-nowrap flex items-center justify-center gap-2">
+                            <i data-lucide="music" class="w-4 h-4"></i> <span data-i18n="tab_bpm">BPM Sync</span>
+                        </button>
+                        <button onclick="switchHubTab('shortcuts')" id="tab-btn-shortcuts" class="flex-1 py-4 px-6 text-sm font-bold text-gray-400 border-b-2 border-transparent hover:text-white transition-colors whitespace-nowrap flex items-center justify-center gap-2">
+                            <i data-lucide="keyboard" class="w-4 h-4"></i> <span data-i18n="tab_shortcuts">Atalhos AE</span>
+                        </button>
+                    </div>
 
-                                <div>
-                                    <label class="block text-sm font-bold text-gray-400 mb-2" data-i18n="lbl_select_fx">Selecione o Efeito</label>
-                                    <select id="expr-type" onchange="generateExpression()" class="w-full bg-[#0d1322] border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-brand-yellow">
-                                        <option value="wiggle" data-i18n="fx_wiggle">Wiggle (Agitação Aleatória)</option>
-                                        <option value="loop" data-i18n="fx_loop">LoopOut (Repetição de Keyframes)</option>
-                                        <option value="time" data-i18n="fx_time">Time (Movimento Contínuo)</option>
-                                        <option value="floating" data-i18n="fx_float">Floating (Flutuação Suave)</option>
-                                        <option value="bounce" data-i18n="fx_bounce">Bounce Scale (Salto com Decaimento)</option>
-                                        <option value="pendulum" data-i18n="fx_pendulum">Pendulum (Balanço Rítmico)</option>
-                                        <option value="typewriter" data-i18n="fx_typewriter">Typewriter (Máquina de Escrever)</option>
-                                    </select>
-                                </div>
-                                
-                                <div id="expr-controls-wiggle" class="space-y-4">
+                    <div class="p-6 md:p-10 lg:p-12 min-h-[500px]">
+                        <!-- TAB: EXPRESSIONS -->
+                        <div id="tab-content-expr" class="block animate-fade-in">
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 mb-8">
+                                <div class="space-y-8">
                                     <div>
-                                        <div class="flex justify-between"><label class="text-sm text-gray-400" data-i18n="lbl_freq">Frequência</label><span id="val-freq" class="text-brand-yellow font-mono text-xs">2</span></div>
-                                        <input type="range" id="expr-freq" min="0.1" max="20" step="0.1" value="2" oninput="document.getElementById('val-freq').innerText=this.value; generateExpression();">
+                                        <label class="block text-sm font-bold text-gray-400 mb-3" data-i18n="lbl_target_prop">Propriedade Alvo</label>
+                                        <div class="flex flex-wrap gap-3">
+                                            <button onclick="selectProperty('position')" id="prop-position" class="flex-1 min-w-[70px] py-2 rounded-lg border border-brand-yellow text-brand-yellow bg-brand-yellow/10 text-xs font-bold transition-all" data-i18n="prop_pos">Posição</button>
+                                            <button onclick="selectProperty('scale')" id="prop-scale" class="flex-1 min-w-[70px] py-2 rounded-lg border border-white/10 text-gray-400 hover:text-white hover:bg-white/5 text-xs font-bold transition-all" data-i18n="prop_scale">Escala</button>
+                                            <button onclick="selectProperty('rotation')" id="prop-rotation" class="flex-1 min-w-[70px] py-2 rounded-lg border border-white/10 text-gray-400 hover:text-white hover:bg-white/5 text-xs font-bold transition-all" data-i18n="prop_rot">Rotação</button>
+                                            <button onclick="selectProperty('opacity')" id="prop-opacity" class="flex-1 min-w-[70px] py-2 rounded-lg border border-white/10 text-gray-400 hover:text-white hover:bg-white/5 text-xs font-bold transition-all" data-i18n="prop_opac">Opacidade</button>
+                                            <button onclick="selectProperty('text')" id="prop-text" class="flex-1 min-w-[70px] py-2 rounded-lg border border-white/10 text-gray-400 hover:text-white hover:bg-white/5 text-xs font-bold transition-all" data-i18n="prop_text">Texto</button>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <div class="flex justify-between"><label class="text-sm text-gray-400" data-i18n="lbl_amp">Amplitude</label><span id="val-amp" class="text-brand-yellow font-mono text-xs">50</span></div>
-                                        <input type="range" id="expr-amp" min="1" max="300" step="1" value="50" oninput="document.getElementById('val-amp').innerText=this.value; generateExpression();">
-                                    </div>
-                                </div>
 
-                                <div id="expr-controls-loop" class="space-y-4 hidden">
                                     <div>
-                                        <label class="block text-sm text-gray-400 mb-2" data-i18n="lbl_loop_type">Tipo de Loop</label>
-                                        <select id="expr-loop-type" onchange="generateExpression()" class="w-full bg-[#0d1322] border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-brand-yellow">
-                                            <option value="cycle" data-i18n="opt_cycle">Cycle (Reinicia Padrão)</option>
-                                            <option value="pingpong" data-i18n="opt_pingpong">PingPong (Vai e Volta)</option>
-                                            <option value="continue" data-i18n="opt_continue">Continue (Soma o valor)</option>
+                                        <label class="block text-sm font-bold text-gray-400 mb-3" data-i18n="lbl_select_fx">Selecione o Efeito</label>
+                                        <select id="expr-type" onchange="generateExpression()" class="w-full bg-[#0d1322] border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-brand-yellow shadow-inner">
+                                            <option value="wiggle" data-i18n="fx_wiggle">Wiggle (Agitação Aleatória)</option>
+                                            <option value="loop" data-i18n="fx_loop">LoopOut (Repetição de Keyframes)</option>
+                                            <option value="time" data-i18n="fx_time">Time (Movimento Contínuo)</option>
+                                            <option value="floating" data-i18n="fx_float">Floating (Flutuação Suave)</option>
+                                            <option value="bounce" data-i18n="fx_bounce">Bounce Scale (Salto com Decaimento)</option>
+                                            <option value="pendulum" data-i18n="fx_pendulum">Pendulum (Balanço Rítmico)</option>
+                                            <option value="typewriter" data-i18n="fx_typewriter">Typewriter (Máquina de Escrever)</option>
                                         </select>
                                     </div>
-                                </div>
-
-                                <div id="expr-controls-time" class="space-y-4 hidden">
-                                    <div>
-                                        <div class="flex justify-between"><label class="text-sm text-gray-400" data-i18n="lbl_speed_mult">Velocidade (Multiplicador)</label><span id="val-speed" class="text-brand-yellow font-mono text-xs">100</span></div>
-                                        <input type="range" id="expr-speed" min="10" max="1000" step="10" value="100" oninput="document.getElementById('val-speed').innerText=this.value; generateExpression();">
-                                    </div>
-                                </div>
-
-                                <div id="expr-controls-floating" class="space-y-4 hidden">
-                                    <div>
-                                        <div class="flex justify-between"><label class="text-sm text-gray-400" data-i18n="lbl_freq">Frequência</label><span id="val-float-freq" class="text-brand-yellow font-mono text-xs">2</span></div>
-                                        <input type="range" id="expr-float-freq" min="0.1" max="10" step="0.1" value="2" oninput="document.getElementById('val-float-freq').innerText=this.value; generateExpression();">
-                                    </div>
-                                    <div>
-                                        <div class="flex justify-between"><label class="text-sm text-gray-400" data-i18n="lbl_amp">Amplitude</label><span id="val-float-amp" class="text-brand-yellow font-mono text-xs">30</span></div>
-                                        <input type="range" id="expr-float-amp" min="1" max="200" step="1" value="30" oninput="document.getElementById('val-float-amp').innerText=this.value; generateExpression();">
-                                    </div>
-                                </div>
-
-                                <div id="expr-controls-bounce" class="space-y-4 hidden">
-                                    <div>
-                                        <div class="flex justify-between"><label class="text-sm text-gray-400" data-i18n="lbl_amp">Amplitude</label><span id="val-bounce-amp" class="text-brand-yellow font-mono text-xs">20</span></div>
-                                        <input type="range" id="expr-bounce-amp" min="1" max="100" step="1" value="20" oninput="document.getElementById('val-bounce-amp').innerText=this.value; generateExpression();">
-                                    </div>
-                                    <div class="flex gap-4">
-                                        <div class="flex-1">
-                                            <div class="flex justify-between"><label class="text-sm text-gray-400" data-i18n="lbl_freq">Frequência</label><span id="val-bounce-freq" class="text-brand-yellow font-mono text-xs">3</span></div>
-                                            <input type="range" id="expr-bounce-freq" min="1" max="10" step="0.1" value="3" oninput="document.getElementById('val-bounce-freq').innerText=this.value; generateExpression();">
+                                    
+                                    <div id="expr-controls-wiggle" class="space-y-6">
+                                        <div>
+                                            <div class="flex justify-between mb-2"><label class="text-sm font-bold text-gray-400" data-i18n="lbl_freq">Frequência</label><span id="val-freq" class="text-brand-yellow font-mono text-sm bg-brand-yellow/10 px-2 rounded">2</span></div>
+                                            <input type="range" id="expr-freq" min="0.1" max="20" step="0.1" value="2" oninput="document.getElementById('val-freq').innerText=this.value; generateExpression();">
                                         </div>
-                                        <div class="flex-1">
-                                            <div class="flex justify-between"><label class="text-sm text-gray-400" data-i18n="lbl_decay">Decaimento</label><span id="val-bounce-decay" class="text-brand-yellow font-mono text-xs">3</span></div>
-                                            <input type="range" id="expr-bounce-decay" min="1" max="10" step="0.1" value="3" oninput="document.getElementById('val-bounce-decay').innerText=this.value; generateExpression();">
+                                        <div>
+                                            <div class="flex justify-between mb-2"><label class="text-sm font-bold text-gray-400" data-i18n="lbl_amp">Amplitude</label><span id="val-amp" class="text-brand-yellow font-mono text-sm bg-brand-yellow/10 px-2 rounded">50</span></div>
+                                            <input type="range" id="expr-amp" min="1" max="300" step="1" value="50" oninput="document.getElementById('val-amp').innerText=this.value; generateExpression();">
                                         </div>
                                     </div>
-                                </div>
 
-                                <div id="expr-controls-pendulum" class="space-y-4 hidden">
-                                    <div>
-                                        <div class="flex justify-between"><label class="text-sm text-gray-400" data-i18n="lbl_speed">Velocidade</label><span id="val-pend-speed" class="text-brand-yellow font-mono text-xs">2</span></div>
-                                        <input type="range" id="expr-pend-speed" min="0.1" max="10" step="0.1" value="2" oninput="document.getElementById('val-pend-speed').innerText=this.value; generateExpression();">
-                                    </div>
-                                    <div>
-                                        <div class="flex justify-between"><label class="text-sm text-gray-400" data-i18n="lbl_angle_amp">Ângulo/Amplitude</label><span id="val-pend-amp" class="text-brand-yellow font-mono text-xs">25</span></div>
-                                        <input type="range" id="expr-pend-amp" min="1" max="180" step="1" value="25" oninput="document.getElementById('val-pend-amp').innerText=this.value; generateExpression();">
-                                    </div>
-                                </div>
-
-                                <div id="expr-controls-typewriter" class="space-y-4 hidden">
-                                    <div>
-                                        <div class="flex justify-between"><label class="text-sm text-gray-400" data-i18n="lbl_speed_letters">Velocidade (Letras/seg)</label><span id="val-type-speed" class="text-brand-yellow font-mono text-xs">20</span></div>
-                                        <input type="range" id="expr-type-speed" min="1" max="100" step="1" value="20" oninput="document.getElementById('val-type-speed').innerText=this.value; generateExpression();">
-                                    </div>
-                                    <div class="flex gap-4">
-                                        <div class="flex-grow">
-                                            <label class="block text-sm text-gray-400 mb-2" data-i18n="lbl_custom_text">Texto Personalizado</label>
-                                            <input type="text" id="expr-type-text" data-i18n-placeholder="placeholder_text" placeholder="Deixe em branco para usar o texto da camada" oninput="generateExpression()" class="w-full bg-[#0d1322] border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-brand-yellow font-mono text-sm">
-                                        </div>
-                                        <div class="w-24">
-                                            <label class="block text-sm text-gray-400 mb-2 text-center" data-i18n="lbl_cursor">Cursor</label>
-                                            <input type="text" id="expr-type-cursor" value="|" oninput="generateExpression()" class="w-full bg-[#0d1322] border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-brand-yellow font-mono text-center text-sm">
+                                    <div id="expr-controls-loop" class="space-y-6 hidden">
+                                        <div>
+                                            <label class="block text-sm font-bold text-gray-400 mb-3" data-i18n="lbl_loop_type">Tipo de Loop</label>
+                                            <select id="expr-loop-type" onchange="generateExpression()" class="w-full bg-[#0d1322] border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-brand-yellow shadow-inner">
+                                                <option value="cycle" data-i18n="opt_cycle">Cycle (Reinicia Padrão)</option>
+                                                <option value="pingpong" data-i18n="opt_pingpong">PingPong (Vai e Volta)</option>
+                                                <option value="continue" data-i18n="opt_continue">Continue (Soma o valor)</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div>
-                                        <label class="block text-sm font-bold text-gray-400 mb-2" data-i18n="lbl_cursor_mode">Modo do Cursor</label>
-                                        <select id="expr-type-cursor-mode" onchange="generateExpression()" class="w-full bg-[#0d1322] border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-brand-yellow font-bold text-sm">
-                                            <option value="blink" data-i18n="opt_blink">Piscar para Sempre</option>
-                                            <option value="stop" data-i18n="opt_stop">Sumir ao Concluir</option>
-                                        </select>
+
+                                    <div id="expr-controls-time" class="space-y-6 hidden">
+                                        <div>
+                                            <div class="flex justify-between mb-2"><label class="text-sm font-bold text-gray-400" data-i18n="lbl_speed_mult">Velocidade (Multiplicador)</label><span id="val-speed" class="text-brand-yellow font-mono text-sm bg-brand-yellow/10 px-2 rounded">100</span></div>
+                                            <input type="range" id="expr-speed" min="10" max="1000" step="10" value="100" oninput="document.getElementById('val-speed').innerText=this.value; generateExpression();">
+                                        </div>
+                                    </div>
+
+                                    <div id="expr-controls-floating" class="space-y-6 hidden">
+                                        <div>
+                                            <div class="flex justify-between mb-2"><label class="text-sm font-bold text-gray-400" data-i18n="lbl_freq">Frequência</label><span id="val-float-freq" class="text-brand-yellow font-mono text-sm bg-brand-yellow/10 px-2 rounded">2</span></div>
+                                            <input type="range" id="expr-float-freq" min="0.1" max="10" step="0.1" value="2" oninput="document.getElementById('val-float-freq').innerText=this.value; generateExpression();">
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between mb-2"><label class="text-sm font-bold text-gray-400" data-i18n="lbl_amp">Amplitude</label><span id="val-float-amp" class="text-brand-yellow font-mono text-sm bg-brand-yellow/10 px-2 rounded">30</span></div>
+                                            <input type="range" id="expr-float-amp" min="1" max="200" step="1" value="30" oninput="document.getElementById('val-float-amp').innerText=this.value; generateExpression();">
+                                        </div>
+                                    </div>
+
+                                    <div id="expr-controls-bounce" class="space-y-6 hidden">
+                                        <div>
+                                            <div class="flex justify-between mb-2"><label class="text-sm font-bold text-gray-400" data-i18n="lbl_amp">Amplitude</label><span id="val-bounce-amp" class="text-brand-yellow font-mono text-sm bg-brand-yellow/10 px-2 rounded">20</span></div>
+                                            <input type="range" id="expr-bounce-amp" min="1" max="100" step="1" value="20" oninput="document.getElementById('val-bounce-amp').innerText=this.value; generateExpression();">
+                                        </div>
+                                        <div class="flex gap-6">
+                                            <div class="flex-1">
+                                                <div class="flex justify-between mb-2"><label class="text-sm font-bold text-gray-400" data-i18n="lbl_freq">Frequência</label><span id="val-bounce-freq" class="text-brand-yellow font-mono text-sm bg-brand-yellow/10 px-2 rounded">3</span></div>
+                                                <input type="range" id="expr-bounce-freq" min="1" max="10" step="0.1" value="3" oninput="document.getElementById('val-bounce-freq').innerText=this.value; generateExpression();">
+                                            </div>
+                                            <div class="flex-1">
+                                                <div class="flex justify-between mb-2"><label class="text-sm font-bold text-gray-400" data-i18n="lbl_decay">Decaimento</label><span id="val-bounce-decay" class="text-brand-yellow font-mono text-sm bg-brand-yellow/10 px-2 rounded">3</span></div>
+                                                <input type="range" id="expr-bounce-decay" min="1" max="10" step="0.1" value="3" oninput="document.getElementById('val-bounce-decay').innerText=this.value; generateExpression();">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="expr-controls-pendulum" class="space-y-6 hidden">
+                                        <div>
+                                            <div class="flex justify-between mb-2"><label class="text-sm font-bold text-gray-400" data-i18n="lbl_speed">Velocidade</label><span id="val-pend-speed" class="text-brand-yellow font-mono text-sm bg-brand-yellow/10 px-2 rounded">2</span></div>
+                                            <input type="range" id="expr-pend-speed" min="0.1" max="10" step="0.1" value="2" oninput="document.getElementById('val-pend-speed').innerText=this.value; generateExpression();">
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between mb-2"><label class="text-sm font-bold text-gray-400" data-i18n="lbl_angle_amp">Ângulo/Amplitude</label><span id="val-pend-amp" class="text-brand-yellow font-mono text-sm bg-brand-yellow/10 px-2 rounded">25</span></div>
+                                            <input type="range" id="expr-pend-amp" min="1" max="180" step="1" value="25" oninput="document.getElementById('val-pend-amp').innerText=this.value; generateExpression();">
+                                        </div>
+                                    </div>
+
+                                    <div id="expr-controls-typewriter" class="space-y-6 hidden">
+                                        <div>
+                                            <div class="flex justify-between mb-2"><label class="text-sm font-bold text-gray-400" data-i18n="lbl_speed_letters">Velocidade (Letras/seg)</label><span id="val-type-speed" class="text-brand-yellow font-mono text-sm bg-brand-yellow/10 px-2 rounded">20</span></div>
+                                            <input type="range" id="expr-type-speed" min="1" max="100" step="1" value="20" oninput="document.getElementById('val-type-speed').innerText=this.value; generateExpression();">
+                                        </div>
+                                        <div class="flex gap-6">
+                                            <div class="flex-grow">
+                                                <label class="block text-sm font-bold text-gray-400 mb-3" data-i18n="lbl_custom_text">Texto Personalizado</label>
+                                                <input type="text" id="expr-type-text" data-i18n-placeholder="placeholder_text" placeholder="Deixe em branco para usar o texto da camada" oninput="generateExpression()" class="w-full bg-[#0d1322] border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-brand-yellow font-mono text-sm shadow-inner">
+                                            </div>
+                                            <div class="w-24">
+                                                <label class="block text-sm font-bold text-gray-400 mb-3 text-center" data-i18n="lbl_cursor">Cursor</label>
+                                                <input type="text" id="expr-type-cursor" value="|" oninput="generateExpression()" class="w-full bg-[#0d1322] border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-brand-yellow font-mono text-center text-sm shadow-inner">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-bold text-gray-400 mb-3" data-i18n="lbl_cursor_mode">Modo do Cursor</label>
+                                            <select id="expr-type-cursor-mode" onchange="generateExpression()" class="w-full bg-[#0d1322] border border-white/10 rounded-xl p-4 text-white focus:outline-none focus:border-brand-yellow font-bold text-sm shadow-inner">
+                                                <option value="blink" data-i18n="opt_blink">Piscar para Sempre</option>
+                                                <option value="stop" data-i18n="opt_stop">Sumir ao Concluir</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col gap-6">
+                                    <div class="bg-black/50 border border-white/10 rounded-[2rem] h-56 flex items-center justify-center relative overflow-hidden grid-bg shadow-inner">
+                                        <span class="absolute top-4 left-4 text-[10px] text-gray-500 font-mono tracking-widest uppercase bg-brand-dark/50 px-2 py-1 rounded-lg backdrop-blur-sm" data-i18n="lbl_live_preview">Live Preview</span>
+                                        <div id="preview-target" class="transition-none"></div>
+                                    </div>
+
+                                    <div class="bg-brand-dark border border-white/10 rounded-[2rem] p-6 flex flex-col flex-grow relative group shadow-lg">
+                                        <div class="flex justify-between items-center mb-4">
+                                            <span class="text-xs text-gray-500 font-mono tracking-wider">.jsx / Expression</span>
+                                            <button onclick="copyExpression('expr-output')" class="text-sm bg-white/10 hover:bg-brand-yellow hover:text-brand-dark px-4 py-2 rounded-lg font-bold transition-all shadow-md flex items-center gap-2">
+                                                <i data-lucide="copy" class="w-4 h-4"></i> <span data-i18n="btn_copy">Copiar</span>
+                                            </button>
+                                        </div>
+                                        <pre id="expr-output" class="text-brand-yellow font-mono text-sm break-words whitespace-pre-wrap flex-grow bg-black/30 p-4 rounded-xl shadow-inner border border-white/5"></pre>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="flex flex-col gap-4">
-                                <div class="bg-black/50 border border-white/10 rounded-xl h-48 flex items-center justify-center relative overflow-hidden grid-bg">
-                                    <span class="absolute top-2 left-2 text-[10px] text-gray-500 font-mono tracking-widest uppercase" data-i18n="lbl_live_preview">Live Preview</span>
-                                    <div id="preview-target" class="transition-none"></div>
+                            
+                            <!-- Snippet Library (Aba de Expressões) -->
+                            <div class="mt-12 pt-10 border-t border-white/5">
+                                <div class="flex items-center gap-3 mb-8">
+                                    <i data-lucide="file-code" class="w-6 h-6 text-brand-yellow"></i>
+                                    <h3 class="text-2xl font-bold text-white tracking-tight" data-i18n="lbl_snippet_lib">Biblioteca de Snippets</h3>
                                 </div>
+                                
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                    <!-- Snippet 1 -->
+                                    <div class="bg-[#0d1322] border border-white/5 p-6 lg:p-8 rounded-3xl relative group hover:border-brand-yellow/30 transition-all shadow-lg">
+                                        <div class="flex justify-between items-start mb-4">
+                                            <div>
+                                                <h4 class="font-bold text-white text-base">Inércia Elástica (Bouncing)</h4>
+                                                <p class="text-sm text-gray-500 mt-1">Gera aquele balanço de mola perfeito após qualquer keyframe.</p>
+                                            </div>
+                                            <button onclick="copyExpression('snip1')" class="text-sm bg-white/5 hover:bg-brand-yellow hover:text-brand-dark p-2.5 rounded-xl transition-all shadow-sm flex-shrink-0" title="Copiar"><i data-lucide="copy" class="w-4 h-4"></i></button>
+                                        </div>
+                                        <pre id="snip1" class="text-brand-yellow/90 font-mono text-xs break-words whitespace-pre-wrap bg-black/40 p-4 rounded-2xl overflow-x-auto border border-white/5">amp = .1; freq = 2.0; decay = 2.0;
+n = 0;
+if (numKeys > 0) {
+  n = nearestKey(time).index;
+  if (key(n).time > time) n--;
+}
+if (n == 0) { t = 0; } else { t = time - key(n).time; }
+if (n > 0 && t < 1) {
+  v = velocityAtTime(key(n).time - thisComp.frameDuration/10);
+  value + v*amp*Math.sin(freq*t*2*Math.PI)/Math.exp(decay*t);
+} else { value; }</pre>
+                                    </div>
 
-                                <div class="bg-brand-dark border border-white/10 rounded-xl p-4 flex flex-col flex-grow relative group">
-                                    <div class="flex justify-between items-center mb-3">
-                                        <span class="text-xs text-gray-500 font-mono">.jsx / Expression</span>
-                                        <button onclick="copyExpression()" class="text-xs bg-white/10 hover:bg-brand-yellow hover:text-brand-dark px-3 py-1 rounded transition-colors flex items-center gap-1">
-                                            <i data-lucide="copy" class="w-3 h-3"></i> <span data-i18n="btn_copy">Copiar</span>
+                                    <!-- Snippet 2 -->
+                                    <div class="bg-[#0d1322] border border-white/5 p-6 lg:p-8 rounded-3xl relative group hover:border-brand-yellow/30 transition-all shadow-lg">
+                                        <div class="flex justify-between items-start mb-4">
+                                            <div>
+                                                <h4 class="font-bold text-white text-base">Contador de Dinheiro (Moeda)</h4>
+                                                <p class="text-sm text-gray-500 mt-1">Formata números com pontos e vírgulas (ex: R$ 1.200,50).</p>
+                                            </div>
+                                            <button onclick="copyExpression('snip2')" class="text-sm bg-white/5 hover:bg-brand-yellow hover:text-brand-dark p-2.5 rounded-xl transition-all shadow-sm flex-shrink-0" title="Copiar"><i data-lucide="copy" class="w-4 h-4"></i></button>
+                                        </div>
+                                        <pre id="snip2" class="text-brand-yellow/90 font-mono text-xs break-words whitespace-pre-wrap bg-black/40 p-4 rounded-2xl overflow-x-auto border border-white/5">val = effect("Slider Control")("Slider");
+num = val.value.toFixed(2).toString().replace(".", ",");
+"R$ " + num.replace(/\B(?=(\d{3})+(?!\d))/g, ".");</pre>
+                                    </div>
+
+                                    <!-- Snippet 3 -->
+                                    <div class="bg-[#0d1322] border border-white/5 p-6 lg:p-8 rounded-3xl relative group hover:border-brand-yellow/30 transition-all shadow-lg">
+                                        <div class="flex justify-between items-start mb-4">
+                                            <div>
+                                                <h4 class="font-bold text-white text-base">Manter Espessura da Linha (Stroke)</h4>
+                                                <p class="text-sm text-gray-500 mt-1">A linha não engrossa nem afina quando você altera a Escala.</p>
+                                            </div>
+                                            <button onclick="copyExpression('snip3')" class="text-sm bg-white/5 hover:bg-brand-yellow hover:text-brand-dark p-2.5 rounded-xl transition-all shadow-sm flex-shrink-0" title="Copiar"><i data-lucide="copy" class="w-4 h-4"></i></button>
+                                        </div>
+                                        <pre id="snip3" class="text-brand-yellow/90 font-mono text-xs break-words whitespace-pre-wrap bg-black/40 p-4 rounded-2xl overflow-x-auto border border-white/5">value / length(toComp([0,0]), toComp([0,1])) || 0.001;</pre>
+                                    </div>
+
+                                    <!-- Snippet 4 -->
+                                    <div class="bg-[#0d1322] border border-white/5 p-6 lg:p-8 rounded-3xl relative group hover:border-brand-yellow/30 transition-all shadow-lg">
+                                        <div class="flex justify-between items-start mb-4">
+                                            <div>
+                                                <h4 class="font-bold text-white text-base">Auto Fade In / Fade Out</h4>
+                                                <p class="text-sm text-gray-500 mt-1">Faz a opacidade surgir e sumir automaticamente no corte da layer.</p>
+                                            </div>
+                                            <button onclick="copyExpression('snip4')" class="text-sm bg-white/5 hover:bg-brand-yellow hover:text-brand-dark p-2.5 rounded-xl transition-all shadow-sm flex-shrink-0" title="Copiar"><i data-lucide="copy" class="w-4 h-4"></i></button>
+                                        </div>
+                                        <pre id="snip4" class="text-brand-yellow/90 font-mono text-xs break-words whitespace-pre-wrap bg-black/40 p-4 rounded-2xl overflow-x-auto border border-white/5">fadeFrames = 15;
+fadeTime = fadeFrames * thisComp.frameDuration;
+Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoint - fadeTime, outPoint, 100, 0));</pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TAB: GRAPH EDITOR (COM NOVO DICIONÁRIO VISUAL) -->
+                        <div id="tab-content-graph" class="hidden animate-fade-in">
+                            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 bg-[#0d1322] border border-white/5 p-6 md:p-8 lg:p-10 rounded-[2rem] shadow-2xl">
+                                <!-- Coluna Esquerda: Animação (Ocupa 5/12 da tela no PC) -->
+                                <div class="flex flex-col gap-8 justify-center lg:col-span-5">
+                                    <div id="anim-track" class="w-full h-40 bg-black/50 border border-white/5 rounded-3xl relative overflow-hidden flex items-center px-6 grid-bg shadow-inner">
+                                        <div id="anim-ball" class="w-14 h-14 bg-brand-yellow rounded-full shadow-[0_0_30px_rgba(255,214,0,0.6)] flex items-center justify-center relative z-10">
+                                            <div class="w-3 h-3 bg-[#0d1322] rounded-full"></div>
+                                        </div>
+                                        <div class="absolute left-12 top-0 bottom-0 w-px bg-white/10 border-l border-dashed border-white/20"></div>
+                                        <div class="absolute right-12 top-0 bottom-0 w-px bg-white/10 border-l border-dashed border-white/20"></div>
+                                    </div>
+
+                                    <div class="flex justify-center w-full">
+                                        <button onclick="toggleAnimation()" class="w-full sm:w-auto px-14 bg-brand-yellow text-brand-dark py-4 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-yellow-400 hover:scale-105 transition-all shadow-[0_10px_25px_rgba(255,214,0,0.25)] text-lg">
+                                            <span id="play-btn" data-i18n="btn_animate">Animate ME!</span>
+                                            <i data-lucide="play" id="play-icon" class="w-6 h-6"></i>
                                         </button>
                                     </div>
-                                    <pre id="expr-output" class="text-brand-yellow font-mono text-sm break-words whitespace-pre-wrap flex-grow"></pre>
+                                </div>
+
+                                <!-- Coluna Direita: Controles (Ocupa 7/12 da tela no PC e possui layout fluido) -->
+                                <div class="bg-black/30 border border-white/5 rounded-3xl p-6 lg:p-8 flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-8 items-center shadow-lg lg:col-span-7">
+                                    <div class="flex-shrink-0 relative">
+                                        <div class="absolute top-3 left-3 text-[10px] text-gray-500 font-mono font-bold tracking-wider" data-i18n="play_val">Value</div>
+                                        <div class="absolute bottom-3 right-3 text-[10px] text-gray-500 font-mono font-bold tracking-wider" data-i18n="play_time">Time</div>
+                                        <canvas id="bezierCanvas" width="200" height="200" class="bg-[#0a0f1c] border border-white/10 rounded-2xl shadow-inner"></canvas>
+                                    </div>
+
+                                    <div class="flex-grow w-full min-w-0 space-y-6 lg:space-y-8">
+                                        <div>
+                                            <div class="flex justify-between items-end mb-4">
+                                                <span class="text-base font-bold text-gray-300" data-i18n="play_presets">Presets (Easing)</span>
+                                                <span id="current-bezier-text" class="text-xs font-mono font-bold text-brand-yellow bg-brand-yellow/10 px-3 py-1.5 rounded-lg shadow-sm">ease</span>
+                                            </div>
+                                            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                                <button onclick="setPreset('linear')" class="preset-btn text-xs bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl py-2.5 transition-all shadow-sm">Linear</button>
+                                                <button onclick="setPreset('ease')" class="preset-btn text-xs bg-brand-yellow text-brand-dark font-bold rounded-xl py-2.5 transition-all shadow-sm">Easy Ease</button>
+                                                <button onclick="setPreset('easeIn')" class="preset-btn text-xs bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl py-2.5 transition-all shadow-sm">Ease In</button>
+                                                <button onclick="setPreset('easeOut')" class="preset-btn text-xs bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl py-2.5 transition-all shadow-sm">Ease Out</button>
+                                                <button onclick="setPreset('expoOut')" class="preset-btn text-xs bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl py-2.5 transition-all shadow-sm">Expo Out</button>
+                                                <button onclick="setPreset('backOut')" class="preset-btn text-xs bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl py-2.5 transition-all shadow-sm">Back Out</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="space-y-4 pt-4 border-t border-white/5">
+                                            <span class="text-sm font-bold text-gray-400 block mb-2" data-i18n="play_custom">Custom Curve</span>
+                                            <div class="flex gap-4 items-center">
+                                                <span class="text-xs font-mono font-bold text-gray-500 w-6">X1</span>
+                                                <input type="range" id="slider-x1" min="0" max="1" step="0.01" value="0.25" oninput="updateCustomBezier()">
+                                            </div>
+                                            <div class="flex gap-4 items-center">
+                                                <span class="text-xs font-mono font-bold text-brand-yellow w-6">Y1</span>
+                                                <input type="range" id="slider-y1" min="-0.5" max="1.5" step="0.01" value="0.1" oninput="updateCustomBezier()">
+                                            </div>
+                                            <div class="flex gap-4 items-center">
+                                                <span class="text-xs font-mono font-bold text-gray-500 w-6">X2</span>
+                                                <input type="range" id="slider-x2" min="0" max="1" step="0.01" value="0.25" oninput="updateCustomBezier()">
+                                            </div>
+                                            <div class="flex gap-4 items-center">
+                                                <span class="text-xs font-mono font-bold text-brand-yellow w-6">Y2</span>
+                                                <input type="range" id="slider-y2" min="-0.5" max="1.5" step="0.01" value="1.0" oninput="updateCustomBezier()">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- TAB 2: COLOR LAB -->
-                    <div id="tab-content-colors" class="hidden animate-fade-in text-center flex flex-col items-center justify-center min-h-[350px]">
-                        
-                        <div class="flex items-center gap-3 mb-8">
-                            <i data-lucide="aperture" class="w-6 h-6 text-brand-yellow animate-spin-slow"></i>
-                            <h3 class="text-xl font-bold text-white" data-i18n="lbl_color_engine">Color Harmony Engine</h3>
-                        </div>
+                        <!-- TAB: COLOR LAB -->
+                        <div id="tab-content-colors" class="hidden animate-fade-in text-center flex flex-col items-center justify-center min-h-[400px]">
+                            <div class="flex items-center gap-3 mb-10">
+                                <i data-lucide="aperture" class="w-8 h-8 text-brand-yellow animate-spin-slow"></i>
+                                <h3 class="text-3xl font-bold text-white tracking-tight" data-i18n="lbl_color_engine">Color Harmony Engine</h3>
+                            </div>
 
-                        <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-10 bg-black/30 p-4 rounded-2xl border border-white/5 inline-flex">
-                            <div class="flex items-center gap-3">
-                                <label class="text-sm font-bold text-gray-400" data-i18n="lbl_base_color">Cor Base:</label>
-                                <div class="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)] cursor-pointer hover:scale-105 transition-transform">
-                                    <input type="color" id="base-color-picker" value="#FFD600" oninput="generateColors()" class="absolute inset-0 w-[200%] h-[200%] -top-[50%] -left-[50%] cursor-pointer opacity-0 z-10">
-                                    <div id="base-color-display" class="absolute inset-0 bg-[#FFD600] pointer-events-none"></div>
+                            <div class="flex flex-col sm:flex-row items-center justify-center gap-8 mb-12 bg-black/30 p-6 rounded-3xl border border-white/5 inline-flex shadow-lg">
+                                <div class="flex items-center gap-4">
+                                    <label class="text-sm font-bold text-gray-400 uppercase tracking-widest" data-i18n="lbl_base_color">Cor Base</label>
+                                    <div class="relative w-14 h-14 rounded-full overflow-hidden border-[3px] border-white/20 shadow-[0_0_20px_rgba(0,0,0,0.6)] cursor-pointer hover:scale-110 transition-transform">
+                                        <input type="color" id="base-color-picker" value="#FFD600" oninput="generateColors()" class="absolute inset-0 w-[200%] h-[200%] -top-[50%] -left-[50%] cursor-pointer opacity-0 z-10">
+                                        <div id="base-color-display" class="absolute inset-0 bg-[#FFD600] pointer-events-none"></div>
+                                    </div>
+                                </div>
+
+                                <div class="w-px h-12 bg-white/10 hidden sm:block"></div>
+
+                                <div class="flex items-center gap-4">
+                                    <label class="text-sm font-bold text-gray-400 uppercase tracking-widest" data-i18n="lbl_harmony">Harmonia</label>
+                                    <select id="color-harmony-type" onchange="generateColors()" class="bg-[#0d1322] border border-white/10 rounded-xl p-3.5 text-white focus:outline-none focus:border-brand-yellow text-sm font-bold shadow-inner cursor-pointer hover:border-white/30 transition-colors">
+                                        <option value="complementary" data-i18n="opt_comp">Complementar (Opostos)</option>
+                                        <option value="analogous" selected data-i18n="opt_analog">Análoga (Vizinhas)</option>
+                                        <option value="triadic" data-i18n="opt_triad">Tríade (Triângulo)</option>
+                                        <option value="monochromatic" data-i18n="opt_mono">Monocromática (Tons)</option>
+                                    </select>
                                 </div>
                             </div>
-
-                            <div class="w-px h-10 bg-white/10 hidden sm:block"></div>
-
-                            <div class="flex items-center gap-3">
-                                <label class="text-sm font-bold text-gray-400" data-i18n="lbl_harmony">Harmonia:</label>
-                                <select id="color-harmony-type" onchange="generateColors()" class="bg-[#0d1322] border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-brand-yellow text-sm font-bold">
-                                    <option value="complementary" data-i18n="opt_comp">Complementar (Opostos)</option>
-                                    <option value="analogous" selected data-i18n="opt_analog">Análoga (Vizinhas)</option>
-                                    <option value="triadic" data-i18n="opt_triad">Tríade (Triângulo)</option>
-                                    <option value="monochromatic" data-i18n="opt_mono">Monocromática (Tons)</option>
-                                </select>
+                            
+                            <div id="color-palette" class="flex flex-col sm:flex-row h-72 sm:h-40 w-full max-w-4xl mx-auto rounded-[2rem] overflow-hidden border border-white/10 mb-8 cursor-pointer shadow-2xl">
+                                <!-- Gerado via JS -->
                             </div>
+                            <p class="text-gray-500 text-xs font-mono uppercase tracking-widest flex items-center justify-center gap-2 bg-[#0d1322] py-2 px-6 rounded-full border border-white/5">
+                                <i data-lucide="mouse-pointer-click" class="w-4 h-4 text-brand-yellow"></i> <span data-i18n="lbl_click_hex">Clique na cor para copiar o HEX</span>
+                            </p>
                         </div>
                         
-                        <div id="color-palette" class="flex flex-col sm:flex-row h-64 sm:h-32 w-full rounded-2xl overflow-hidden border border-white/10 mb-6 cursor-pointer shadow-xl">
-                            <!-- Gerado via JS -->
+                        <!-- TAB: MOTION RECIPES -->
+                        <div id="tab-content-recipes" class="hidden animate-fade-in">
+                            <div class="flex items-center gap-3 mb-10 justify-center">
+                                <i data-lucide="book-open" class="w-6 h-6 text-brand-yellow"></i>
+                                <h3 class="text-xl font-bold text-white" data-i18n="tab_recipes">Motion Recipes</h3>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                <!-- Recipe 1 -->
+                                <div class="bg-[#0d1322] border border-white/5 p-8 rounded-3xl hover:border-brand-yellow/30 transition-all shadow-lg group flex flex-col">
+                                    <div class="w-14 h-14 bg-red-500/10 rounded-2xl flex items-center justify-center text-red-500 mb-6 group-hover:scale-110 transition-transform">
+                                        <i data-lucide="flame" class="w-7 h-7"></i>
+                                    </div>
+                                    <h4 class="font-bold text-xl text-white mb-3" data-i18n="rec1_title">Fogo Cartoon 2D</h4>
+                                    <p class="text-gray-400 text-sm mb-6 flex-grow" data-i18n="rec1_desc">Efeito de fogo líquido (Blob) sem plugins externos.</p>
+                                    <div class="bg-[#1E293B] p-5 rounded-2xl border border-white/5">
+                                        <p class="text-brand-yellow text-xs font-mono font-bold mb-3 tracking-widest uppercase">EFEITOS (FX):</p>
+                                        <p class="text-gray-300 text-xs mb-4 pb-4 border-b border-white/5">CC Mr. Mercury + Simple Choker + Tint</p>
+                                        <p class="text-brand-yellow text-xs font-mono font-bold mb-3 tracking-widest uppercase">RECEITA:</p>
+                                        <p class="text-sm text-gray-400 leading-relaxed font-medium" data-i18n="rec1_steps">1. Sólido com CC Mr. Mercury<br>2. Ajuste o Blob Birth/Death<br>3. Adicione Simple Choker negativo<br>4. Tint para colorir</p>
+                                    </div>
+                                </div>
+                                <!-- Recipe 2 -->
+                                <div class="bg-[#0d1322] border border-white/5 p-8 rounded-3xl hover:border-brand-yellow/30 transition-all shadow-lg group flex flex-col">
+                                    <div class="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-500 mb-6 group-hover:scale-110 transition-transform">
+                                        <i data-lucide="cloud" class="w-7 h-7"></i>
+                                    </div>
+                                    <h4 class="font-bold text-xl text-white mb-3" data-i18n="rec2_title">Nuvens Stylized</h4>
+                                    <p class="text-gray-400 text-sm mb-6 flex-grow" data-i18n="rec2_desc">Nuvens cartoon com bordas duras.</p>
+                                    <div class="bg-[#1E293B] p-5 rounded-2xl border border-white/5">
+                                        <p class="text-brand-yellow text-xs font-mono font-bold mb-3 tracking-widest uppercase">EFEITOS (FX):</p>
+                                        <p class="text-gray-300 text-xs mb-4 pb-4 border-b border-white/5">Fractal Noise + Threshold + Tint</p>
+                                        <p class="text-brand-yellow text-xs font-mono font-bold mb-3 tracking-widest uppercase">RECEITA:</p>
+                                        <p class="text-sm text-gray-400 leading-relaxed font-medium" data-i18n="rec2_steps">1. Sólido com Fractal Noise<br>2. Aumente o Contrast (>400)<br>3. Efeito Threshold para chapar<br>4. Anime a Evolution</p>
+                                    </div>
+                                </div>
+                                <!-- Recipe 3 -->
+                                <div class="bg-[#0d1322] border border-white/5 p-8 rounded-3xl hover:border-brand-yellow/30 transition-all shadow-lg group flex flex-col">
+                                    <div class="w-14 h-14 bg-purple-500/10 rounded-2xl flex items-center justify-center text-purple-500 mb-6 group-hover:scale-110 transition-transform">
+                                        <i data-lucide="activity" class="w-7 h-7"></i>
+                                    </div>
+                                    <h4 class="font-bold text-xl text-white mb-3" data-i18n="rec3_title">Boil Line (Animação Tradicional)</h4>
+                                    <p class="text-gray-400 text-sm mb-6 flex-grow" data-i18n="rec3_desc">Aquele efeito tremido de desenho à mão.</p>
+                                    <div class="bg-[#1E293B] p-5 rounded-2xl border border-white/5">
+                                        <p class="text-brand-yellow text-xs font-mono font-bold mb-3 tracking-widest uppercase">EFEITOS (FX):</p>
+                                        <p class="text-gray-300 text-xs mb-4 pb-4 border-b border-white/5">Turbulent Displace + Posterize Time</p>
+                                        <p class="text-brand-yellow text-xs font-mono font-bold mb-3 tracking-widest uppercase">RECEITA:</p>
+                                        <p class="text-sm text-gray-400 leading-relaxed font-medium" data-i18n="rec3_steps">1. Turbulent Displace (Size 10, Amount 5)<br>2. Expression no Evolution: time*15<br>3. Posterize Time (12 ou 8 fps)</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-gray-500 text-xs font-mono uppercase tracking-widest flex items-center justify-center gap-2">
-                            <i data-lucide="mouse-pointer-click" class="w-4 h-4"></i> <span data-i18n="lbl_click_hex">Clique na cor para copiar o HEX</span>
-                        </p>
-                    </div>
 
+                        <!-- TAB: BPM SYNC -->
+                        <div id="tab-content-bpm" class="hidden animate-fade-in">
+                            <div class="flex flex-col items-center justify-center text-center max-w-3xl mx-auto py-10">
+                                <div class="w-20 h-20 bg-brand-yellow/10 rounded-[2rem] flex items-center justify-center text-brand-yellow mb-8 shadow-[0_0_30px_rgba(255,214,0,0.15)]">
+                                    <i data-lucide="music" class="w-10 h-10"></i>
+                                </div>
+                                <h3 class="text-3xl font-bold text-white mb-4" data-i18n="bpm_title">Calculadora de Ritmo</h3>
+                                <p class="text-gray-400 text-lg mb-10" data-i18n="bpm_desc">Sincronize a sua animação com a batida exata da música. Digite o BPM e o seu Framerate.</p>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full mb-10">
+                                    <div class="bg-[#0d1322] border border-white/10 p-8 rounded-3xl text-left shadow-lg">
+                                        <label class="block text-sm font-bold text-gray-400 mb-3">Batidas por Minuto (BPM)</label>
+                                        <input type="number" id="bpm-input" value="120" oninput="calculateBPM()" class="w-full bg-[#1E293B] border border-white/10 rounded-xl p-5 text-white text-3xl font-bold focus:outline-none focus:border-brand-yellow text-center transition-colors">
+                                    </div>
+                                    <div class="bg-[#0d1322] border border-white/10 p-8 rounded-3xl text-left shadow-lg">
+                                        <label class="block text-sm font-bold text-gray-400 mb-3">Framerate (FPS)</label>
+                                        <select id="fps-input" onchange="calculateBPM()" class="w-full bg-[#1E293B] border border-white/10 rounded-xl p-5 text-white text-3xl font-bold focus:outline-none focus:border-brand-yellow text-center transition-colors cursor-pointer">
+                                            <option value="24">24 fps</option>
+                                            <option value="25">25 fps</option>
+                                            <option value="30" selected>30 fps</option>
+                                            <option value="60">60 fps</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="w-full bg-brand-yellow/10 border border-brand-yellow/30 p-10 rounded-[2.5rem] relative overflow-hidden shadow-[0_10px_40px_rgba(255,214,0,0.1)]">
+                                    <div class="absolute -right-8 -bottom-8 opacity-10">
+                                        <i data-lucide="zap" class="w-48 h-48 text-brand-yellow"></i>
+                                    </div>
+                                    <p class="text-gray-400 uppercase tracking-widest text-sm font-bold mb-4">A batida ocorre a cada:</p>
+                                    <div class="flex items-baseline justify-center gap-3 mb-3 relative z-10">
+                                        <span id="bpm-output-frames" class="text-6xl md:text-8xl font-bold text-brand-yellow tracking-tighter">15</span>
+                                        <span class="text-2xl text-brand-yellow/70 font-bold">Frames</span>
+                                    </div>
+                                    <p class="text-gray-400 text-base relative z-10">Tempo exato: <strong id="bpm-output-time" class="text-white">0.50s</strong></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- TAB: SHORTCUTS -->
+                        <div id="tab-content-shortcuts" class="hidden animate-fade-in">
+                            <div class="flex items-center gap-4 mb-10 justify-center">
+                                <div class="w-12 h-12 bg-brand-yellow/10 rounded-xl flex items-center justify-center text-brand-yellow">
+                                    <i data-lucide="keyboard" class="w-6 h-6"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-white" data-i18n="tab_shortcuts">Atalhos "Secretos" (AE)</h3>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                <!-- Card 1 -->
+                                <div class="bg-[#0d1322] border border-white/5 p-8 rounded-3xl hover:border-white/20 transition-all shadow-lg">
+                                    <h4 class="font-bold text-white mb-6 text-sm uppercase tracking-widest text-brand-yellow flex items-center gap-2"><i data-lucide="layers" class="w-4 h-4"></i> Timeline & Layers</h4>
+                                    <ul class="space-y-5 text-sm">
+                                        <li class="flex justify-between items-center border-b border-white/5 pb-3">
+                                            <span class="text-gray-400">Ver Props. Animadas</span>
+                                            <kbd class="bg-[#1E293B] border border-gray-600 rounded-md px-3 py-1.5 text-white font-mono text-xs shadow-sm">U</kbd>
+                                        </li>
+                                        <li class="flex justify-between items-center border-b border-white/5 pb-3">
+                                            <span class="text-gray-400">Ver Props. Alteradas</span>
+                                            <kbd class="bg-[#1E293B] border border-gray-600 rounded-md px-3 py-1.5 text-white font-mono text-xs shadow-sm">UU</kbd>
+                                        </li>
+                                        <li class="flex justify-between items-center border-b border-white/5 pb-3">
+                                            <span class="text-gray-400">Cortar Layer no CTI</span>
+                                            <kbd class="bg-[#1E293B] border border-gray-600 rounded-md px-3 py-1.5 text-white font-mono text-xs shadow-sm">Alt/Opt + [ ou ]</kbd>
+                                        </li>
+                                        <li class="flex justify-between items-center">
+                                            <span class="text-gray-400">Deslizar Layer para CTI</span>
+                                            <kbd class="bg-[#1E293B] border border-gray-600 rounded-md px-3 py-1.5 text-white font-mono text-xs shadow-sm">[ ou ]</kbd>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Card 2 -->
+                                <div class="bg-[#0d1322] border border-white/5 p-8 rounded-3xl hover:border-white/20 transition-all shadow-lg">
+                                    <h4 class="font-bold text-white mb-6 text-sm uppercase tracking-widest text-brand-yellow flex items-center gap-2"><i data-lucide="move" class="w-4 h-4"></i> Transform & Anchor</h4>
+                                    <ul class="space-y-5 text-sm">
+                                        <li class="flex justify-between items-center border-b border-white/5 pb-3">
+                                            <span class="text-gray-400">Centralizar Anchor Point</span>
+                                            <div class="flex gap-1"><kbd class="bg-[#1E293B] border border-gray-600 rounded-md px-2 py-1.5 text-white font-mono text-[10px] sm:text-xs shadow-sm">Ctrl/Cmd</kbd><span class="text-gray-500">+</span><kbd class="bg-[#1E293B] border border-gray-600 rounded-md px-2 py-1.5 text-white font-mono text-[10px] sm:text-xs shadow-sm">Alt/Opt</kbd><span class="text-gray-500">+</span><kbd class="bg-[#1E293B] border border-gray-600 rounded-md px-2 py-1.5 text-white font-mono text-[10px] sm:text-xs shadow-sm">Home</kbd></div>
+                                        </li>
+                                        <li class="flex justify-between items-center border-b border-white/5 pb-3">
+                                            <span class="text-gray-400">Centro da Composição</span>
+                                            <div class="flex gap-1"><kbd class="bg-[#1E293B] border border-gray-600 rounded-md px-2 py-1.5 text-white font-mono text-[10px] sm:text-xs shadow-sm">Ctrl/Cmd</kbd><span class="text-gray-500">+</span><kbd class="bg-[#1E293B] border border-gray-600 rounded-md px-2 py-1.5 text-white font-mono text-[10px] sm:text-xs shadow-sm">Home</kbd></div>
+                                        </li>
+                                        <li class="flex justify-between items-center border-b border-white/5 pb-3">
+                                            <span class="text-gray-400">Reset Escala/Rotação</span>
+                                            <kbd class="bg-[#1E293B] border border-gray-600 rounded-md px-3 py-1.5 text-white font-mono text-xs shadow-sm text-center">Duplo Clique na Ferramenta</kbd>
+                                        </li>
+                                        <li class="flex justify-between items-center">
+                                            <span class="text-gray-400">Fit Comp (Esticar)</span>
+                                            <div class="flex gap-1"><kbd class="bg-[#1E293B] border border-gray-600 rounded-md px-2 py-1.5 text-white font-mono text-[10px] sm:text-xs shadow-sm">Ctrl/Cmd</kbd><span class="text-gray-500">+</span><kbd class="bg-[#1E293B] border border-gray-600 rounded-md px-2 py-1.5 text-white font-mono text-[10px] sm:text-xs shadow-sm">Alt/Opt</kbd><span class="text-gray-500">+</span><kbd class="bg-[#1E293B] border border-gray-600 rounded-md px-2 py-1.5 text-white font-mono text-[10px] sm:text-xs shadow-sm">F</kbd></div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Card 3 -->
+                                <div class="bg-[#0d1322] border border-white/5 p-8 rounded-3xl hover:border-white/20 transition-all shadow-lg">
+                                    <h4 class="font-bold text-white mb-6 text-sm uppercase tracking-widest text-brand-yellow flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4"></i> Keyframes & Expr.</h4>
+                                    <ul class="space-y-5 text-sm">
+                                        <li class="flex justify-between items-center border-b border-white/5 pb-3">
+                                            <span class="text-gray-400">Easy Ease</span>
+                                            <kbd class="bg-[#1E293B] border border-gray-600 rounded-md px-3 py-1.5 text-white font-mono text-xs shadow-sm">F9</kbd>
+                                        </li>
+                                        <li class="flex justify-between items-center border-b border-white/5 pb-3">
+                                            <span class="text-gray-400">Adicionar Expressão</span>
+                                            <kbd class="bg-[#1E293B] border border-gray-600 rounded-md px-3 py-1.5 text-white font-mono text-xs shadow-sm">Alt/Opt + Clique</kbd>
+                                        </li>
+                                        <li class="flex justify-between items-center border-b border-white/5 pb-3">
+                                            <span class="text-gray-400">Abrir Graph Editor</span>
+                                            <kbd class="bg-[#1E293B] border border-gray-600 rounded-md px-3 py-1.5 text-white font-mono text-xs shadow-sm">Shift + F3</kbd>
+                                        </li>
+                                        <li class="flex justify-between items-center">
+                                            <span class="text-gray-400">Quebrar Alavancas</span>
+                                            <kbd class="bg-[#1E293B] border border-gray-600 rounded-md px-3 py-1.5 text-white font-mono text-xs shadow-sm">Alt/Opt + Clique</kbd>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <section id="scripts" class="py-20 relative bg-[#0a0f1c] border-t border-white/5">
-        <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
+    </main> <!-- END CONTENT WRAPPER -->
 
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="flex items-center gap-4 mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold"><span data-i18n="section_scripts1">Meus</span> <span data-i18n="section_scripts2" class="text-brand-yellow">Scripts</span></h2>
-                <div class="h-px bg-white/10 flex-grow"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="scripts-grid">
-                <!-- Gerado via JS -->
-            </div>
-        </div>
-    </section>
-
-    <section id="projetos" class="py-20 relative bg-brand-dark border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="flex items-center gap-4 mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold"><span data-i18n="section_projects1">Projetos</span> <span data-i18n="section_projects2" class="text-brand-yellow">AE</span></h2>
-                <div class="h-px bg-white/10 flex-grow"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
-                <!-- Gerado via JS -->
-            </div>
-        </div>
-    </section>
-
-    <section id="masterclass" class="py-20 bg-[#0a0f1c] relative border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="flex items-center gap-4 mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold"><span data-i18n="section_masterclass1" class="text-brand-yellow">Master</span><span data-i18n="section_masterclass2">class</span></h2>
-                <div class="h-px bg-white/10 flex-grow"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 gap-8" id="masterclass-container">
-                <!-- Gerado via JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- NOVA SEÇÃO: FAQ (SEO) -->
-    <section id="faq" class="py-20 bg-brand-dark relative border-t border-white/5">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-i18n="faq_title">Perguntas Frequentes</h2>
-                <p class="text-gray-400" data-i18n="faq_subtitle">Tire suas dúvidas sobre instalação, licenças e suporte.</p>
-            </div>
-
-            <div class="space-y-4">
-                <!-- FAQ 1 -->
-                <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden">
-                    <button onclick="toggleFaq(1)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none hover:bg-white/5 transition-colors">
-                        <span class="font-bold text-brand-yellow" data-i18n="q1">Onde encontro o plugin dentro do After Effects e como instalo?</span>
-                        <i data-lucide="chevron-down" id="faq-icon-1" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
-                    </button>
-                    <div id="faq-content-1" class="px-6 pb-5 hidden">
-                        <p class="text-gray-400 text-sm leading-relaxed" data-i18n="a1">Após baixar o arquivo (.jsxbin), cole-o na pasta oficial do sistema. <br><br><b class='text-brand-yellow'>Windows:</b><br><code class='bg-[#0d1322] px-3 py-2 rounded-lg mt-1 block border border-white/10 font-mono text-xs text-gray-300'>C:\Arquivos de Programas\Adobe\Adobe After Effects\Support Files\Scripts\ScriptUI Panels</code><br><b class='text-brand-yellow'>Mac:</b><br><code class='bg-[#0d1322] px-3 py-2 rounded-lg mt-1 block border border-white/10 font-mono text-xs text-gray-300'>/Applications/Adobe After Effects/Scripts/ScriptUI Panels</code><br><br>Todos os meus scripts ficam localizados no menu superior <b>Window</b> (Janela) por padrão. O Lab Manager é um gerenciador que roda à parte, mas primeiramente ele também precisa ser aberto via Window.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ 2 -->
-                <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden">
-                    <button onclick="toggleFaq(2)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none hover:bg-white/5 transition-colors">
-                        <span class="font-bold text-brand-yellow" data-i18n="q2">Posso usar os plugins em projetos comerciais? E a licença?</span>
-                        <i data-lucide="chevron-down" id="faq-icon-2" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
-                    </button>
-                    <div id="faq-content-2" class="px-6 pb-5 hidden">
-                        <p class="text-gray-400 text-sm leading-relaxed" data-i18n="a2">Sim! Os plugins podem ser usados tanto em projetos pessoais quanto comerciais, salvo indicação contrária na página do produto. No entanto, o arquivo (.jsxbin) é criptografado e de uso individual. A distribuição, revenda ou realização de cópias não autorizadas é proibida e resulta no bloqueio do acesso e medidas legais.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ 3 -->
-                <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden">
-                    <button onclick="toggleFaq(3)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none hover:bg-white/5 transition-colors">
-                        <span class="font-bold text-brand-yellow" data-i18n="q3">O plugin não apareceu no After Effects. O que fazer?</span>
-                        <i data-lucide="chevron-down" id="faq-icon-3" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
-                    </button>
-                    <div id="faq-content-3" class="px-6 pb-5 hidden">
-                        <p class="text-gray-400 text-sm leading-relaxed" data-i18n="a3">Verifique rigorosamente se o arquivo foi colocado na pasta exata de <b>ScriptUI Panels</b> (não apenas na pasta Scripts), certifique-se de que o After Effects foi completamente reiniciado após colar o arquivo e confira se a versão do seu software é compatível com o plugin.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ 4 -->
-                <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden">
-                    <button onclick="toggleFaq(4)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none hover:bg-white/5 transition-colors">
-                        <span class="font-bold text-brand-yellow" data-i18n="q4">Como funcionam as atualizações, garantias e estornos?</span>
-                        <i data-lucide="chevron-down" id="faq-icon-4" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
-                    </button>
-                    <div id="faq-content-4" class="px-6 pb-5 hidden">
-                        <p class="text-gray-400 text-sm leading-relaxed" data-i18n="a4">Sim, os plugins recebem melhorias constantes, correções e novas funções. Se comprou via Hotmart, o sistema dispara a atualização automaticamente para o seu e-mail. Para plugins grátis, o e-mail cadastrado entra na nossa base de avisos. As compras na Hotmart possuem 7 dias de garantia incondicional (o processo de aprovação de estorno pela plataforma pode levar até 5 dias úteis).</p>
-                    </div>
-                </div>
-
-                <!-- FAQ 5 -->
-                <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden">
-                    <button onclick="toggleFaq(5)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none hover:bg-white/5 transition-colors">
-                        <span class="font-bold text-brand-yellow" data-i18n="q5">Preciso de conhecimento avançado? Há suporte pós-compra?</span>
-                        <i data-lucide="chevron-down" id="faq-icon-5" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
-                    </button>
-                    <div id="faq-content-5" class="px-6 pb-5 hidden">
-                        <p class="text-gray-400 text-sm leading-relaxed" data-i18n="a5">Não necessariamente. Algumas ferramentas são simples e diretas, mas é recomendado ter noções básicas do After Effects para aproveitar melhor os recursos. E sim, existe suporte completo! Caso tenha problemas de instalação ou bugs, utilize o botão "Relatar um Bug" no rodapé do site enviando prints, versão do AE e detalhes do erro para agilizarmos a correção.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contato" class="py-12 border-t border-white/5 bg-brand-dark mt-10">
+    <!-- RODAPÉ GLOBAL (Aparece em todas as páginas) -->
+    <footer id="contato" class="py-12 border-t border-white/5 bg-brand-dark mt-auto relative z-10 w-full">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center md:items-start gap-8 text-center md:text-left">
             
-            <!-- Logo e Direitos -->
             <div class="flex-shrink-0 flex flex-col items-center md:items-start">
                 <img src="LOGO-VERTICAL.png" alt="Catalan Lab" onerror="this.onerror=null; this.src='https://placehold.co/400x100/0d1322/FFD600?text=Catalan+Lab'" class="h-16 w-auto object-contain mb-4">
                 <p data-i18n="footer_rights" class="text-gray-500 text-xs">© 2026 Catalan Lab. Todos os direitos reservados.</p>
             </div>
             
-            <!-- Contatos e Redes -->
             <div class="flex flex-col items-center md:items-start space-y-3">
                 <span data-i18n="footer_talk" class="text-white font-bold mb-1">Fale Comigo</span>
-                
                 <a href="https://wa.me/5511917574951" target="_blank" class="flex items-center gap-2 text-gray-400 hover:text-brand-yellow transition-colors text-sm">
-                    <i data-lucide="message-circle" class="w-4 h-4"></i>
-                    +55 11 91757-4951
+                    <i data-lucide="message-circle" class="w-4 h-4"></i> +55 11 91757-4951
                 </a>
-                
                 <a href="mailto:support.catalanlab@gmail.com" class="flex items-center gap-2 text-gray-400 hover:text-brand-yellow transition-colors text-sm">
-                    <i data-lucide="mail" class="w-4 h-4"></i>
-                    support.catalanlab@gmail.com
+                    <i data-lucide="mail" class="w-4 h-4"></i> support.catalanlab@gmail.com
                 </a>
-                
                 <a href="https://www.instagram.com/catalan.lab/" target="_blank" class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm group">
-                    <img src="instagram.png" alt="Instagram" onerror="this.onerror=null; this.src='https://placehold.co/20x20/1E293B/FFD600?text=IG'" class="w-5 h-5 object-contain opacity-70 group-hover:opacity-100 transition-opacity">
-                    @catalan.lab
+                    <img src="instagram.png" alt="Instagram" onerror="this.onerror=null; this.src='https://placehold.co/20x20/1E293B/FFD600?text=IG'" class="w-5 h-5 object-contain opacity-70 group-hover:opacity-100 transition-opacity"> @catalan.lab
                 </a>
-                
                 <a href="https://www.youtube.com/@catalanlab" target="_blank" class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm group">
-                    <img src="youtube.png" alt="YouTube" onerror="this.onerror=null; this.src='https://placehold.co/20x20/1E293B/FFD600?text=YT'" class="w-5 h-5 object-contain opacity-70 group-hover:opacity-100 transition-opacity">
-                    Catalan Lab
+                    <img src="youtube.png" alt="YouTube" onerror="this.onerror=null; this.src='https://placehold.co/20x20/1E293B/FFD600?text=YT'" class="w-5 h-5 object-contain opacity-70 group-hover:opacity-100 transition-opacity"> Catalan Lab
                 </a>
             </div>
 
-            <!-- Suporte e Bugs -->
             <div class="flex flex-col items-center md:items-start space-y-3">
                 <span data-i18n="footer_support" class="text-white font-bold mb-1">Suporte</span>
                 <p data-i18n="footer_support_desc" class="text-gray-400 text-sm max-w-xs text-center md:text-left mb-2">Encontrou algum erro num dos scripts ou no site?</p>
@@ -719,24 +962,16 @@
         </div>
     </footer>
 
-    <!-- Notificação de Toast -->
+    <!-- Notificações e Botão WhatsApp Flutuante -->
     <div id="toast-notification" class="fixed top-24 left-1/2 transform -translate-x-1/2 z-[100] bg-brand-yellow text-brand-dark px-6 py-3 rounded-full shadow-2xl font-bold flex items-center gap-2 transition-all duration-500 opacity-0 -translate-y-10 pointer-events-none">
         <i data-lucide="check-circle" class="w-5 h-5"></i>
         <span id="toast-text" data-i18n="toast_copied">Link copiado para a área de transferência!</span>
     </div>
 
-    <!-- BOTÃO WHATSAPP FLUTUANTE -->
     <div class="fixed bottom-6 right-6 z-50 flex items-center justify-center">
-        <!-- Efeito de pulso -->
         <div class="absolute inset-0 bg-[#25D366] rounded-full animate-ping opacity-20"></div>
-        
         <a href="https://wa.me/5511917574951" target="_blank" aria-label="Fale conosco no WhatsApp" class="relative bg-[#25D366] text-white p-4 rounded-full shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:scale-110 hover:-translate-y-1 transition-all duration-300 group flex items-center justify-center">
-            <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
-            </svg>
-            <span class="absolute right-full mr-4 bg-brand-dark text-white text-sm font-semibold px-4 py-2 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap border border-white/10 shadow-xl hidden md:block">
-                Tirar Dúvidas
-            </span>
+            <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
         </a>
     </div>
 
@@ -745,7 +980,7 @@
 
         const translations = {
             pt: {
-                nav_motion: "Motion Design", nav_playground: "Playground", nav_assistant: "Assistant", nav_scripts: "Scripts", nav_projects: "Projetos AE", nav_masterclass: "Masterclass", nav_contact: "Contato",
+                nav_motion: "Motion Design", nav_playground: "Playground", nav_assistant: "Assistant", nav_hub: "Lab Hub", nav_scripts: "Scripts", nav_projects: "Projetos AE", nav_masterclass: "Masterclass", nav_contact: "Contato",
                 hero_title1: "Ideias em", hero_title2: "movimento.",
                 hero_subtitle: "Workflows otimizados e desenvolvido por quem realmente respira o After Effects todos os dias.",
                 hero_btn_portfolio: "Ver Portfólio", hero_btn_scripts: "Meus Scripts",
@@ -755,12 +990,13 @@
                 section_masterclass1: "Master", section_masterclass2: "class",
                 
                 play_desc: "Divirta-se e teste conceitos essenciais de Motion Design direto no navegador.",
-                play_val: "Value", play_time: "Time", play_presets: "Presets", play_custom: "Custom Curve",
+                play_val: "Value", play_time: "Time", play_presets: "Presets (Easing)", play_custom: "Custom Curve",
                 btn_animate: "Animate ME!", btn_stop: "Parar",
                 game_instruction: "Aperte Espaço ou toque na tela para flutuar.", game_instruction2: "Colete os Keyframes (♦) para ganhar bónus!",
                 game_btn_start: "Começar", game_btn_restart: "Tentar Novamente",
                 asst_subtitle: "Inicie o seu projeto com as nossas ferramentas inteligentes e gratuitas.",
-                tab_expr: "Gerador de Expressões", tab_colors: "Color Lab",
+                
+                tab_expr: "Gerador de Expressões", tab_colors: "Color Lab", tab_graph: "Graph Editor", tab_recipes: "Motion Recipes", tab_bpm: "BPM Sync", tab_shortcuts: "Atalhos AE",
                 
                 lbl_target_prop: "Propriedade Alvo", prop_pos: "Posição", prop_scale: "Escala", prop_rot: "Rotação", prop_opac: "Opacidade", prop_text: "Texto",
                 lbl_select_fx: "Selecione o Efeito",
@@ -769,10 +1005,20 @@
                 opt_cycle: "Cycle (Reinicia Padrão)", opt_pingpong: "PingPong (Vai e Volta)", opt_continue: "Continue (Soma o valor)",
                 opt_blink: "Piscar para Sempre", opt_stop: "Sumir ao Concluir",
                 lbl_live_preview: "Live Preview", btn_copy: "Copiar", placeholder_text: "Deixe em branco para usar o texto da camada",
+                lbl_snippet_lib: "Biblioteca de Snippets (Copia & Cola)",
                 
                 lbl_color_engine: "Color Harmony Engine", lbl_base_color: "Cor Base:", lbl_harmony: "Harmonia:",
                 opt_comp: "Complementar (Opostos)", opt_analog: "Análoga (Vizinhas)", opt_triad: "Tríade (Triângulo)", opt_mono: "Monocromática (Tons)",
                 lbl_click_hex: "Clique na cor para copiar o HEX",
+
+                hub_title: "Lab Hub", hub_desc: "A nossa central comunitária de Motion Design. Uma biblioteca de ferramentas, expressões, receitas, scripts e recursos para acelerar seu workflow no After Effects.",
+
+                bpm_title: "Calculadora de Ritmo (BPM to FPS Sync)",
+                bpm_desc: "Sincronize a sua animação com a batida exata da música. Digite o BPM e o seu Framerate do AE.",
+
+                rec1_title: "Fogo Cartoon 2D", rec1_desc: "Efeito de fogo líquido (Blob) sem plugins externos.", rec1_steps: "1. Sólido com CC Mr. Mercury<br>2. Ajuste o Blob Birth/Death<br>3. Adicione Simple Choker negativo<br>4. Tint para colorir",
+                rec2_title: "Nuvens Stylized", rec2_desc: "Nuvens cartoon com bordas duras.", rec2_steps: "1. Sólido com Fractal Noise<br>2. Aumente o Contrast (>400)<br>3. Efeito Threshold para chapar<br>4. Anime a Evolution",
+                rec3_title: "Boil Line (Animação Tradicional)", rec3_desc: "Aquele efeito tremido de desenho à mão.", rec3_steps: "1. Turbulent Displace (Size 10, Amount 5)<br>2. Expression no Evolution: time*15<br>3. Posterize Time (12 ou 8 fps)",
 
                 footer_talk: "Fale Comigo", footer_support: "Suporte", footer_support_desc: "Encontrou algum erro num dos scripts ou no site?", footer_rights: "© 2026 Catalan Lab. Todos os direitos reservados.", footer_bug: "Relatar um Bug",
                 btn_buy: "Comprar", btn_download: "Baixar", btn_more: "Saber mais", badge_course: "Curso Completo", btn_coming_soon: "Em breve", btn_early_access: "Acesso Antecipado", btn_tutorial: "Tutorial",
@@ -792,7 +1038,7 @@
                 a5: "Não necessariamente. Algumas ferramentas são simples e diretas, mas é recomendado ter noções básicas do After Effects para aproveitar melhor os recursos. E sim, existe suporte completo! Caso tenha problemas de instalação ou bugs, utilize o botão 'Relatar um Bug' no rodapé do site enviando prints, versão do AE e detalhes do erro para agilizarmos a correção."
             },
             en: {
-                nav_motion: "Motion Design", nav_playground: "Playground", nav_assistant: "Assistant", nav_scripts: "Scripts", nav_projects: "AE Projects", nav_masterclass: "Masterclass", nav_contact: "Contact",
+                nav_motion: "Motion Design", nav_playground: "Playground", nav_assistant: "Assistant", nav_hub: "Lab Hub", nav_scripts: "Scripts", nav_projects: "AE Projects", nav_masterclass: "Masterclass", nav_contact: "Contact",
                 hero_title1: "Ideas in", hero_title2: "motion.",
                 hero_subtitle: "Optimized workflows developed by someone who breathes After Effects every day.",
                 hero_btn_portfolio: "View Portfolio", hero_btn_scripts: "My Scripts",
@@ -802,12 +1048,13 @@
                 section_masterclass1: "Master", section_masterclass2: "class",
                 
                 play_desc: "Have fun and test essential Motion Design concepts right in your browser.",
-                play_val: "Value", play_time: "Time", play_presets: "Presets", play_custom: "Custom Curve",
+                play_val: "Value", play_time: "Time", play_presets: "Presets (Easing)", play_custom: "Custom Curve",
                 btn_animate: "Animate ME!", btn_stop: "Stop",
                 game_instruction: "Press Space or tap the screen to fly.", game_instruction2: "Collect Keyframes (♦) for bonus points!",
                 game_btn_start: "Start", game_btn_restart: "Try Again",
                 asst_subtitle: "Jumpstart your project with our free smart tools.",
-                tab_expr: "Expression Generator", tab_colors: "Color Lab",
+                
+                tab_expr: "Expression Generator", tab_colors: "Color Lab", tab_graph: "Graph Editor", tab_recipes: "Motion Recipes", tab_bpm: "BPM Sync", tab_shortcuts: "AE Shortcuts",
                 
                 lbl_target_prop: "Target Property", prop_pos: "Position", prop_scale: "Scale", prop_rot: "Rotation", prop_opac: "Opacity", prop_text: "Text",
                 lbl_select_fx: "Select Effect",
@@ -816,10 +1063,20 @@
                 opt_cycle: "Cycle (Standard Reset)", opt_pingpong: "PingPong (Back and Forth)", opt_continue: "Continue (Add Value)",
                 opt_blink: "Blink Forever", opt_stop: "Hide on Complete",
                 lbl_live_preview: "Live Preview", btn_copy: "Copy", placeholder_text: "Leave blank to use the layer's text",
+                lbl_snippet_lib: "Snippet Library (Copy & Paste)",
                 
                 lbl_color_engine: "Color Harmony Engine", lbl_base_color: "Base Color:", lbl_harmony: "Harmony:",
                 opt_comp: "Complementary (Opposites)", opt_analog: "Analogous (Neighbors)", opt_triad: "Triadic (Triangle)", opt_mono: "Monochromatic (Shades)",
                 lbl_click_hex: "Click on color to copy HEX",
+
+                hub_title: "Lab Hub", hub_desc: "Our community hub for Motion Design. A library of tools, expressions, recipes, scripts, and resources to speed up your workflow in After Effects.",
+                
+                bpm_title: "Rhythm Calculator (BPM to FPS Sync)",
+                bpm_desc: "Sync your animation with the exact beat of the music. Enter the BPM and your Framerate.",
+
+                rec1_title: "Cartoon Fire 2D", rec1_desc: "Liquid fire effect (Blob) without external plugins.", rec1_steps: "1. Solid with CC Mr. Mercury<br>2. Adjust Blob Birth/Death<br>3. Add negative Simple Choker<br>4. Tint to colorize",
+                rec2_title: "Stylized Clouds", rec2_desc: "Cartoon clouds with hard edges.", rec2_steps: "1. Solid with Fractal Noise<br>2. Increase Contrast (>400)<br>3. Add Threshold to flatten<br>4. Animate Evolution",
+                rec3_title: "Boil Line (Traditional Animation)", rec3_desc: "That hand-drawn shaking effect.", rec3_steps: "1. Turbulent Displace (Size 10, Amount 5)<br>2. Evolution Expression: time*15<br>3. Posterize Time (12 or 8 fps)",
 
                 footer_talk: "Talk to Me", footer_support: "Support", footer_support_desc: "Found an error in a script or on the site?", footer_rights: "© 2026 Catalan Lab. All rights reserved.", footer_bug: "Report a Bug",
                 btn_buy: "Buy", btn_download: "Download", btn_more: "Learn more", badge_course: "Full Course", btn_coming_soon: "Coming soon", btn_early_access: "Early Access", btn_tutorial: "Tutorial",
@@ -839,7 +1096,7 @@
                 a5: "Not necessarily. Some tools are simple, but basic AE knowledge is recommended. And yes, there is full support! If you have installation issues or bugs, use the 'Report a Bug' button in the footer, sending prints, AE version, and error details."
             },
             es: {
-                nav_motion: "Motion Design", nav_playground: "Playground", nav_assistant: "Assistant", nav_scripts: "Scripts", nav_projects: "Proyectos AE", nav_masterclass: "Masterclass", nav_contact: "Contacto",
+                nav_motion: "Motion Design", nav_playground: "Playground", nav_assistant: "Assistant", nav_hub: "Lab Hub", nav_scripts: "Scripts", nav_projects: "Proyectos AE", nav_masterclass: "Masterclass", nav_contact: "Contacto",
                 hero_title1: "Ideas en", hero_title2: "movimiento.",
                 hero_subtitle: "Flujos de trabajo optimizados y desarrollados por quien respira After Effects a diario.",
                 hero_btn_portfolio: "Ver Portafolio", hero_btn_scripts: "Mis Scripts",
@@ -849,12 +1106,13 @@
                 section_masterclass1: "Master", section_masterclass2: "class",
                 
                 play_desc: "Diviértete y prueba conceptos esenciales de Motion Design en tu navegador.",
-                play_val: "Valor", play_time: "Tiempo", play_presets: "Ajustes", play_custom: "Curva Personalizada",
+                play_val: "Valor", play_time: "Tiempo", play_presets: "Ajustes (Easing)", play_custom: "Curva Personalizada",
                 btn_animate: "Animate ME!", btn_stop: "Parar",
                 game_instruction: "Presiona Espacio o toca la pantalla para volar.", game_instruction2: "¡Recoge Keyframes (♦) para puntos extra!",
                 game_btn_start: "Comenzar", game_btn_restart: "Intentar de nuevo",
                 asst_subtitle: "Inicia tu proyecto con nuestras herramientas inteligentes y gratuitas.",
-                tab_expr: "Generador de Expresiones", tab_colors: "Color Lab",
+                
+                tab_expr: "Generador de Expresiones", tab_colors: "Color Lab", tab_graph: "Graph Editor", tab_recipes: "Motion Recipes", tab_bpm: "BPM Sync", tab_shortcuts: "Atajos AE",
 
                 lbl_target_prop: "Propiedad Objetivo", prop_pos: "Posición", prop_scale: "Escala", prop_rot: "Rotación", prop_opac: "Opacidad", prop_text: "Texto",
                 lbl_select_fx: "Seleccionar Efecto",
@@ -863,10 +1121,20 @@
                 opt_cycle: "Cycle (Reinicio Estándar)", opt_pingpong: "PingPong (Ida y Vuelta)", opt_continue: "Continue (Sumar valor)",
                 opt_blink: "Parpadear Siempre", opt_stop: "Ocultar al Completar",
                 lbl_live_preview: "Live Preview", btn_copy: "Copiar", placeholder_text: "Déjalo en blanco para usar el texto de la capa",
+                lbl_snippet_lib: "Biblioteca de Snippets (Copiar y Pegar)",
                 
                 lbl_color_engine: "Color Harmony Engine", lbl_base_color: "Color Base:", lbl_harmony: "Armonía:",
                 opt_comp: "Complementaria (Opuestos)", opt_analog: "Análoga (Vecinos)", opt_triad: "Tríada (Triángulo)", opt_mono: "Monocromática (Tonos)",
                 lbl_click_hex: "Haz clic en el color para copiar el HEX",
+
+                hub_title: "Lab Hub", hub_desc: "Nuestro centro comunitario de Motion Design. Una biblioteca de herramientas, expresiones, recetas, scripts y recursos para acelerar su flujo de trabajo en After Effects.",
+                
+                bpm_title: "Calculadora de Ritmo (BPM to FPS Sync)",
+                bpm_desc: "Sincroniza tu animación con el ritmo exacto de la música. Introduce el BPM y tu Framerate.",
+
+                rec1_title: "Fuego Cartoon 2D", rec1_desc: "Efecto de fuego líquido (Blob) sin plugins.", rec1_steps: "1. Sólido con CC Mr. Mercury<br>2. Ajusta el Blob Birth/Death<br>3. Añade Simple Choker negativo<br>4. Tint para colorear",
+                rec2_title: "Nubes Stylized", rec2_desc: "Nubes cartoon con bordes duros.", rec2_steps: "1. Sólido con Fractal Noise<br>2. Aumenta el Contrast (>400)<br>3. Efecto Threshold para aplanar<br>4. Anima la Evolution",
+                rec3_title: "Boil Line (Animación Tradicional)", rec3_desc: "Ese efecto tembloroso de dibujo a mano.", rec3_steps: "1. Turbulent Displace (Size 10, Amount 5)<br>2. Expression en Evolution: time*15<br>3. Posterize Time (12 u 8 fps)",
 
                 footer_talk: "Hablemos", footer_support: "Soporte", footer_support_desc: "¿Encontraste un error en un script o en el sitio?", footer_rights: "© 2026 Catalan Lab. Todos los derechos reservados.", footer_bug: "Reportar un Error",
                 btn_buy: "Comprar", btn_download: "Descargar", btn_more: "Saber más", badge_course: "Curso Completo", btn_coming_soon: "Pronto", btn_early_access: "Acceso Anticipado", btn_tutorial: "Tutorial",
@@ -1097,7 +1365,7 @@
                 let actionButtons = '';
                 if (script.isComingSoon) {
                     let earlyAccessBtn = `<a href="https://chat.whatsapp.com/LG6y5yAyBDr9i1rG11OPz6" target="_blank" class="flex items-center gap-2 bg-brand-yellow/10 border border-brand-yellow/30 text-brand-yellow px-5 py-2.5 rounded-lg font-bold hover:bg-brand-yellow hover:text-brand-dark transition-all duration-300 w-full sm:w-auto justify-center">
-                        Acesso Antecipado <i data-lucide="key" class="w-4 h-4"></i>
+                        ${translations[currentLang].btn_early_access} <i data-lucide="key" class="w-4 h-4"></i>
                     </a>`;
                     let comingSoonBtn = `<button disabled class="flex items-center gap-2 bg-gray-800/50 text-gray-500 px-5 py-2.5 rounded-lg font-bold cursor-not-allowed w-full sm:w-auto justify-center border border-white/5">
                         ${localizedBtnText} <i data-lucide="clock" class="w-4 h-4"></i>
@@ -1127,7 +1395,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">${script.title}</h3>
                     <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">${script.description[currentLang]}</p>
-                    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-auto pt-6 border-t border-white/5 gap-4 sm:gap-0">
+                    <div class="flex flex-wrap items-center justify-between mt-auto pt-6 border-t border-white/5 gap-4">
                         <span class="text-2xl font-bold text-white">${script.isComingSoon ? '' : script.price[currentLang]}</span>
                         ${actionButtons}
                     </div>
@@ -1203,18 +1471,19 @@
            LÓGICA DO GRAPH EDITOR E PLAYGROUND TABS
            ========================================= */
         function switchPlaygroundTab(tabId) {
-            document.getElementById('tab-content-graph').classList.add('hidden');
             document.getElementById('tab-content-game').classList.add('hidden');
             
-            const btns = ['graph', 'game'];
+            const btns = ['game'];
             btns.forEach(id => {
                 const btn = document.getElementById(`tab-btn-${id}`);
-                btn.className = "py-2 px-6 text-sm font-bold text-gray-400 hover:text-white rounded-lg transition-colors whitespace-nowrap flex items-center gap-2";
+                if(btn) btn.className = "py-2 px-6 text-sm font-bold text-gray-400 hover:text-white rounded-lg transition-colors whitespace-nowrap flex items-center gap-2";
             });
 
-            document.getElementById(`tab-content-${tabId}`).classList.remove('hidden');
+            const contentEl = document.getElementById(`tab-content-${tabId}`);
+            if(contentEl) contentEl.classList.remove('hidden');
+            
             const activeBtn = document.getElementById(`tab-btn-${tabId}`);
-            activeBtn.className = "py-2 px-6 text-sm font-bold bg-brand-dark text-brand-yellow rounded-lg transition-colors whitespace-nowrap flex items-center gap-2";
+            if(activeBtn) activeBtn.className = "py-2 px-6 text-sm font-bold bg-brand-dark text-brand-yellow rounded-lg transition-colors whitespace-nowrap flex items-center gap-2";
             
             if(tabId === 'game') {
                 initGame();
@@ -1321,6 +1590,7 @@
 
         // Gestão Global do Visual das Barras (Sliders)
         function updateSliderFill(el) {
+            if(!el) return;
             const min = parseFloat(el.min) || 0;
             const max = parseFloat(el.max) || 100;
             const val = parseFloat(el.value);
@@ -1328,13 +1598,20 @@
             el.style.background = `linear-gradient(to right, #FFD600 ${percentage}%, #1E293B ${percentage}%)`;
         }
 
+        function initSliders() {
+            document.querySelectorAll('input[type=range]').forEach(slider => {
+                updateSliderFill(slider);
+                slider.addEventListener('input', function() {
+                    updateSliderFill(this);
+                });
+            });
+        }
+
         function updateCustomBezier() {
             bezierParams = [parseFloat(sX1.value), parseFloat(sY1.value), parseFloat(sX2.value), parseFloat(sY2.value)];
             drawGraph();
-            document.querySelectorAll('#playground button').forEach(b => {
-                if(b.innerText === "Linear" || b.innerText === "Easy Ease" || b.innerText === "Overshoot") {
-                    b.className = "text-xs bg-white/5 hover:bg-white/10 border border-white/10 rounded py-2 transition-colors";
-                }
+            document.querySelectorAll('.preset-btn').forEach(b => {
+                b.className = "preset-btn text-xs bg-white/5 hover:bg-white/10 border border-white/10 rounded py-2 transition-colors";
             });
             [sX1, sY1, sX2, sY2].forEach(updateSliderFill);
         }
@@ -1342,24 +1619,35 @@
         function setPreset(type) {
             if (type === 'linear') bezierParams = [0, 0, 1, 1];
             if (type === 'ease') bezierParams = [0.25, 0.1, 0.25, 1];
-            if (type === 'overshoot') bezierParams = [0.34, 1.56, 0.64, 1]; 
+            if (type === 'easeIn') bezierParams = [0.42, 0, 1, 1];
+            if (type === 'easeOut') bezierParams = [0, 0, 0.58, 1];
+            if (type === 'expoOut') bezierParams = [0.16, 1, 0.3, 1];
+            if (type === 'backOut') bezierParams = [0.34, 1.56, 0.64, 1];
             
             sX1.value = bezierParams[0]; sY1.value = bezierParams[1];
             sX2.value = bezierParams[2]; sY2.value = bezierParams[3];
             drawGraph();
             [sX1, sY1, sX2, sY2].forEach(updateSliderFill); 
 
-            const btns = document.querySelectorAll('#playground button');
+            const btns = document.querySelectorAll('.preset-btn');
             btns.forEach(b => {
-                if(b.innerText === "Linear" || b.innerText === "Easy Ease" || b.innerText === "Overshoot") {
-                    b.className = "text-xs bg-white/5 hover:bg-white/10 border border-white/10 rounded py-2 transition-colors";
-                    if ((type === 'linear' && b.innerText === "Linear") || 
-                        (type === 'ease' && b.innerText === "Easy Ease") || 
-                        (type === 'overshoot' && b.innerText === "Overshoot")) {
-                        b.className = "text-xs bg-brand-yellow text-brand-dark font-bold rounded py-2 transition-colors";
-                    }
+                b.className = "preset-btn text-xs bg-white/5 hover:bg-white/10 border border-white/10 rounded py-2 transition-colors";
+                if ((type === 'linear' && b.innerText === "Linear") || 
+                    (type === 'ease' && b.innerText === "Easy Ease") || 
+                    (type === 'easeIn' && b.innerText === "Ease In") || 
+                    (type === 'easeOut' && b.innerText === "Ease Out") || 
+                    (type === 'expoOut' && b.innerText === "Expo Out") || 
+                    (type === 'backOut' && b.innerText === "Back Out")) {
+                    b.className = "preset-btn text-xs bg-brand-yellow text-brand-dark font-bold rounded py-2 transition-colors";
                 }
             });
+            
+            // Auto play the animation to show the feeling
+            if(!isLooping) toggleAnimation();
+            else {
+                isLooping = false; clearTimeout(loopTimeout);
+                setTimeout(() => { toggleAnimation(); }, 50);
+            }
         }
 
         let isLooping = false;
@@ -1562,7 +1850,7 @@
             gameRaf = requestAnimationFrame(updateGame);
         }
 
-        function startGame(e) {
+        window.startGame = function(e) {
             if (e) {
                 e.stopPropagation();
                 if (e.type === 'touchstart') e.preventDefault(); 
@@ -1585,22 +1873,22 @@
             isGameRunning = true;
             cancelAnimationFrame(gameRaf);
             updateGame();
-        }
+        };
 
-        function gameOver() {
+        window.gameOver = function() {
             isGameRunning = false;
             cancelAnimationFrame(gameRaf);
             document.getElementById('game-score-hud').classList.add('hidden');
             document.getElementById('game-final-score').innerText = score;
             document.getElementById('game-over-screen').classList.remove('hidden');
-        }
+        };
 
-        function jump(e) {
+        window.jump = function(e) {
             if (e) {
                 if (e.type === 'touchstart') e.preventDefault();
             }
             if (isGameRunning) bee.velocity = bee.jump;
-        }
+        };
 
         function initGame() {
             if (!isGameRunning) drawGame(); 
@@ -1614,16 +1902,16 @@
                 
                 if(!isGameRunning && document.getElementById('tab-content-game') && !document.getElementById('tab-content-game').classList.contains('hidden')) {
                     e.preventDefault();
-                    startGame();
+                    window.startGame();
                 } else if(isGameRunning) {
                     e.preventDefault();
-                    jump();
+                    window.jump();
                 }
             }
         });
 
         // LÓGICA DO ACCORDION FAQ
-        function toggleFaq(index) {
+        window.toggleFaq = function(index) {
             const content = document.getElementById('faq-content-' + index);
             const icon = document.getElementById('faq-icon-' + index);
             if (content.classList.contains('hidden')) {
@@ -1633,36 +1921,52 @@
                 content.classList.add('hidden');
                 icon.style.transform = 'rotate(0deg)';
             }
-        }
+        };
 
         /* =========================================
-           LÓGICA DO LAB ASSISTANT (WIDGETS)
+           LÓGICA DO LAB HUB (WIDGETS)
            ========================================= */
 
         let currentProperty = 'position'; // Padrão
 
-        function switchAssistantTab(tabId) {
+        window.switchHubTab = function(tabId) {
             document.getElementById('tab-content-expr').classList.add('hidden');
             document.getElementById('tab-content-colors').classList.add('hidden');
+            document.getElementById('tab-content-graph').classList.add('hidden');
+            document.getElementById('tab-content-recipes').classList.add('hidden');
+            document.getElementById('tab-content-bpm').classList.add('hidden');
+            document.getElementById('tab-content-shortcuts').classList.add('hidden');
             
-            const btns = ['expr', 'colors'];
+            const btns = ['expr', 'colors', 'graph', 'recipes', 'bpm', 'shortcuts'];
             btns.forEach(id => {
                 const btn = document.getElementById(`tab-btn-${id}`);
-                btn.classList.remove('text-brand-yellow', 'border-brand-yellow');
-                btn.classList.add('text-gray-400', 'border-transparent');
+                if(btn) {
+                    btn.classList.remove('text-brand-yellow', 'border-brand-yellow');
+                    btn.classList.add('text-gray-400', 'border-transparent');
+                }
             });
 
-            document.getElementById(`tab-content-${tabId}`).classList.remove('hidden');
+            const contentEl = document.getElementById(`tab-content-${tabId}`);
+            if(contentEl) contentEl.classList.remove('hidden');
+            
             const activeBtn = document.getElementById(`tab-btn-${tabId}`);
-            activeBtn.classList.remove('text-gray-400', 'border-transparent');
-            activeBtn.classList.add('text-brand-yellow', 'border-brand-yellow');
+            if(activeBtn) {
+                activeBtn.classList.remove('text-gray-400', 'border-transparent');
+                activeBtn.classList.add('text-brand-yellow', 'border-brand-yellow');
+            }
 
             if(tabId === 'colors' && document.getElementById('color-palette').innerHTML.trim() === '') {
-                generateColors();
+                window.generateColors();
             }
-        }
+            if(tabId === 'graph') {
+                drawGraph(); 
+            }
+            if(tabId === 'bpm') {
+                window.calculateBPM();
+            }
+        };
 
-        function selectProperty(prop) {
+        window.selectProperty = function(prop) {
             currentProperty = prop;
             const props = ['position', 'scale', 'rotation', 'opacity', 'text'];
             
@@ -1674,15 +1978,16 @@
                     btn.className = "flex-1 min-w-[70px] py-2 rounded-lg border border-white/10 text-gray-400 hover:text-white hover:bg-white/5 text-xs font-bold transition-all";
                 }
             });
-        }
+        };
 
         // --- 1. Gerador de Expressões com Preview Nativo Universal ---
         let expressionPreviewRaf;
         const appStartTime = Date.now();
 
-        function startExpressionPreview() {
+        window.startExpressionPreview = function() {
             cancelAnimationFrame(expressionPreviewRaf);
             const target = document.getElementById('preview-target');
+            if(!target) return;
             const type = document.getElementById('expr-type').value;
 
             target.innerHTML = '';
@@ -1796,11 +2101,12 @@
             };
             
             renderFrame();
-        }
+        };
 
-        function generateExpression() {
+        window.generateExpression = function() {
             const type = document.getElementById('expr-type').value;
             const output = document.getElementById('expr-output');
+            if(!output) return;
             
             document.getElementById('expr-controls-wiggle').classList.add('hidden');
             document.getElementById('expr-controls-loop').classList.add('hidden');
@@ -1856,11 +2162,21 @@
             }
 
             output.innerText = expr;
-            startExpressionPreview();
-        }
+            window.startExpressionPreview();
+        };
 
-        function copyExpression() {
-            const text = document.getElementById('expr-output').innerText;
+        window.copyExpression = function(elementId) {
+            let text = "";
+            if (elementId) {
+                const el = document.getElementById(elementId);
+                if (el) text = el.innerText;
+            } else {
+                const output = document.getElementById('expr-output');
+                if (output) text = output.innerText;
+            }
+
+            if (!text) return;
+
             try {
                 const tempInput = document.createElement("textarea");
                 tempInput.value = text;
@@ -1872,7 +2188,7 @@
             } catch (err) {
                 console.log('Erro ao copiar', err);
             }
-        }
+        };
 
         // --- 2. Color Lab ---
         
@@ -1907,8 +2223,10 @@
             return `#${f(0)}${f(8)}${f(4)}`.toUpperCase();
         }
 
-        function generateColors() {
-            const baseHex = document.getElementById('base-color-picker').value.toUpperCase();
+        window.generateColors = function() {
+            const picker = document.getElementById('base-color-picker');
+            if(!picker) return;
+            const baseHex = picker.value.toUpperCase();
             const harmony = document.getElementById('color-harmony-type').value;
             
             document.getElementById('base-color-display').style.backgroundColor = baseHex;
@@ -1978,7 +2296,7 @@
                 
                 container.appendChild(div);
             });
-        }
+        };
 
         function getContrastYIQ(hexcolor){
             hexcolor = hexcolor.replace("#", "");
@@ -1989,17 +2307,64 @@
             return (yiq >= 128) ? 'black' : 'white';
         }
 
-        function initSliders() {
-            document.querySelectorAll('input[type=range]').forEach(slider => {
-                updateSliderFill(slider);
-                slider.addEventListener('input', function() {
-                    updateSliderFill(this);
-                });
+        // --- 3. BPM Sync Calculator ---
+        window.calculateBPM = function() {
+            const bpmInput = document.getElementById('bpm-input');
+            const fpsInput = document.getElementById('fps-input');
+            if(!bpmInput || !fpsInput) return;
+
+            const bpm = parseFloat(bpmInput.value) || 120;
+            const fps = parseFloat(fpsInput.value) || 30;
+            
+            const secondsPerBeat = 60 / bpm;
+            const framesPerBeat = secondsPerBeat * fps;
+            
+            document.getElementById('bpm-output-frames').innerText = Math.round(framesPerBeat * 100) / 100;
+            document.getElementById('bpm-output-time').innerText = secondsPerBeat.toFixed(2) + 's';
+        };
+
+        // LÓGICA DE NAVEGAÇÃO SPA (PÁGINAS)
+        function initSPA() {
+            document.querySelectorAll('main > div[data-page]').forEach(sec => {
+                if (sec.id === 'page-playground') {
+                    sec.classList.add('pt-24', 'min-h-screen'); 
+                } else if (sec.id === 'page-assistant') {
+                    sec.classList.add('pt-24', 'min-h-screen');
+                } else if (sec.id === 'page-hub') {
+                    sec.classList.add('pt-24', 'min-h-screen');
+                }
             });
         }
 
+        window.navigate = function(pageId, sectionId = null) {
+            document.querySelectorAll('main > div[data-page]').forEach(sec => {
+                if (sec.getAttribute('data-page') === pageId) {
+                    sec.classList.remove('hidden');
+                } else {
+                    sec.classList.add('hidden');
+                }
+            });
+
+            if (isMobileMenuOpen) toggleMobileMenu();
+
+            if (sectionId) {
+                setTimeout(() => {
+                    const el = document.getElementById(sectionId);
+                    if(el) {
+                        const y = el.getBoundingClientRect().top + window.scrollY - 80;
+                        window.scrollTo({top: y, behavior: 'smooth'});
+                    }
+                }, 50);
+            } else {
+                window.scrollTo(0, 0);
+            }
+        };
+
+        // INICIALIZAÇÃO GERAL
         drawGraph();
+        initGame(); 
         initSliders(); 
+        initSPA();
         setLang(currentLang);
     </script>
 </body>

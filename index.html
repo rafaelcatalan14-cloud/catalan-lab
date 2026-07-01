@@ -202,9 +202,6 @@
     <!-- CONTENT WRAPPER PARA O SPA -->
     <main class="w-full flex-grow">
 
-        <!-- ============================================== -->
-        <!-- PÁGINA 1: HOME (PORTFÓLIO, SCRIPTS, MASTERCLASS) -->
-        <!-- ============================================== -->
         <div id="page-home" data-page="home" class="page-content block">
             <!-- SOBRE O AUTOR (NOVO HERO) -->
             <section id="sobre" class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
@@ -994,8 +991,6 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
         const translations = {
             pt: {
                 nav_motion: "Motion Design", nav_playground: "Playground", nav_assistant: "Assistant", nav_hub: "Lab Hub", nav_scripts: "Scripts", nav_projects: "Projetos AE", nav_masterclass: "Masterclass", nav_contact: "Contato",
-                hero_title1: "Ideias em", hero_title2: "movimento.",
-                hero_subtitle: "Workflows otimizados e desenvolvido por quem realmente respira o After Effects todos os dias.",
                 hero_btn_portfolio: "Ver Portfólio", hero_btn_scripts: "Meus Scripts",
                 section_motion1: "Motion", section_motion2: "Design",
                 section_scripts1: "Meus", section_scripts2: "Scripts",
@@ -1040,7 +1035,7 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
 
                 footer_talk: "Fale Comigo", footer_support: "Suporte", footer_support_desc: "Encontrou algum erro num dos scripts ou no site?", footer_rights: "© 2026 Catalan Lab. Todos os direitos reservados.", footer_bug: "Relatar um Bug",
                 btn_buy: "Comprar", btn_download: "Baixar", btn_more: "Saber mais", badge_course: "Curso Completo", btn_coming_soon: "Em breve", btn_early_access: "Acesso Antecipado", btn_tutorial: "Tutorial",
-                btn_share_site: "Compartir", toast_copied: "Copiado para a área de transferência!", toast_hex: "Cor HEX copiada!",
+                btn_share_site: "Compartilhar", toast_copied: "Copiado para a área de transferência!", toast_hex: "Cor HEX copiada!",
 
                 // FAQ PT
                 faq_title: "Perguntas Frequentes", faq_subtitle: "Tire suas dúvidas sobre instalação, licenças e atualizações.",
@@ -1057,8 +1052,6 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
             },
             en: {
                 nav_motion: "Motion Design", nav_playground: "Playground", nav_assistant: "Assistant", nav_hub: "Lab Hub", nav_scripts: "Scripts", nav_projects: "AE Projects", nav_masterclass: "Masterclass", nav_contact: "Contact",
-                hero_title1: "Ideas in", hero_title2: "motion.",
-                hero_subtitle: "Optimized workflows developed by someone who breathes After Effects every day.",
                 hero_btn_portfolio: "View Portfolio", hero_btn_scripts: "My Scripts",
                 section_motion1: "Motion", section_motion2: "Design",
                 section_scripts1: "My", section_scripts2: "Scripts",
@@ -1120,8 +1113,6 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
             },
             es: {
                 nav_motion: "Motion Design", nav_playground: "Playground", nav_assistant: "Assistant", nav_hub: "Lab Hub", nav_scripts: "Scripts", nav_projects: "Proyectos AE", nav_masterclass: "Masterclass", nav_contact: "Contacto",
-                hero_title1: "Ideas en", hero_title2: "movimiento.",
-                hero_subtitle: "Flujos de trabajo optimizados y desarrollados por quien respira After Effects a diario.",
                 hero_btn_portfolio: "Ver Portafolio", hero_btn_scripts: "Mis Scripts",
                 section_motion1: "Motion", section_motion2: "Design",
                 section_scripts1: "Mis", section_scripts2: "Scripts",
@@ -1237,6 +1228,17 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
 
         const scripts = [
             {
+                id: 3, title: "Organic RIG PRO",
+                description: {
+                    pt: "O Organic RIG PRO facilita o rig de cabelos, tecidos, caudas, cordas e elementos flexíveis em apenas alguns cliques.",
+                    en: "Organic RIG PRO makes rigging hair, fabrics, tails, ropes, and flexible elements easy in just a few clicks.",
+                    es: "Organic RIG PRO facilita el rig de cabello, telas, colas, cuerdas y elementos flexibles en solo unos pocos clics."
+                },
+                price: { pt: "Premium", en: "Premium", es: "Premium" },
+                icon: "feather", link: "https://aescripts.com/organic-rig-pro/",
+                btnTextKey: "btn_buy"
+            },
+            {
                 id: 1, title: "3D Cam Parallax",
                 description: {
                     pt: "Crie movimentos de câmera parallax 3D incríveis e fluidos com apenas alguns cliques no After Effects.",
@@ -1282,17 +1284,6 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
                 icon: "music", link: "https://docs.google.com/forms/d/e/1FAIpQLSc91FxF7xsc_O41gbJxG-7p9vTV4pIzOGAlTzvGUldkztN90A/viewform?usp=sharing&ouid=106520077737272301292",
                 tutorialLink: "https://youtu.be/A5kG8fFjGCI?si=WmBrqUYLeP7jb6yx",
                 btnTextKey: "btn_download"
-            },
-            {
-                id: 3, title: "Organic Rig",
-                description: {
-                    pt: "Script focado em rig e simulação orgânica para cabelos, flags, tecidos e caudas.",
-                    en: "Script focused on organic rigging and simulation for hair, flags, fabrics, and tails.",
-                    es: "Script enfocado en rigging y simulación orgánica para cabello, banderas, telas y colas."
-                },
-                price: { pt: "-", en: "-", es: "-" },
-                icon: "feather", link: "#",
-                isComingSoon: true
             },
             {
                 id: 4, title: "LoopDeck",

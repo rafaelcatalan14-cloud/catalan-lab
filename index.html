@@ -129,8 +129,7 @@
                 <div class="flex items-center gap-4 md:gap-0">
                     <!-- Links Desktop -->
                     <div class="hidden md:flex space-x-4 lg:space-x-5 items-center">
-                        <a href="javascript:void(0)" onclick="navigate('home', 'motion')" data-i18n="nav_motion" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium whitespace-nowrap text-sm lg:text-base">Motion Design</a>
-                        <a href="javascript:void(0)" onclick="navigate('home', 'scripts')" data-i18n="nav_scripts" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium whitespace-nowrap text-sm lg:text-base">Scripts</a>
+                        <a href="javascript:void(0)" onclick="navigate('home', 'motion')" data-i18n="nav_motion" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium whitespace-nowrap text-sm lg:text-base">Portfólio</a>
                         <a href="javascript:void(0)" onclick="navigate('home', 'projetos')" data-i18n="nav_projects" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium whitespace-nowrap text-sm lg:text-base">Projetos AE</a>
                         <a href="javascript:void(0)" onclick="navigate('home', 'masterclass')" data-i18n="nav_masterclass" class="text-gray-300 hover:text-brand-yellow transition-colors font-medium whitespace-nowrap text-sm lg:text-base">Masterclass</a>
                         
@@ -173,8 +172,7 @@
 
         <div id="mobile-menu" class="hidden md:hidden bg-brand-dark/95 backdrop-blur-lg border-b border-white/10 absolute top-20 left-0 w-full z-40 shadow-2xl">
             <div class="px-6 py-8 flex flex-col space-y-6 text-center h-[calc(100vh-80px)] overflow-y-auto pb-24">
-                <a href="javascript:void(0)" onclick="navigate('home', 'motion')" data-i18n="nav_motion" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Motion Design</a>
-                <a href="javascript:void(0)" onclick="navigate('home', 'scripts')" data-i18n="nav_scripts" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Scripts</a>
+                <a href="javascript:void(0)" onclick="navigate('home', 'motion')" data-i18n="nav_motion" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Portfólio</a>
                 <a href="javascript:void(0)" onclick="navigate('home', 'projetos')" data-i18n="nav_projects" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Projetos AE</a>
                 <a href="javascript:void(0)" onclick="navigate('home', 'masterclass')" data-i18n="nav_masterclass" class="text-white hover:text-brand-yellow font-bold text-lg tracking-wide transition-colors">Masterclass</a>
                 
@@ -202,6 +200,9 @@
     <!-- CONTENT WRAPPER PARA O SPA -->
     <main class="w-full flex-grow">
 
+        <!-- ============================================== -->
+        <!-- PÁGINA 1: HOME (PORTFÓLIO, MASTERCLASS) -->
+        <!-- ============================================== -->
         <div id="page-home" data-page="home" class="page-content block">
             <!-- SOBRE O AUTOR (NOVO HERO) -->
             <section id="sobre" class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
@@ -236,7 +237,7 @@
                             
                             <div class="space-y-5 text-gray-400 text-sm md:text-base leading-relaxed">
                                 <p data-i18n="about_p1">Me chamo Rafael Catalan e atuo como motion designer há pelo menos seis anos. Já tive um estúdio de pós produção audiovisual e trabalhei com grandes criadores de conteúdo no YouTube Brasil.</p>
-                                <p data-i18n="about_p2">Atualmente, tenho focado meus estudos e meu trabalho em motion graphics. Além disso, venho desenvolvendo scripts úteis para otimizar o workflow de outros profissionais da área.</p>
+                                <p data-i18n="about_p2">Atualmente, tenho focado meus estudos e meu trabalho em motion graphics.</p>
                                 <p data-i18n="about_p3">Sinta se à vontade na casa Catalan Lab. Aqui você encontra alguns dos meus trabalhos, seções úteis para o seu dia a dia e, é claro, a seção Playground, onde você pode se distrair naqueles dias mais estressantes.</p>
                             </div>
                         </div>
@@ -253,7 +254,7 @@
             <section id="motion" class="py-20 bg-brand-dark relative">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex items-center gap-4 mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold"><span data-i18n="section_motion1">Motion</span> <span data-i18n="section_motion2" class="text-brand-yellow">Design</span></h2>
+                        <h2 class="text-3xl md:text-4xl font-bold" data-i18n="section_portfolio">Portfólio</h2>
                         <div class="h-px bg-white/10 flex-grow"></div>
                     </div>
                     
@@ -263,22 +264,8 @@
                 </div>
             </section>
 
-            <section id="scripts" class="py-20 relative bg-[#0a0f1c] border-t border-white/5">
+            <section id="projetos" class="py-20 relative bg-[#0a0f1c] border-t border-white/5">
                 <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                    <div class="flex items-center gap-4 mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold"><span data-i18n="section_scripts1">Meus</span> <span data-i18n="section_scripts2" class="text-brand-yellow">Scripts</span></h2>
-                        <div class="h-px bg-white/10 flex-grow"></div>
-                    </div>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="scripts-grid">
-                        <!-- Gerado via JS -->
-                    </div>
-                </div>
-            </section>
-
-            <section id="projetos" class="py-20 relative bg-brand-dark border-t border-white/5">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div class="flex items-center gap-4 mb-12">
                         <h2 class="text-3xl md:text-4xl font-bold"><span data-i18n="section_projects1">Projetos</span> <span data-i18n="section_projects2" class="text-brand-yellow">AE</span></h2>
@@ -291,7 +278,7 @@
                 </div>
             </section>
 
-            <section id="masterclass" class="py-20 bg-[#0a0f1c] relative border-t border-white/5">
+            <section id="masterclass" class="py-20 bg-brand-dark relative border-t border-white/5">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div class="flex items-center gap-4 mb-12">
                         <h2 class="text-3xl md:text-4xl font-bold"><span data-i18n="section_masterclass1" class="text-brand-yellow">Master</span><span data-i18n="section_masterclass2">class</span></h2>
@@ -300,68 +287,6 @@
                     
                     <div class="grid grid-cols-1 gap-8" id="masterclass-container">
                         <!-- Gerado via JS -->
-                    </div>
-                </div>
-            </section>
-
-            <!-- FAQ (SEO) -->
-            <section id="faq" class="py-20 bg-brand-dark relative border-t border-white/5">
-                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                    <div class="text-center mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4" data-i18n="faq_title">Perguntas Frequentes</h2>
-                        <p class="text-gray-400" data-i18n="faq_subtitle">Tire suas dúvidas sobre instalação, licenças e suporte.</p>
-                    </div>
-
-                    <div class="space-y-4">
-                        <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden">
-                            <button onclick="toggleFaq(1)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none hover:bg-white/5 transition-colors">
-                                <span class="font-bold text-brand-yellow" data-i18n="q1">Onde encontro o plugin dentro do After Effects e como instalo?</span>
-                                <i data-lucide="chevron-down" id="faq-icon-1" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
-                            </button>
-                            <div id="faq-content-1" class="px-6 pb-5 hidden">
-                                <p class="text-gray-400 text-sm leading-relaxed" data-i18n="a1">Após baixar o arquivo (.jsxbin), cole-o na pasta oficial do sistema. <br><br><b class='text-brand-yellow'>Windows:</b><br><code class='bg-[#0d1322] px-3 py-2 rounded-lg mt-1 block border border-white/10 font-mono text-xs text-gray-300'>C:\Arquivos de Programas\Adobe\Adobe After Effects\Support Files\Scripts\ScriptUI Panels</code><br><b class='text-brand-yellow'>Mac:</b><br><code class='bg-[#0d1322] px-3 py-2 rounded-lg mt-1 block border border-white/10 font-mono text-xs text-gray-300'>/Applications/Adobe After Effects/Scripts/ScriptUI Panels</code><br><br>Todos os meus scripts ficam localizados no menu superior <b>Window</b> (Janela) por padrão. O Lab Manager é um gerenciador que roda à parte, mas primeiramente ele também precisa ser aberto via Window.</p>
-                            </div>
-                        </div>
-
-                        <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden">
-                            <button onclick="toggleFaq(2)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none hover:bg-white/5 transition-colors">
-                                <span class="font-bold text-brand-yellow" data-i18n="q2">Posso usar os plugins em projetos comerciais? E a licença?</span>
-                                <i data-lucide="chevron-down" id="faq-icon-2" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
-                            </button>
-                            <div id="faq-content-2" class="px-6 pb-5 hidden">
-                                <p class="text-gray-400 text-sm leading-relaxed" data-i18n="a2">Sim! Os plugins podem ser usados tanto em projetos pessoais quanto comerciais, salvo indicação contrária na página do produto. No entanto, o arquivo (.jsxbin) é criptografado e de uso individual. A distribuição, revenda ou realização de cópias não autorizadas é proibida e resulta no bloqueio do acesso e medidas legais.</p>
-                            </div>
-                        </div>
-
-                        <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden">
-                            <button onclick="toggleFaq(3)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none hover:bg-white/5 transition-colors">
-                                <span class="font-bold text-brand-yellow" data-i18n="q3">O plugin não apareceu no After Effects. O que fazer?</span>
-                                <i data-lucide="chevron-down" id="faq-icon-3" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
-                            </button>
-                            <div id="faq-content-3" class="px-6 pb-5 hidden">
-                                <p class="text-gray-400 text-sm leading-relaxed" data-i18n="a3">Verifique rigorosamente se o arquivo foi colocado na pasta exata de <b>ScriptUI Panels</b> (não apenas na pasta Scripts), certifique-se de que o After Effects foi completamente reiniciado após colar o arquivo e confira se a versão do seu software é compatível com o plugin.</p>
-                            </div>
-                        </div>
-
-                        <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden">
-                            <button onclick="toggleFaq(4)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none hover:bg-white/5 transition-colors">
-                                <span class="font-bold text-brand-yellow" data-i18n="q4">Como funcionam as atualizações, garantias e estornos?</span>
-                                <i data-lucide="chevron-down" id="faq-icon-4" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
-                            </button>
-                            <div id="faq-content-4" class="px-6 pb-5 hidden">
-                                <p class="text-gray-400 text-sm leading-relaxed" data-i18n="a4">Sim, os plugins recebem melhorias constantes, correções e novas funções. Se comprou via Hotmart, o sistema dispara a atualização automaticamente para o seu e-mail. Para plugins grátis, o e-mail cadastrado entra na nossa base de avisos. As compras na Hotmart possuem 7 dias de garantia incondicional (o processo de aprovação de estorno pela plataforma pode levar até 5 dias úteis).</p>
-                            </div>
-                        </div>
-
-                        <div class="bg-[#0a0f1c] border border-white/10 rounded-2xl overflow-hidden">
-                            <button onclick="toggleFaq(5)" class="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none hover:bg-white/5 transition-colors">
-                                <span class="font-bold text-brand-yellow" data-i18n="q5">Preciso de conhecimento avançado? Há suporte pós-compra?</span>
-                                <i data-lucide="chevron-down" id="faq-icon-5" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
-                            </button>
-                            <div id="faq-content-5" class="px-6 pb-5 hidden">
-                                <p class="text-gray-400 text-sm leading-relaxed" data-i18n="a5">Não necessariamente. Algumas ferramentas são simples e diretas, mas é recomendado ter noções básicas do After Effects para aproveitar melhor os recursos. E sim, existe suporte completo! Caso tenha problemas de instalação ou bugs, utilize o botão "Relatar um Bug" no rodapé do site enviando prints, versão do AE e detalhes do erro para agilizarmos a correção.</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -990,16 +915,14 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
 
         const translations = {
             pt: {
-                nav_motion: "Motion Design", nav_playground: "Playground", nav_assistant: "Assistant", nav_hub: "Lab Hub", nav_scripts: "Scripts", nav_projects: "Projetos AE", nav_masterclass: "Masterclass", nav_contact: "Contato",
-                hero_btn_portfolio: "Ver Portfólio", hero_btn_scripts: "Meus Scripts",
-                section_motion1: "Motion", section_motion2: "Design",
-                section_scripts1: "Meus", section_scripts2: "Scripts",
+                nav_motion: "Portfólio", nav_playground: "Playground", nav_assistant: "Assistant", nav_hub: "Lab Hub", nav_projects: "Projetos AE", nav_masterclass: "Masterclass", nav_contact: "Contato",
+                section_portfolio: "Portfólio",
                 section_projects1: "Projetos", section_projects2: "AE",
                 section_masterclass1: "Master", section_masterclass2: "class",
                 
                 about_tag: "Sobre o Autor",
                 about_p1: "Me chamo Rafael Catalan e atuo como motion designer há pelo menos seis anos. Já tive um estúdio de pós produção audiovisual e trabalhei com grandes criadores de conteúdo no YouTube Brasil.",
-                about_p2: "Atualmente, tenho focado meus estudos e meu trabalho em motion graphics. Além disso, venho desenvolvendo scripts úteis para otimizar o workflow de outros profissionais da área.",
+                about_p2: "Atualmente, tenho focado meus estudos e meu trabalho em motion graphics.",
                 about_p3: "Sinta se à vontade na casa Catalan Lab. Aqui você encontra alguns dos meus trabalhos, seções úteis para o seu dia a dia e, é claro, a seção Playground, onde você pode se distrair naqueles dias mais estressantes.",
 
                 play_desc: "Divirta-se e teste conceitos essenciais de Motion Design direto no navegador.",
@@ -1051,16 +974,14 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
                 a5: "Não necessariamente. Algumas ferramentas são simples e diretas, mas é recomendado ter noções básicas do After Effects para aproveitar melhor os recursos. E sim, existe suporte completo! Caso tenha problemas de instalação ou bugs, utilize o botão 'Relatar um Bug' no rodapé do site enviando prints, versão do AE e detalhes do erro para agilizarmos a correção."
             },
             en: {
-                nav_motion: "Motion Design", nav_playground: "Playground", nav_assistant: "Assistant", nav_hub: "Lab Hub", nav_scripts: "Scripts", nav_projects: "AE Projects", nav_masterclass: "Masterclass", nav_contact: "Contact",
-                hero_btn_portfolio: "View Portfolio", hero_btn_scripts: "My Scripts",
-                section_motion1: "Motion", section_motion2: "Design",
-                section_scripts1: "My", section_scripts2: "Scripts",
+                nav_motion: "Portfolio", nav_playground: "Playground", nav_assistant: "Assistant", nav_hub: "Lab Hub", nav_scripts: "Scripts", nav_projects: "AE Projects", nav_masterclass: "Masterclass", nav_contact: "Contact",
+                section_portfolio: "Portfolio",
                 section_projects1: "AE", section_projects2: "Projects",
                 section_masterclass1: "Master", section_masterclass2: "class",
                 
                 about_tag: "About the Author",
                 about_p1: "My name is Rafael Catalan and I've been working as a motion designer for at least six years. I used to own an audiovisual post-production studio and worked with major content creators on YouTube Brazil.",
-                about_p2: "Currently, I've been focusing my studies and work on motion graphics. In addition, I have been developing useful scripts to optimize the workflow of other professionals in the field.",
+                about_p2: "Currently, I've been focusing my studies and work on motion graphics.",
                 about_p3: "Feel free to explore Catalan Lab. Here you'll find some of my work, useful sections for your daily routine, and of course, the Playground section, where you can distract yourself on those more stressful days.",
 
                 play_desc: "Have fun and test essential Motion Design concepts right in your browser.",
@@ -1112,16 +1033,14 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
                 a5: "Not necessarily. Some tools are simple, but basic AE knowledge is recommended. And yes, there is full support! If you have installation issues or bugs, use the 'Report a Bug' button in the footer, sending prints, AE version, and error details."
             },
             es: {
-                nav_motion: "Motion Design", nav_playground: "Playground", nav_assistant: "Assistant", nav_hub: "Lab Hub", nav_scripts: "Scripts", nav_projects: "Proyectos AE", nav_masterclass: "Masterclass", nav_contact: "Contacto",
-                hero_btn_portfolio: "Ver Portafolio", hero_btn_scripts: "Mis Scripts",
-                section_motion1: "Motion", section_motion2: "Design",
-                section_scripts1: "Mis", section_scripts2: "Scripts",
+                nav_motion: "Portafolio", nav_playground: "Playground", nav_assistant: "Assistant", nav_hub: "Lab Hub", nav_scripts: "Scripts", nav_projects: "Proyectos AE", nav_masterclass: "Masterclass", nav_contact: "Contacto",
+                section_portfolio: "Portafolio",
                 section_projects1: "Proyectos", section_projects2: "AE",
                 section_masterclass1: "Master", section_masterclass2: "class",
                 
                 about_tag: "Sobre el Autor",
                 about_p1: "Me llamo Rafael Catalan y trabajo como motion designer desde hace al menos seis años. Tuve un estudio de postproducción audiovisual y trabajé con grandes creadores de contenido en YouTube Brasil.",
-                about_p2: "Actualmente, he enfocado mis estudios y mi trabajo en motion graphics. Además, he estado desarrollando scripts útiles para optimizar el flujo de trabajo de otros profesionales del área.",
+                about_p2: "Actualmente, he enfocado mis estudios y mi trabajo en motion graphics.",
                 about_p3: "Siéntete a gusto en la casa Catalan Lab. Aquí encontrarás algunos de mis trabajos, secciones útiles para tu día a día y, por supuesto, la sección Playground, donde puedes distraerte en esos días más estresantes.",
 
                 play_desc: "Diviértete y prueba conceptos esenciales de Motion Design en tu navegador.",
@@ -1211,7 +1130,6 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
             }
 
             renderPortfolio();
-            renderScripts();
             renderAEProjects();
             renderMasterclasses();
             generateExpression(); 
@@ -1226,112 +1144,7 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
             { id: 6, category: "Script 3D Cam Parallax", embedUrl: "https://www.youtube.com/embed/t7hqoB-mFr0", image: "zeus.jpg", isHorizontal: true }
         ];
 
-        const scripts = [
-            {
-                id: 3, title: "Organic RIG PRO",
-                description: {
-                    pt: "O Organic RIG PRO facilita o rig de cabelos, tecidos, caudas, cordas e elementos flexíveis em apenas alguns cliques.",
-                    en: "Organic RIG PRO makes rigging hair, fabrics, tails, ropes, and flexible elements easy in just a few clicks.",
-                    es: "Organic RIG PRO facilita el rig de cabello, telas, colas, cuerdas y elementos flexibles en solo unos pocos clics."
-                },
-                price: { pt: "Premium", en: "Premium", es: "Premium" },
-                icon: "feather", link: "https://aescripts.com/organic-rig-pro/",
-                btnTextKey: "btn_buy"
-            },
-            {
-                id: 1, title: "3D Cam Parallax",
-                description: {
-                    pt: "Crie movimentos de câmera parallax 3D incríveis e fluidos com apenas alguns cliques no After Effects.",
-                    en: "Create incredible and fluid 3D parallax camera movements with just a few clicks in After Effects.",
-                    es: "Crea increíbles y fluidos movimientos de cámara parallax 3D con solo unos pocos clics en After Effects."
-                },
-                price: { pt: "Premium", en: "Premium", es: "Premium" },
-                icon: "layers", link: "https://go.hotmart.com/D105861956D?dp=1",
-                btnTextKey: "btn_buy"
-            },
-            {
-                id: 2, title: "Ae Lab Manager + Lab Stack",
-                description: {
-                    pt: "Coleção essencial de ferramentas e presets para otimizar o seu fluxo de trabalho diário no After Effects.",
-                    en: "Essential collection of tools and presets to optimize your daily workflow in After Effects.",
-                    es: "Colección esencial de herramientas y presets para optimizar tu flujo de trabajo diario en After Effects."
-                },
-                price: { pt: "FREE", en: "FREE", es: "GRATIS" },
-                icon: "boxes", link: "https://docs.google.com/forms/d/e/1FAIpQLSfTT1vVgNzOr00OLyQrdJ2TNf9mVjyOGb6s5c76ECqQqxemLg/viewform?usp=sharing&ouid=106520077737272301292",
-                tutorialLink: "https://www.youtube.com/watch?v=aoBHI7g0U9g",
-                btnTextKey: "btn_download"
-            },
-            {
-                id: 6, title: "Group Null",
-                description: {
-                    pt: "Sistema avançado para criar Nulos 2D/3D centralizados, agrupar camadas com a função Shy e gerar órbitas complexas matematicamente.",
-                    en: "Advanced system to create centered 2D/3D Nulls, group layers using the Shy function, and generate complex mathematical orbits.",
-                    es: "Sistema avanzado para crear Nulos 2D/3D centrados, agrupar capas con la función Shy y generar órbitas complejas matemáticamente."
-                },
-                price: { pt: "FREE", en: "FREE", es: "GRATIS" },
-                icon: "focus", link: "https://forms.gle/6vU4GQgMhnpd9gLT8",
-                tutorialLink: "https://youtu.be/6v1qQR-judw",
-                btnTextKey: "btn_download"
-            },
-            {
-                id: 7, title: "Beat Marker",
-                description: {
-                    pt: "Sincronize as suas animações criando marcadores de batida perfeitos e automáticos na sua timeline.",
-                    en: "Sync your animations by creating perfect and automatic beat markers right on your timeline.",
-                    es: "Sincroniza tus animaciones creando marcadores de ritmo perfectos y automáticos en tu línea de tiempo."
-                },
-                price: { pt: "FREE", en: "FREE", es: "GRATIS" },
-                icon: "music", link: "https://docs.google.com/forms/d/e/1FAIpQLSc91FxF7xsc_O41gbJxG-7p9vTV4pIzOGAlTzvGUldkztN90A/viewform?usp=sharing&ouid=106520077737272301292",
-                tutorialLink: "https://youtu.be/A5kG8fFjGCI?si=WmBrqUYLeP7jb6yx",
-                btnTextKey: "btn_download"
-            },
-            {
-                id: 4, title: "LoopDeck",
-                description: {
-                    pt: "Script focado em criar carrosséis 2D e 3D de forma rápida e automatizada.",
-                    en: "Script focused on creating 2D and 3D carousels quickly and automatically.",
-                    es: "Script enfocado en crear carruseles 2D y 3D de forma rápida y automatizada."
-                },
-                price: { pt: "-", en: "-", es: "-" },
-                icon: "refresh-cw", link: "#",
-                isComingSoon: true
-            },
-            {
-                id: 5, title: "Lab Stack PRO",
-                description: {
-                    pt: "Atualização do Lab Stack Lite, com novas funções avançadas e mais painéis.",
-                    en: "Update to Lab Stack Lite, with new advanced functions and more panels.",
-                    es: "Actualización de Lab Stack Lite, con nuevas funciones avanzadas y más paneles."
-                },
-                price: { pt: "-", en: "-", es: "-" },
-                icon: "zap", link: "#",
-                isComingSoon: true
-            }
-        ];
-
         const aeProjects = [
-            {
-                id: 1, title: "Goku Daima",
-                description: {
-                    pt: "Projeto aberto editável completo da animação Goku Daima. Explore o workflow, assets e estruturação na íntegra.",
-                    en: "Complete open editable project of the Goku Daima animation. Explore the workflow, assets, and full structure.",
-                    es: "Proyecto abierto editable completo de la animación Goku Daima. Explora el flujo de trabajo, assets y estructura."
-                },
-                price: { pt: "Premium", en: "Premium", es: "Premium" },
-                icon: "folder-open", link: "https://hotmart.com/pt-br/marketplace/produtos/goku-daima-projeto-editavel/B105634519M",
-                btnTextKey: "btn_buy"
-            },
-            {
-                id: 2, title: "Spotify Everywhere",
-                description: {
-                    pt: "Projeto aberto editável baseado na estética do Spotify Everywhere. Excelente para estudo e referências visuais.",
-                    en: "Open editable project based on the Spotify Everywhere aesthetic. Excellent for study and visual references.",
-                    es: "Proyecto abierto editable basado en la estética de Spotify Everywhere. Excelente para estudio y referencias."
-                },
-                price: { pt: "Premium", en: "Premium", es: "Premium" },
-                icon: "folder-open", link: "https://hotmart.com/pt-br/marketplace/produtos/spotify-everywhere-projeto-editavel/A105636181B",
-                btnTextKey: "btn_buy"
-            },
             {
                 id: 3, title: "Free Collects",
                 description: {
@@ -1370,7 +1183,7 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
                 
                 return `
                 <div class="group bg-[#0a0f1c] rounded-2xl border border-white/5 hover:border-brand-yellow/50 transition-all flex flex-col overflow-hidden shadow-lg h-full ${spanClass}">
-                    <div class="relative ${aspectClass} bg-black w-full overflow-hidden cursor-pointer" onclick="this.innerHTML = \`${iframeHTML}\`">
+                    <div class="relative ${aspectClass} bg-black w-full h-full overflow-hidden cursor-pointer" onclick="this.innerHTML = \`${iframeHTML}\`">
                         <img src="${item.image}" alt="Capa" onerror="this.onerror=null; this.src='https://placehold.co/${placeholderSize}/1E293B/FFD600?text=Capa'" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
                         
                         <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
@@ -1380,58 +1193,8 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
                             </div>
                         </div>
                     </div>
-                    <div class="p-5 flex flex-col flex-grow justify-center items-center text-center bg-brand-dark">
-                        <span class="text-brand-yellow text-xs font-bold uppercase tracking-wider leading-relaxed">${item.category}</span>
-                    </div>
                 </div>
             `}).join('');
-            lucide.createIcons();
-        }
-
-        function renderScripts() {
-            const grid = document.getElementById('scripts-grid');
-            grid.innerHTML = scripts.map(script => {
-                const localizedBtnText = script.isComingSoon ? translations[currentLang].btn_coming_soon : translations[currentLang][script.btnTextKey];
-                
-                let actionButtons = '';
-                if (script.isComingSoon) {
-                    let earlyAccessBtn = `<a href="https://chat.whatsapp.com/LG6y5yAyBDr9i1rG11OPz6" target="_blank" class="flex items-center gap-2 bg-brand-yellow/10 border border-brand-yellow/30 text-brand-yellow px-5 py-2.5 rounded-lg font-bold hover:bg-brand-yellow hover:text-brand-dark transition-all duration-300 w-full sm:w-auto justify-center">
-                        ${translations[currentLang].btn_early_access} <i data-lucide="key" class="w-4 h-4"></i>
-                    </a>`;
-                    let comingSoonBtn = `<button disabled class="flex items-center gap-2 bg-gray-800/50 text-gray-500 px-5 py-2.5 rounded-lg font-bold cursor-not-allowed w-full sm:w-auto justify-center border border-white/5">
-                        ${localizedBtnText} <i data-lucide="clock" class="w-4 h-4"></i>
-                    </button>`;
-                    
-                    actionButtons = `<div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">${earlyAccessBtn}${comingSoonBtn}</div>`;
-                } else {
-                    let mainBtn = `<a href="${script.link}" target="_blank" class="flex items-center gap-2 bg-brand-yellow text-brand-dark px-5 py-2.5 rounded-lg font-bold hover:bg-yellow-400 transition-colors w-full sm:w-auto justify-center">
-                        ${localizedBtnText} <i data-lucide="${script.price[currentLang] === 'FREE' || script.price[currentLang] === 'GRATIS' ? 'download' : 'shopping-cart'}" class="w-4 h-4"></i>
-                    </a>`;
-                    
-                    if (script.tutorialLink) {
-                        let tutBtn = `<a href="${script.tutorialLink}" target="_blank" class="flex items-center gap-2 bg-transparent border border-white/20 text-white hover:border-brand-yellow hover:text-brand-yellow px-5 py-2.5 rounded-lg font-bold transition-colors w-full sm:w-auto justify-center">
-                            ${translations[currentLang].btn_tutorial} <i data-lucide="play-circle" class="w-4 h-4"></i>
-                        </a>`;
-                        actionButtons = `<div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">${tutBtn}${mainBtn}</div>`;
-                    } else {
-                        actionButtons = mainBtn;
-                    }
-                }
-
-                return `
-                <div class="bg-brand-dark border border-white/5 p-8 rounded-2xl flex flex-col h-full hover:border-brand-yellow/30 transition-colors group relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-brand-yellow/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-                    <div class="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-brand-yellow mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="${script.icon}" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">${script.title}</h3>
-                    <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">${script.description[currentLang]}</p>
-                    <div class="flex flex-wrap items-center justify-between mt-auto pt-6 border-t border-white/5 gap-4">
-                        <span class="text-2xl font-bold ${script.price[currentLang] === 'Premium' ? 'text-brand-yellow' : 'text-white'}">${script.isComingSoon ? '' : script.price[currentLang]}</span>
-                        ${actionButtons}
-                    </div>
-                </div>`
-            }).join('');
             lucide.createIcons();
         }
 

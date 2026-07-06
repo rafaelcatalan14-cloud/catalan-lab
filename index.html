@@ -50,6 +50,14 @@
         ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #FFD600; }
         
+        .hide-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
         .glass-nav {
             background: rgba(13, 19, 34, 0.8);
             backdrop-filter: blur(12px);
@@ -204,7 +212,7 @@
         <!-- PÁGINA 1: HOME (PORTFÓLIO, MASTERCLASS) -->
         <!-- ============================================== -->
         <div id="page-home" data-page="home" class="page-content block">
-            <!-- SOBRE O AUTOR (NOVO HERO) -->
+            
             <section id="sobre" class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
                 <!-- Efeitos de Luz no Fundo -->
                 <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-yellow/10 via-brand-dark to-brand-dark -z-20"></div>
@@ -251,15 +259,28 @@
                 </div>
             </section>
 
-            <section id="motion" class="py-20 bg-brand-dark relative">
+            <section id="motion" class="py-20 bg-brand-dark relative overflow-hidden">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex items-center gap-4 mb-12">
-                        <h2 class="text-3xl md:text-4xl font-bold" data-i18n="section_portfolio">Portfólio</h2>
+                        <h2 class="text-3xl md:text-4xl font-bold"><span data-i18n="section_portfolio1">Meus</span> <span data-i18n="section_portfolio2" class="text-brand-yellow">projetos</span></h2>
                         <div class="h-px bg-white/10 flex-grow"></div>
                     </div>
                     
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="portfolio-grid">
-                        <!-- Gerado via JS -->
+                    <div class="relative group">
+                        <!-- Botão de Navegação Esquerda -->
+                        <button onclick="scrollPortfolio('left')" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-5 z-20 bg-brand-dark/90 text-brand-yellow p-4 rounded-full hover:bg-brand-yellow hover:text-brand-dark transition-all duration-300 border border-brand-yellow/30 opacity-0 group-hover:opacity-100 shadow-[0_0_20px_rgba(0,0,0,0.8)] hidden md:flex backdrop-blur-sm cursor-pointer">
+                            <i data-lucide="chevron-left" class="w-6 h-6"></i>
+                        </button>
+                        
+                        <!-- Container do Carrossel Deslizante -->
+                        <div id="portfolio-grid" class="flex gap-6 overflow-x-auto snap-x snap-mandatory hide-scrollbar pb-6 pt-2 -mx-4 px-4 sm:mx-0 sm:px-0">
+                            <!-- Gerado via JS -->
+                        </div>
+
+                        <!-- Botão de Navegação Direita -->
+                        <button onclick="scrollPortfolio('right')" class="absolute right-0 top-1/2 -translate-y-1/2 -mr-5 z-20 bg-brand-dark/90 text-brand-yellow p-4 rounded-full hover:bg-brand-yellow hover:text-brand-dark transition-all duration-300 border border-brand-yellow/30 opacity-0 group-hover:opacity-100 shadow-[0_0_20px_rgba(0,0,0,0.8)] hidden md:flex backdrop-blur-sm cursor-pointer">
+                            <i data-lucide="chevron-right" class="w-6 h-6"></i>
+                        </button>
                     </div>
                 </div>
             </section>
@@ -915,8 +936,12 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
 
         const translations = {
             pt: {
-                nav_motion: "Portfólio", nav_playground: "Playground", nav_assistant: "Assistant", nav_hub: "Lab Hub", nav_projects: "Projetos AE", nav_masterclass: "Masterclass", nav_contact: "Contato",
-                section_portfolio: "Portfólio",
+                nav_motion: "Portfólio", nav_playground: "Playground", nav_assistant: "Assistant", nav_hub: "Lab Hub", nav_scripts: "Scripts", nav_projects: "Projetos AE", nav_masterclass: "Masterclass", nav_contact: "Contato",
+                hero_title1: "Ideias em", hero_title2: "movimento.",
+                hero_subtitle: "Workflows otimizados e desenvolvido por quem realmente respira o After Effects todos os dias.",
+                hero_btn_portfolio: "Ver Portfólio", hero_btn_scripts: "Meus Scripts",
+                section_portfolio1: "Meus", section_portfolio2: "projetos",
+                section_scripts1: "Meus", section_scripts2: "Scripts",
                 section_projects1: "Projetos", section_projects2: "AE",
                 section_masterclass1: "Master", section_masterclass2: "class",
                 
@@ -960,7 +985,6 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
                 btn_buy: "Comprar", btn_download: "Baixar", btn_more: "Saber mais", badge_course: "Curso Completo", btn_coming_soon: "Em breve", btn_early_access: "Acesso Antecipado", btn_tutorial: "Tutorial",
                 btn_share_site: "Compartilhar", toast_copied: "Copiado para a área de transferência!", toast_hex: "Cor HEX copiada!",
 
-                // FAQ PT
                 faq_title: "Perguntas Frequentes", faq_subtitle: "Tire suas dúvidas sobre instalação, licenças e atualizações.",
                 q1: "Onde encontro o plugin dentro do After Effects e como instalo?",
                 a1: "Após baixar o arquivo (.jsxbin), cole-o na pasta oficial do sistema.<br><br><b class='text-brand-yellow'>Windows:</b><br><code class='bg-[#0d1322] px-3 py-2 rounded-lg mt-1 block border border-white/10 font-mono text-xs text-gray-300'>C:\\Arquivos de Programas\\Adobe\\Adobe After Effects\\Support Files\\Scripts\\ScriptUI Panels</code><br><b class='text-brand-yellow'>Mac:</b><br><code class='bg-[#0d1322] px-3 py-2 rounded-lg mt-1 block border border-white/10 font-mono text-xs text-gray-300'>/Applications/Adobe After Effects/Scripts/ScriptUI Panels</code><br><br>Todos os meus scripts ficam localizados no menu superior <b>Window</b> (Janela) por padrão. O Lab Manager é um gerenciador que roda à parte, mas primeiramente ele também precisa ser aberto via Window.",
@@ -975,7 +999,11 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
             },
             en: {
                 nav_motion: "Portfolio", nav_playground: "Playground", nav_assistant: "Assistant", nav_hub: "Lab Hub", nav_scripts: "Scripts", nav_projects: "AE Projects", nav_masterclass: "Masterclass", nav_contact: "Contact",
-                section_portfolio: "Portfolio",
+                hero_title1: "Ideas in", hero_title2: "motion.",
+                hero_subtitle: "Optimized workflows developed by someone who breathes After Effects every day.",
+                hero_btn_portfolio: "View Portfolio", hero_btn_scripts: "My Scripts",
+                section_portfolio1: "My", section_portfolio2: "projects",
+                section_scripts1: "My", section_scripts2: "Scripts",
                 section_projects1: "AE", section_projects2: "Projects",
                 section_masterclass1: "Master", section_masterclass2: "class",
                 
@@ -1019,7 +1047,6 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
                 btn_buy: "Buy", btn_download: "Download", btn_more: "Learn more", badge_course: "Full Course", btn_coming_soon: "Coming soon", btn_early_access: "Early Access", btn_tutorial: "Tutorial",
                 btn_share_site: "Share", toast_copied: "Copied to clipboard!", toast_hex: "HEX Color copied!",
 
-                // FAQ EN
                 faq_title: "Frequently Asked Questions", faq_subtitle: "Clear your doubts about installation, licenses, and updates.",
                 q1: "Where do I find the plugin in After Effects and how to install?",
                 a1: "After downloading the file (.jsxbin), paste it into the official system folder.<br><br><b class='text-brand-yellow'>Windows:</b><br><code class='bg-[#0d1322] px-3 py-2 rounded-lg mt-1 block border border-white/10 font-mono text-xs text-gray-300'>C:\\Program Files\\Adobe\\Adobe After Effects\\Support Files\\Scripts\\ScriptUI Panels</code><br><b class='text-brand-yellow'>Mac:</b><br><code class='bg-[#0d1322] px-3 py-2 rounded-lg mt-1 block border border-white/10 font-mono text-xs text-gray-300'>/Applications/Adobe After Effects/Scripts/ScriptUI Panels</code><br><br>All my scripts are located in the top <b>Window</b> menu by default. The Lab Manager runs separately, but it also needs to be opened via Window first.",
@@ -1034,7 +1061,11 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
             },
             es: {
                 nav_motion: "Portafolio", nav_playground: "Playground", nav_assistant: "Assistant", nav_hub: "Lab Hub", nav_scripts: "Scripts", nav_projects: "Proyectos AE", nav_masterclass: "Masterclass", nav_contact: "Contacto",
-                section_portfolio: "Portafolio",
+                hero_title1: "Ideas en", hero_title2: "movimiento.",
+                hero_subtitle: "Flujos de trabajo optimizados y desarrollados por quien respira After Effects a diario.",
+                hero_btn_portfolio: "Ver Portafolio", hero_btn_scripts: "Mis Scripts",
+                section_portfolio1: "Mis", section_portfolio2: "proyectos",
+                section_scripts1: "Mis", section_scripts2: "Scripts",
                 section_projects1: "Proyectos", section_projects2: "AE",
                 section_masterclass1: "Master", section_masterclass2: "class",
                 
@@ -1078,7 +1109,6 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
                 btn_buy: "Comprar", btn_download: "Descargar", btn_more: "Saber más", badge_course: "Curso Completo", btn_coming_soon: "Pronto", btn_early_access: "Acceso Anticipado", btn_tutorial: "Tutorial",
                 btn_share_site: "Compartir", toast_copied: "¡Copiado al portapapeles!", toast_hex: "¡Color HEX copiado!",
 
-                // FAQ ES
                 faq_title: "Preguntas Frecuentes", faq_subtitle: "Despeja tus dudas sobre instalación, licencias y actualizaciones.",
                 q1: "¿Dónde encuentro el plugin en After Effects y cómo lo instalo?",
                 a1: "Tras descargar el archivo (.jsxbin), pégalo en la carpeta oficial del sistema.<br><br><b class='text-brand-yellow'>Windows:</b><br><code class='bg-[#0d1322] px-3 py-2 rounded-lg mt-1 block border border-white/10 font-mono text-xs text-gray-300'>C:\\Archivos de Programa\\Adobe\\Adobe After Effects\\Support Files\\Scripts\\ScriptUI Panels</code><br><b class='text-brand-yellow'>Mac:</b><br><code class='bg-[#0d1322] px-3 py-2 rounded-lg mt-1 block border border-white/10 font-mono text-xs text-gray-300'>/Applications/Adobe After Effects/Scripts/ScriptUI Panels</code><br><br>Todos mis scripts están en el menú superior <b>Window</b> (Ventana) por defecto. El Lab Manager se ejecuta aparte, pero también debe abrirse primero desde Window.",
@@ -1136,12 +1166,14 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
         }
 
         const portfolioItems = [
-            { id: 1, category: "Script 3D Cam Parallax + Organic Rig + Lab Stack", embedUrl: "https://www.youtube.com/embed/LQCXrfiByMg", image: "Trunks.png" },
-            { id: 2, category: "Script 3D Cam Parallax + Organic Rig + Lab Stack", embedUrl: "https://www.youtube.com/embed/Rt0o8e0x3Dw", image: "Anime.png" },
-            { id: 3, category: "Script 3D Cam Parallax + Organic Rig + Lab Stack", embedUrl: "https://www.youtube.com/embed/W-lO90l-Vuo", image: "Bee.png" },
-            { id: 4, category: "Script 3D Cam Parallax", embedUrl: "https://www.youtube.com/embed/0a3ha40dmMw", image: "santiago.webp" },
-            { id: 5, category: "Script LoopDeck + 3D Cam Parallax", embedUrl: "https://www.youtube.com/embed/mAkdFoUNSf4", image: "capa_yugi.jpg", isHorizontal: true },
-            { id: 6, category: "Script 3D Cam Parallax", embedUrl: "https://www.youtube.com/embed/t7hqoB-mFr0", image: "zeus.jpg", isHorizontal: true }
+            { id: 1, embedUrl: "https://www.youtube.com/embed/LQCXrfiByMg", image: "Trunks.png" },
+            { id: 2, embedUrl: "https://www.youtube.com/embed/Rt0o8e0x3Dw", image: "Anime.png" },
+            { id: 3, embedUrl: "https://www.youtube.com/embed/W-lO90l-Vuo", image: "Bee.png" },
+            { id: 7, embedUrl: "https://www.youtube.com/embed/ONgSSJmp0GU", image: "obey.jpg" },
+            { id: 8, embedUrl: "https://www.youtube.com/embed/xbDYhdytQAE", image: "ufo.png" },
+            { id: 4, embedUrl: "https://www.youtube.com/embed/0a3ha40dmMw", image: "santiago.webp" },
+            { id: 5, embedUrl: "https://www.youtube.com/embed/mAkdFoUNSf4", image: "capa_yugi.jpg", isHorizontal: true },
+            { id: 6, embedUrl: "https://www.youtube.com/embed/t7hqoB-mFr0", image: "zeus.jpg", isHorizontal: true }
         ];
 
         const aeProjects = [
@@ -1178,12 +1210,12 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
                 const iframeHTML = `<iframe src='${item.embedUrl}?autoplay=1' class='absolute top-0 left-0 w-full h-full' frameborder='0' allow='autoplay; encrypted-media; picture-in-picture' allowfullscreen></iframe>`;
                 
                 const aspectClass = item.isHorizontal ? 'aspect-video' : 'aspect-[9/16]';
-                const spanClass = item.isHorizontal ? 'sm:col-span-2 lg:col-span-2' : '';
+                const widthClass = item.isHorizontal ? 'w-[85vw] sm:w-[500px]' : 'w-[75vw] sm:w-[300px]';
                 const placeholderSize = item.isHorizontal ? '800x450' : '400x700';
                 
                 return `
-                <div class="group bg-[#0a0f1c] rounded-2xl border border-white/5 hover:border-brand-yellow/50 transition-all flex flex-col overflow-hidden shadow-lg h-full ${spanClass}">
-                    <div class="relative ${aspectClass} bg-black w-full h-full overflow-hidden cursor-pointer" onclick="this.innerHTML = \`${iframeHTML}\`">
+                <div class="snap-center shrink-0 ${widthClass} group bg-[#0a0f1c] rounded-2xl border border-white/5 hover:border-brand-yellow/50 transition-all flex flex-col overflow-hidden shadow-lg">
+                    <div class="relative ${aspectClass} bg-black w-full overflow-hidden cursor-pointer" onclick="this.innerHTML = \`${iframeHTML}\`">
                         <img src="${item.image}" alt="Capa" onerror="this.onerror=null; this.src='https://placehold.co/${placeholderSize}/1E293B/FFD600?text=Capa'" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100">
                         
                         <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/20 to-transparent opacity-90 group-hover:opacity-100 transition-opacity"></div>
@@ -1197,6 +1229,16 @@ Math.min(linear(time, inPoint, inPoint + fadeTime, 0, 100), linear(time, outPoin
             `}).join('');
             lucide.createIcons();
         }
+
+        window.scrollPortfolio = function(direction) {
+            const container = document.getElementById('portfolio-grid');
+            const scrollAmount = window.innerWidth > 640 ? 350 : window.innerWidth * 0.8;
+            if (direction === 'left') {
+                container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        };
 
         function renderAEProjects() {
             const grid = document.getElementById('projects-grid');
